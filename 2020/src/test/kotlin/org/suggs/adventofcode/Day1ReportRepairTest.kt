@@ -1,10 +1,13 @@
-package org.suggs.adventofcode.day1
+package org.suggs.adventofcode
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import java.io.File
 
+/**
+ * @see https://adventofcode.com/2020/day/1
+ */
 class Day1ReportRepairTest {
 
     private val log = LoggerFactory.getLogger(this::class.java)

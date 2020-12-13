@@ -1,5 +1,8 @@
-package org.suggs.adventofcode.day1
+package org.suggs.adventofcode
 
+/**
+ * @see https://adventofcode.com/2020/day/1
+ */
 class Day1ReportRepair() {
 
     fun findTwoNumbersAndTimesThemFrom(listOfInts: List<Int>): Int {
