@@ -4,10 +4,10 @@ import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatExceptionOfType
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
-import org.suggs.adventofcode.Day3TobogganTrajectory.Companion.buildHillFrom
+import org.suggs.adventofcode.Day03TobogganTrajectory.Companion.buildHillFrom
 import java.io.File
 
-class Day3TobogganTrajectoryTest {
+class Day03TobogganTrajectoryTest {
 
     private val log = LoggerFactory.getLogger(this::class.java)
 
@@ -25,7 +25,7 @@ class Day3TobogganTrajectoryTest {
 .#..#...#.#""".lines()
     )
 
-    private val hillFromInputFile = buildHillFrom(readRowsFromFile("day3-input.txt"))
+    private val hillFromInputFile = buildHillFrom(readRowsFromFile("day03-input.txt"))
 
     @Test
     fun `can identify coordinates of a tree`() {

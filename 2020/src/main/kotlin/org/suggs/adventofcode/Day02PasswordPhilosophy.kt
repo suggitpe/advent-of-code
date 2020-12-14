@@ -3,16 +3,16 @@ package org.suggs.adventofcode
 /**
  * @see https://adventofcode.com/2020/day/2
  */
-data class Day2PasswordPhilosophy(
+data class Day02PasswordPhilosophy(
     private val range: Pair<Int, Int>,
     private val testCharacter: Char,
     private val password: String
 ) {
 
     companion object {
-        fun createPhilosophyFrom(passwordString: String): Day2PasswordPhilosophy {
+        fun createPhilosophyFrom(passwordString: String): Day02PasswordPhilosophy {
             val splits = passwordString.split(" ")
-            return Day2PasswordPhilosophy(pairOfIntsFrom(splits[0]), splits[1][0], splits[2])
+            return Day02PasswordPhilosophy(pairOfIntsFrom(splits[0]), splits[1][0], splits[2])
         }
 
         private fun pairOfIntsFrom(range: String): Pair<Int, Int> {

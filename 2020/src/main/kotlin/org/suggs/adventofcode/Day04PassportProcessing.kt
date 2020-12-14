@@ -1,4 +1,4 @@
 package org.suggs.adventofcode
 
-class Day4PassportProcessing {
+class Day04PassportProcessing {
 }

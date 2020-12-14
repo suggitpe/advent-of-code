@@ -2,7 +2,7 @@ package org.suggs.adventofcode
 
 import org.slf4j.LoggerFactory
 
-class Day3TobogganTrajectory(hillMap: List<String>) {
+class Day03TobogganTrajectory(hillMap: List<String>) {
 
     private val log = LoggerFactory.getLogger(this::class.java)
     private val widthOfHillMap: Int = hillMap[0].length
@@ -11,8 +11,8 @@ class Day3TobogganTrajectory(hillMap: List<String>) {
         hillMap.map { Regex("#").findAll(it).map { it.range.first }.toList() }
 
     companion object {
-        fun buildHillFrom(hill: List<String>): Day3TobogganTrajectory {
-            return Day3TobogganTrajectory(hill)
+        fun buildHillFrom(hill: List<String>): Day03TobogganTrajectory {
+            return Day03TobogganTrajectory(hill)
         }
     }
 

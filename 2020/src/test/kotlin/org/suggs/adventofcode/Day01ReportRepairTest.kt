@@ -8,10 +8,10 @@ import java.io.File
 /**
  * @see https://adventofcode.com/2020/day/1
  */
-class Day1ReportRepairTest {
+class Day01ReportRepairTest {
 
     private val log = LoggerFactory.getLogger(this::class.java)
-    private val reportRepair = Day1ReportRepair()
+    private val reportRepair = Day01ReportRepair()
 
     @Test
     fun `find two numbers in a list that add to 2020 from known list and multiply them`() {
@@ -22,7 +22,7 @@ class Day1ReportRepairTest {
 
     @Test
     fun `find two numbers in a list that add to 2020 from file and multiply them`() {
-        val bigNumber = reportRepair.findTwoNumbersAndTimesThemFrom(readNumbersFromFile("day1-input.txt"))
+        val bigNumber = reportRepair.findTwoNumbersAndTimesThemFrom(readNumbersFromFile("day01-input.txt"))
         log.info("Big number for two numbers from file list is $bigNumber")
         assertThat(bigNumber).isGreaterThan(1)
     }
@@ -36,7 +36,7 @@ class Day1ReportRepairTest {
 
     @Test
     fun `find three numbers in a list that add to 2020 from file and multiply them`() {
-        val bigNumber = reportRepair.findThreeNumbersAndTimesThemFrom(readNumbersFromFile("day1-input.txt"))
+        val bigNumber = reportRepair.findThreeNumbersAndTimesThemFrom(readNumbersFromFile("day01-input.txt"))
         log.info("Big number for three numbers from file list is $bigNumber")
         assertThat(bigNumber).isGreaterThan(1)
     }
