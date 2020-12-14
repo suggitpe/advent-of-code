@@ -3,7 +3,7 @@ package org.suggs.adventofcode
 /**
  * @see https://adventofcode.com/2020/day/2
  */
-class Day2PasswordPhilosophy(
+data class Day2PasswordPhilosophy(
     private val range: Pair<Int, Int>,
     private val testCharacter: Char,
     private val password: String
