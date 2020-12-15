@@ -50,7 +50,7 @@ class Day04PassportProcessingTest {
         val validPassports = extractPassportsFromText(readPassportDataFromFile("day04-input.txt"))
             .filter { it.isStrictlyValid() }
         log.info("total number of passports that are strictly valid is ${validPassports.size}")
-        assertThat(validPassports.size).isEqualTo(161)
+        assertThat(validPassports.size).isEqualTo(158)
     }
 
 
