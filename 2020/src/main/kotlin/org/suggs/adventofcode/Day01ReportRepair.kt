@@ -3,7 +3,7 @@ package org.suggs.adventofcode
 /**
  * @see https://adventofcode.com/2020/day/1
  */
-class Day01ReportRepair() {
+class Day01ReportRepair {
 
     fun findTwoNumbersAndTimesThemFrom(listOfInts: List<Int>): Int {
         return findAndMultiplyTwoFrom(listOfInts[0], listOfInts.drop(1))

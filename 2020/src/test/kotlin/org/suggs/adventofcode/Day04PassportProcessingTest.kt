@@ -4,8 +4,10 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import java.io.File
-import java.net.PasswordAuthentication
 
+/**
+ * @see https://adventofcode.com/2020/day/4
+ */
 class Day04PassportProcessingTest {
 
     private val log = LoggerFactory.getLogger(this::class.java)
@@ -17,34 +19,34 @@ class Day04PassportProcessingTest {
     }
 
     @Test
-    fun `read passports from the input file`(){
+    fun `read passports from the input file`() {
         val passports = extractPassportsFromText(readPassportDataFromFile("day04-input.txt"))
         assertThat(passports.size).isEqualTo(282)
     }
 
     @Test
-    fun `read passports from the set text and filter out all the invalid ones`(){
+    fun `read passports from the set text and filter out all the invalid ones`() {
         val validPassports = extractPassportsFromText(setTextPassportList())
             .filter { it.isValid() }
         assertThat(validPassports.size).isEqualTo(2)
     }
 
     @Test
-    fun `read passports from the file input and filter out all the invalid ones`(){
+    fun `read passports from the file input and filter out all the invalid ones`() {
         val validPassports = extractPassportsFromText(readPassportDataFromFile("day04-input.txt"))
             .filter { it.isValid() }
         assertThat(validPassports.size).isEqualTo(250)
     }
 
     @Test
-    fun `read passports from the set text and filter out all the strictly invalid ones`(){
+    fun `read passports from the set text and filter out all the strictly invalid ones`() {
         val validPassports = extractPassportsFromText(setTextPassportList())
             .filter { it.isStrictlyValid() }
         assertThat(validPassports.size).isEqualTo(2)
     }
 
     @Test
-    fun `read passports from the file input and filter out all the strictly invalid ones`(){
+    fun `read passports from the file input and filter out all the strictly invalid ones`() {
         val validPassports = extractPassportsFromText(readPassportDataFromFile("day04-input.txt"))
             .filter { it.isStrictlyValid() }
         log.info("total number of passports that are strictly valid is ${validPassports.size}")
@@ -52,20 +54,20 @@ class Day04PassportProcessingTest {
     }
 
 
-    private fun extractPassportsFromText(passportData: String): List<Day04PassportProcessing>{
+    private fun extractPassportsFromText(passportData: String): List<Day04PassportProcessing> {
         return passportData
             .split("\n\n")
             .map { it.replace("\n", " ") }
             .map { it.split(" ") }
             .map { it.map { val (left, right) = it.split(":"); left to right }.toMap() }
-            .map{Day04PassportProcessing.createPassportFrom(it)}
+            .map { Day04PassportProcessing.createPassportFrom(it) }
     }
 
-    private fun readPassportDataFromFile(nameOfFile: String): String{
+    private fun readPassportDataFromFile(nameOfFile: String): String {
         return File(ClassLoader.getSystemResource(nameOfFile).file).readText()
     }
 
-    private fun setTextPassportList(): String{
+    private fun setTextPassportList(): String {
         return """ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 byr:1937 iyr:2017 cid:147 hgt:183cm
 

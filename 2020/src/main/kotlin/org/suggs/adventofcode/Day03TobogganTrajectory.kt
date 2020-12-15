@@ -2,6 +2,9 @@ package org.suggs.adventofcode
 
 import org.slf4j.LoggerFactory
 
+/**
+ * @see https://adventofcode.com/2020/day/3
+ */
 class Day03TobogganTrajectory(hillMap: List<String>) {
 
     private val log = LoggerFactory.getLogger(this::class.java)

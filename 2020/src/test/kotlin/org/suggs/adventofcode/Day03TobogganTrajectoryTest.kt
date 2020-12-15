@@ -3,13 +3,13 @@ package org.suggs.adventofcode
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatExceptionOfType
 import org.junit.jupiter.api.Test
-import org.slf4j.LoggerFactory
 import org.suggs.adventofcode.Day03TobogganTrajectory.Companion.buildHillFrom
 import java.io.File
 
+/**
+ * @see https://adventofcode.com/2020/day/3
+ */
 class Day03TobogganTrajectoryTest {
-
-    private val log = LoggerFactory.getLogger(this::class.java)
 
     private val simpleHill = buildHillFrom(
         """..##.......

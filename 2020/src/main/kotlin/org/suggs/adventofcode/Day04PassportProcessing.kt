@@ -1,5 +1,8 @@
 package org.suggs.adventofcode
 
+/**
+ * @see https://adventofcode.com/2020/day/4
+ */
 data class Day04PassportProcessing(private val data: Map<String, String>) {
 
     private val validationFunctions: Map<String, (String) -> Boolean> = mapOf(
