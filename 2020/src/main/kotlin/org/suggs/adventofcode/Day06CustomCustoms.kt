@@ -7,7 +7,10 @@ class Day06CustomCustoms {
 
     companion object {
         fun countAllDiscreteQuestionsByGroup(answers: String): Int {
-            return answers.split("\n\n").map { it.replace("\n", "").toCharArray().toSet().count() }.sum()
+            return answers
+                .split("\n\n")
+                .map { it.replace("\n", "").toCharArray().toSet().count() }
+                .sum()
         }
 
         fun countAllCommonlyAnsweredQuestionsByGroup(answers: String): Int {
