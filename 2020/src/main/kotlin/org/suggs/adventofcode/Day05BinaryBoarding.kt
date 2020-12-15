@@ -1,5 +1,8 @@
 package org.suggs.adventofcode
 
+/**
+ * @see https://adventofcode.com/2020/day/5
+ */
 class Day05BinaryBoarding {
 
     companion object {

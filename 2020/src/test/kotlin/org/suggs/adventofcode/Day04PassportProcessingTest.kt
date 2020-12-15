@@ -14,7 +14,7 @@ class Day04PassportProcessingTest {
 
     @Test
     fun `read passports from the fixed text`() {
-        val passports = extractPassportsFromText(setTextPassportList())
+        val passports = extractPassportsFromText(textPassportList)
         assertThat(passports.size).isEqualTo(4)
     }
 
@@ -26,7 +26,7 @@ class Day04PassportProcessingTest {
 
     @Test
     fun `read passports from the set text and filter out all the invalid ones`() {
-        val validPassports = extractPassportsFromText(setTextPassportList())
+        val validPassports = extractPassportsFromText(textPassportList)
             .filter { it.isValid() }
         assertThat(validPassports.size).isEqualTo(2)
     }
@@ -40,7 +40,7 @@ class Day04PassportProcessingTest {
 
     @Test
     fun `read passports from the set text and filter out all the strictly invalid ones`() {
-        val validPassports = extractPassportsFromText(setTextPassportList())
+        val validPassports = extractPassportsFromText(textPassportList)
             .filter { it.isStrictlyValid() }
         assertThat(validPassports.size).isEqualTo(2)
     }
@@ -67,8 +67,7 @@ class Day04PassportProcessingTest {
         return File(ClassLoader.getSystemResource(nameOfFile).file).readText()
     }
 
-    private fun setTextPassportList(): String {
-        return """ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+    val textPassportList = """ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 byr:1937 iyr:2017 cid:147 hgt:183cm
 
 iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
@@ -81,7 +80,6 @@ hgt:179cm
 
 hcl:#cfa07d eyr:2025 pid:166559648
 iyr:2011 ecl:brn hgt:59in"""
-    }
 
 
 }

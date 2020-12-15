@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day05BinaryBoarding.Companion.convertBoardingPassToDecimalSeat
 import java.io.File
 
+/**
+ * @see https://adventofcode.com/2020/day/5
+ */
 class Day05BinaryBoardingTest {
 
     private val validBoardingPassSeatAllocations = mapOf("FBFBBFFRLR" to 357, "BFFFBBFRRR" to 567, "FFFBBBFRRR" to 119, "BBFFBBFRLL" to 820)
