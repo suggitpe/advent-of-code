@@ -11,22 +11,6 @@ import java.io.File
  */
 class Day03TobogganTrajectoryTest {
 
-    private val simpleHill = buildHillFrom(
-        """..##.......
-#...#...#..
-.#....#..#.
-..#.#...#.#
-.#...##..#.
-..#.##.....
-.#.#.#....#
-.#........#
-#.##...#...
-#...##....#
-.#..#...#.#""".lines()
-    )
-
-    private val hillFromInputFile = buildHillFrom(readRowsFromFile("day03-input.txt"))
-
     @Test
     fun `can identify coordinates of a tree`() {
         assertThat(simpleHill.isATree(Pair(0, 0))).isFalse
@@ -65,8 +49,20 @@ class Day03TobogganTrajectoryTest {
         assertThat(cumulative).isEqualTo(4723283400)
     }
 
-    private fun readRowsFromFile(nameOfFile: String): List<String> {
-        return File(ClassLoader.getSystemResource(nameOfFile).file).readLines()
-    }
+    private val hillFromInputFile = buildHillFrom(File(ClassLoader.getSystemResource("day03-input.txt").file).readLines())
+
+    private val simpleHill = buildHillFrom(
+        """..##.......
+#...#...#..
+.#....#..#.
+..#.#...#.#
+.#...##..#.
+..#.##.....
+.#.#.#....#
+.#........#
+#.##...#...
+#...##....#
+.#..#...#.#""".lines()
+    )
 
 }

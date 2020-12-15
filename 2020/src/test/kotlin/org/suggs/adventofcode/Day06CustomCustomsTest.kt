@@ -2,7 +2,6 @@ package org.suggs.adventofcode
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.slf4j.LoggerFactory
 import org.suggs.adventofcode.Day06CustomCustoms.Companion.countAllCommonlyAnsweredQuestionsByGroup
 import org.suggs.adventofcode.Day06CustomCustoms.Companion.countAllDiscreteQuestionsByGroup
 import java.io.File
@@ -12,33 +11,29 @@ import java.io.File
  */
 class Day06CustomCustomsTest() {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
-
     @Test
     fun `read simple list and count all questions answered in th groups`() {
-        assertThat(countAllDiscreteQuestionsByGroup(simpleInput)).isEqualTo(11)
+        assertThat(countAllDiscreteQuestionsByGroup(testAnswers)).isEqualTo(11)
     }
 
     @Test
     fun `read long file list and count all questions answered in teh groups`() {
-        assertThat(countAllDiscreteQuestionsByGroup(readRowsFromFile("day06-input.txt"))).isEqualTo(6530)
+        assertThat(countAllDiscreteQuestionsByGroup(readAnswers)).isEqualTo(6530)
     }
 
     @Test
     fun `read simple list and count all the commonly answered questions`() {
-        assertThat(countAllCommonlyAnsweredQuestionsByGroup(simpleInput)).isEqualTo(6)
+        assertThat(countAllCommonlyAnsweredQuestionsByGroup(testAnswers)).isEqualTo(6)
     }
 
     @Test
     fun `read log file list and count all teh commonly answered questions`() {
-        assertThat(countAllCommonlyAnsweredQuestionsByGroup(readRowsFromFile("day06-input.txt"))).isEqualTo(3323)
+        assertThat(countAllCommonlyAnsweredQuestionsByGroup(readAnswers)).isEqualTo(3323)
     }
 
-    private fun readRowsFromFile(nameOfFile: String): String {
-        return File(ClassLoader.getSystemResource(nameOfFile).file).readText()
-    }
+    private val readAnswers = File(ClassLoader.getSystemResource("day06-input.txt").file).readText()
 
-    private val simpleInput = """abc
+    private val testAnswers = """abc
 
 a
 b

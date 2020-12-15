@@ -21,17 +21,15 @@ class Day05BinaryBoardingTest {
 
     @Test
     fun `find boarding pass with the maximum seat number`() {
-        assertThat(readRowsFromFile("day05-input.txt").map { convertBoardingPassToDecimalSeat(it) }.maxOrNull()).isEqualTo(919)
+        assertThat(readPasses.map { convertBoardingPassToDecimalSeat(it) }.maxOrNull()).isEqualTo(919)
     }
 
     @Test
     fun `find missing seat in the set of boarding passes`() {
-        val allBoardingPasses = readRowsFromFile("day05-input.txt").map { convertBoardingPassToDecimalSeat(it) }.sorted()
+        val allBoardingPasses = readPasses.map { convertBoardingPassToDecimalSeat(it) }.sorted()
         assertThat(allBoardingPasses[0].rangeTo(allBoardingPasses.last()).sum() - allBoardingPasses.sum()).isEqualTo(642)
     }
 
-    private fun readRowsFromFile(nameOfFile: String): List<String> {
-        return File(ClassLoader.getSystemResource(nameOfFile).file).readLines()
-    }
+    private val readPasses = File(ClassLoader.getSystemResource("day05-input.txt").file).readLines()
 
 }

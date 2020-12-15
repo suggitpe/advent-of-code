@@ -14,40 +14,40 @@ class Day04PassportProcessingTest {
 
     @Test
     fun `read passports from the fixed text`() {
-        val passports = extractPassportsFromText(textPassportList)
+        val passports = extractPassportsFromText(testPassports)
         assertThat(passports.size).isEqualTo(4)
     }
 
     @Test
     fun `read passports from the input file`() {
-        val passports = extractPassportsFromText(readPassportDataFromFile("day04-input.txt"))
+        val passports = extractPassportsFromText(readPassports)
         assertThat(passports.size).isEqualTo(282)
     }
 
     @Test
     fun `read passports from the set text and filter out all the invalid ones`() {
-        val validPassports = extractPassportsFromText(textPassportList)
+        val validPassports = extractPassportsFromText(testPassports)
             .filter { it.isValid() }
         assertThat(validPassports.size).isEqualTo(2)
     }
 
     @Test
     fun `read passports from the file input and filter out all the invalid ones`() {
-        val validPassports = extractPassportsFromText(readPassportDataFromFile("day04-input.txt"))
+        val validPassports = extractPassportsFromText(readPassports)
             .filter { it.isValid() }
         assertThat(validPassports.size).isEqualTo(250)
     }
 
     @Test
     fun `read passports from the set text and filter out all the strictly invalid ones`() {
-        val validPassports = extractPassportsFromText(textPassportList)
+        val validPassports = extractPassportsFromText(testPassports)
             .filter { it.isStrictlyValid() }
         assertThat(validPassports.size).isEqualTo(2)
     }
 
     @Test
     fun `read passports from the file input and filter out all the strictly invalid ones`() {
-        val validPassports = extractPassportsFromText(readPassportDataFromFile("day04-input.txt"))
+        val validPassports = extractPassportsFromText(readPassports)
             .filter { it.isStrictlyValid() }
         log.info("total number of passports that are strictly valid is ${validPassports.size}")
         assertThat(validPassports.size).isEqualTo(158)
@@ -63,11 +63,9 @@ class Day04PassportProcessingTest {
             .map { Day04PassportProcessing.createPassportFrom(it) }
     }
 
-    private fun readPassportDataFromFile(nameOfFile: String): String {
-        return File(ClassLoader.getSystemResource(nameOfFile).file).readText()
-    }
+    private val readPassports = File(ClassLoader.getSystemResource("day04-input.txt").file).readText()
 
-    val textPassportList = """ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+    private val testPassports = """ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 byr:1937 iyr:2017 cid:147 hgt:183cm
 
 iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884

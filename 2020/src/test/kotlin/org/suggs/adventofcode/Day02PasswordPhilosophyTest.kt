@@ -21,22 +21,22 @@ class Day02PasswordPhilosophyTest {
     }
 
     @Test
-    fun `count the number of valid passwords by range in a file`(){
-        val numberOfValidPasswords = countNumberOfValidPasswordsByRangeIn(readPasswordsFromFile("day02-input.txt"))
+    fun `count the number of valid passwords by range in a file`() {
+        val numberOfValidPasswords = countNumberOfValidPasswordsByRangeIn(readPasswords.map { createPhilosophyFrom(it) })
         log.info("Number of valid passwords by range in the file is $numberOfValidPasswords")
         assertThat(numberOfValidPasswords).isEqualTo(643)
     }
 
     @Test
-    fun `count the number of valid passwords by placement in a list`(){
+    fun `count the number of valid passwords by placement in a list`() {
         val numberOfValidPasswords = countNumberOfValidPasswordsByPositionIn(createKnownSetOfNumbers())
         log.info("Number of valid passwords by position in the known list is $numberOfValidPasswords")
         assertThat(numberOfValidPasswords).isEqualTo(1)
     }
 
     @Test
-    fun `count the number of valid passwords by placement in a file`(){
-        val numberOfValidPasswords = countNumberOfValidPasswordsByPositionIn(readPasswordsFromFile("day02-input.txt"))
+    fun `count the number of valid passwords by placement in a file`() {
+        val numberOfValidPasswords = countNumberOfValidPasswordsByPositionIn(readPasswords.map { createPhilosophyFrom(it) })
         log.info("Number of valid passwords by position in the file is $numberOfValidPasswords")
         assertThat(numberOfValidPasswords).isEqualTo(388)
     }
@@ -49,9 +49,7 @@ class Day02PasswordPhilosophyTest {
         return listOfPasswords.filter { it.isValidByPosition() }.size
     }
 
-    private fun readPasswordsFromFile(nameOfFile: String): List<Day02PasswordPhilosophy> {
-        return File(ClassLoader.getSystemResource(nameOfFile).file).readLines().map { createPhilosophyFrom(it) }
-    }
+    private val readPasswords = File(ClassLoader.getSystemResource("day02-input.txt").file).readLines()
 
     private fun createKnownSetOfNumbers(): List<Day02PasswordPhilosophy> {
         return listOf(
