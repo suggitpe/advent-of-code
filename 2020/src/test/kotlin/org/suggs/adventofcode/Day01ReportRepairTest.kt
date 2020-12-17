@@ -10,8 +10,10 @@ import java.io.File
  */
 class Day01ReportRepairTest {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
-    private val reportRepair = Day01ReportRepair()
+    companion object{
+        private val log = LoggerFactory.getLogger(this::class.java)
+        private val reportRepair = Day01ReportRepair()
+    }
 
     @Test
     fun `find two numbers in a list that add to 2020 from known list and multiply them`() {

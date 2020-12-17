@@ -3,11 +3,7 @@ package org.suggs.adventofcode
 /**
  * @see https://adventofcode.com/2020/day/2
  */
-data class Day02PasswordPhilosophy(
-    private val range: Pair<Int, Int>,
-    private val testCharacter: Char,
-    private val password: String
-) {
+data class Day02PasswordPhilosophy(private val range: Pair<Int, Int>, private val testCharacter: Char, private val password: String) {
 
     companion object {
         fun createPhilosophyFrom(passwordString: String): Day02PasswordPhilosophy {

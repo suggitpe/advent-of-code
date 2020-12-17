@@ -7,13 +7,15 @@ import org.slf4j.LoggerFactory
  */
 class Day03TobogganTrajectory(hillMap: List<String>) {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
     private val widthOfHillMap: Int = hillMap[0].length
     private val sizeOfHill: Int = hillMap.size
     private val treeCoordinates: List<List<Int>> =
         hillMap.map { Regex("#").findAll(it).map { it.range.first }.toList() }
 
     companion object {
+
+        private val log = LoggerFactory.getLogger(this::class.java)
+
         fun buildHillFrom(hill: List<String>): Day03TobogganTrajectory {
             return Day03TobogganTrajectory(hill)
         }

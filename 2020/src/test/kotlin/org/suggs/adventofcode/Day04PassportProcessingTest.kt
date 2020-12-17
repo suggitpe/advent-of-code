@@ -10,7 +10,9 @@ import java.io.File
  */
 class Day04PassportProcessingTest {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
+    companion object {
+        private val log = LoggerFactory.getLogger(this::class.java)
+    }
 
     @Test
     fun `read passports from the fixed text`() {

@@ -6,8 +6,8 @@ import java.lang.IllegalStateException
 
 class Day08HandheldHalting {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
     enum class InstructionType { JMP, ACC, NOP }
+
     data class Instruction(var instruction: InstructionType, val amount: Int) {
         fun nextLine(fromLine: Int): Int {
             return when (instruction) {

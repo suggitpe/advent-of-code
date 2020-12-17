@@ -10,7 +10,9 @@ import java.io.File
  */
 class Day05BinaryBoardingTest {
 
-    private val validBoardingPassSeatAllocations = mapOf("FBFBBFFRLR" to 357, "BFFFBBFRRR" to 567, "FFFBBBFRRR" to 119, "BBFFBBFRLL" to 820)
+    companion object {
+        private val validBoardingPassSeatAllocations = mapOf("FBFBBFFRLR" to 357, "BFFFBBFRRR" to 567, "FFFBBBFRRR" to 119, "BBFFBBFRLL" to 820)
+    }
 
     @Test
     fun `convert a boarding pass into a binary string then convert to decimal`() {

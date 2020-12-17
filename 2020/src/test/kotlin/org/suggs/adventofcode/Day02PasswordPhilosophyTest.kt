@@ -11,7 +11,9 @@ import java.io.File
  */
 class Day02PasswordPhilosophyTest {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
+    companion object {
+        private val log = LoggerFactory.getLogger(this::class.java)
+    }
 
     @Test
     fun `count the number of valid passwords by range in a list`() {
