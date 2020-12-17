@@ -23,22 +23,26 @@ class Day07HandyHaversacksTest {
 
     @Test
     fun `can calculate the number of possible outer bags that shiny gold could reside in from graph`() {
-        assertThat(calculateDiscreteParentBagsFrom(testBags, "shiny gold")).isEqualTo(4)
+        val numberOfBags = calculateDiscreteParentBagsFrom(testBags, "shiny gold")
+        assertThat(numberOfBags).isEqualTo(4)
     }
 
     @Test
     fun `can calculate the number of possible outer bags that shiny gold could reside in from huge graph`() {
-        assertThat(calculateDiscreteParentBagsFrom(readBags, "shiny gold")).isEqualTo(332)
+        val numberOfBags = calculateDiscreteParentBagsFrom(readBags, "shiny gold")
+        assertThat(numberOfBags).isEqualTo(332)
     }
 
     @Test
     fun `can calculate the number of contained bags from a bag in a small graph`() {
-        assertThat(calculateTheTotalContainedBagsFrom(testBags, "shiny gold")).isEqualTo(32)
+        val containedBags = calculateTheTotalContainedBagsFrom(testBags, "shiny gold")
+        assertThat(containedBags).isEqualTo(32)
     }
 
     @Test
     fun `can calculate the number of contained bags from a bag in a small graph for dark olive`() {
-        assertThat(calculateTheTotalContainedBagsFrom(testBags, "dark olive")).isEqualTo(7)
+        val containedBags = calculateTheTotalContainedBagsFrom(testBags, "dark olive")
+        assertThat(containedBags).isEqualTo(7)
     }
 
     @Test

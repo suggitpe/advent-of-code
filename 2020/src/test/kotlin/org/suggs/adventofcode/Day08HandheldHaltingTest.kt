@@ -2,7 +2,7 @@ package org.suggs.adventofcode
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.slf4j.LoggerFactory
+import org.suggs.adventofcode.Day08HandheldHalting.Companion.findFlippableInstructionToCompleteTheRun
 import org.suggs.adventofcode.Day08HandheldHalting.Companion.instructionSetFrom
 import org.suggs.adventofcode.Day08HandheldHalting.Companion.processInstructions
 import java.io.File
@@ -23,12 +23,14 @@ class Day08HandheldHaltingTest {
 
     @Test
     fun `finds flippable instructions from a failing instruction set`(){
-        assertThat(Day08HandheldHalting.findFlippableInstructionToCompleteTheRun(instructionSetFrom(setInstructions))).isEqualTo(8)
+        val accumulatorAfterCompletion = findFlippableInstructionToCompleteTheRun(instructionSetFrom(setInstructions))
+        assertThat(accumulatorAfterCompletion).isEqualTo(8)
     }
 
     @Test
     fun `finds flippable instructions from a large failing instruction set`(){
-        assertThat(Day08HandheldHalting.findFlippableInstructionToCompleteTheRun(instructionSetFrom(readInstructions))).isEqualTo(501)
+        val accumulatorAfterCompletion = findFlippableInstructionToCompleteTheRun(instructionSetFrom(readInstructions))
+        assertThat(accumulatorAfterCompletion).isEqualTo(501)
     }
 
     private val readInstructions: List<String> = File(ClassLoader.getSystemResource("day08-input.txt").file).readLines()

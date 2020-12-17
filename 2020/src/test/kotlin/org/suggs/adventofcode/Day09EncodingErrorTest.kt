@@ -2,6 +2,7 @@ package org.suggs.adventofcode
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.suggs.adventofcode.Day09EncodingError.Companion.findEncryptionWeaknessFor
 import org.suggs.adventofcode.Day09EncodingError.Companion.findFirstInvalidNumberAfterPreamble
 import java.io.File
 
@@ -9,12 +10,26 @@ class Day09EncodingErrorTest {
 
     @Test
     fun `finds the first invalid number after a preamble for a short list`() {
-        assertThat(findFirstInvalidNumberAfterPreamble(shortXmasCodeExample, 5)).isEqualTo(127L)
+        val firstInvalid = findFirstInvalidNumberAfterPreamble(5, shortXmasCodeExample)
+        assertThat(firstInvalid).isEqualTo(127L)
     }
 
     @Test
     fun `finds the first invalid number after a preamble for a longer list`() {
-        assertThat(findFirstInvalidNumberAfterPreamble(longXmasCodeExample, 25)).isEqualTo(90433990L)
+        val firstInvalid = findFirstInvalidNumberAfterPreamble(25, longXmasCodeExample)
+        assertThat(firstInvalid).isEqualTo(90433990L)
+    }
+
+    @Test
+    fun `find addition of low and high from contiguous list that adds up to an invalid number`() {
+        val addition: Long = findEncryptionWeaknessFor(127L, shortXmasCodeExample)
+        assertThat(addition).isEqualTo(62L)
+    }
+
+    @Test
+    fun `find addition of low and high from a really large contiguous list that adds up to an invalid number`() {
+        val addition: Long = findEncryptionWeaknessFor(90433990L, longXmasCodeExample)
+        assertThat(addition).isEqualTo(11691646L)
     }
 
     private val longXmasCodeExample: List<Long> = File(ClassLoader.getSystemResource("day09-input.txt").file).readLines().map { it.toLong() }

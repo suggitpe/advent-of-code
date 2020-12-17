@@ -33,12 +33,14 @@ class Day03TobogganTrajectoryTest {
 
     @Test
     fun `counts the trees as it goes down the hill`() {
-        assertThat(simpleHill.countTheTreesAsYouTobogganOnPathOf(Pair(3, 1))).isEqualTo(7)
+        val countOfTrees = simpleHill.countTheTreesAsYouTobogganOnPathOf(Pair(3, 1))
+        assertThat(countOfTrees).isEqualTo(7)
     }
 
     @Test
     fun `counts the trees as it goes down the big hill`() {
-        assertThat(hillFromInputFile.countTheTreesAsYouTobogganOnPathOf(Pair(3, 1))).isEqualTo(187)
+        val countOfTrees = hillFromInputFile.countTheTreesAsYouTobogganOnPathOf(Pair(3, 1))
+        assertThat(countOfTrees).isEqualTo(187)
     }
 
     @Test

@@ -27,9 +27,7 @@ class Day07HandyHaversacks {
 
         fun calculateDiscreteParentBagsFrom(rules: List<String>, bagName: String): Int {
 
-            fun buildMapOfRulesKeyedByChild(rules: List<String>): Map<String, List<BagRule>> {
-                return buildRulesFromRulesSet(rules).groupBy { it.child }
-            }
+            fun buildMapOfRulesKeyedByChild(rules: List<String>) = buildRulesFromRulesSet(rules).groupBy { it.child }
 
             fun calculateDiscreteParentBagsFrom(rulesMap: Map<String, List<BagRule>>, bagName: String, acc: List<String>): List<String> {
                 return if (!rulesMap.containsKey(bagName))
@@ -46,9 +44,7 @@ class Day07HandyHaversacks {
 
         fun calculateTheTotalContainedBagsFrom(rules: List<String>, bagName: String): Int {
 
-            fun buildMapOfRulesKeyedByParent(rules: List<String>): Map<String, List<BagRule>> {
-                return buildRulesFromRulesSet(rules).groupBy { it.parent }
-            }
+            fun buildMapOfRulesKeyedByParent(rules: List<String>) = buildRulesFromRulesSet(rules).groupBy { it.parent }
 
             fun calculateTheTotalContainedBagsFrom(rulesMap: Map<String, List<BagRule>>, bagName: String, number: Int): Int {
                 return if (!rulesMap.containsKey(bagName)) {
