@@ -6,6 +6,7 @@ package org.suggs.adventofcode
 class Day06CustomCustoms {
 
     companion object {
+
         fun countAllDiscreteQuestionsByGroup(answers: String): Int {
             return answers
                 .split("\n\n")

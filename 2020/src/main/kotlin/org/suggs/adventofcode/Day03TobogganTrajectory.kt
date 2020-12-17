@@ -24,16 +24,17 @@ class Day03TobogganTrajectory(hillMap: List<String>) {
     }
 
     fun countTheTreesAsYouTobogganOnPathOf(direction: Pair<Int, Int>): Long {
-        return countTheTreesAsYouTobogganOnPathOf(Pair(0, 0), direction, 0)
-    }
 
-    private fun countTheTreesAsYouTobogganOnPathOf(currentLocation: Pair<Int, Int>, direction: Pair<Int, Int>, treeCount: Long): Long {
-        return if (currentLocation.second + direction.second > sizeOfHill) {
-            log.info("For the direction $direction we bumped into $treeCount trees")
-            treeCount
-        } else {
-            countTheTreesAsYouTobogganOnPathOf(Pair(currentLocation.first + direction.first, currentLocation.second + direction.second), direction, treeCount + isATree(currentLocation).compareTo(false))
+        fun countTheTreesAsYouTobogganOnPathOf(currentLocation: Pair<Int, Int>, direction: Pair<Int, Int>, treeCount: Long): Long {
+            return if (currentLocation.second + direction.second > sizeOfHill) {
+                log.info("For the direction $direction we bumped into $treeCount trees")
+                treeCount
+            } else {
+                countTheTreesAsYouTobogganOnPathOf(Pair(currentLocation.first + direction.first, currentLocation.second + direction.second), direction, treeCount + isATree(currentLocation).compareTo(false))
+            }
         }
+
+        return countTheTreesAsYouTobogganOnPathOf(Pair(0, 0), direction, 0)
     }
 
 }
