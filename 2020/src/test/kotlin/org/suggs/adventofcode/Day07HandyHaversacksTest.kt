@@ -1,6 +1,6 @@
 package org.suggs.adventofcode
 
-import org.assertj.core.api.Assertions.assertThat
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day07HandyHaversacks.Companion.buildRulesFromRulesSet
 import org.suggs.adventofcode.Day07HandyHaversacks.Companion.calculateDiscreteParentBagsFrom
@@ -12,52 +12,52 @@ class Day07HandyHaversacksTest {
     @Test
     fun `can parse a set list of bag descriptions into a collection of rules`() {
         val rulesList = buildRulesFromRulesSet(testBags)
-        assertThat(rulesList.size).isEqualTo(13)
+        rulesList.size shouldBe 13
     }
 
     @Test
     fun `can parse a large number of bag descriptions into a large collection of rules`() {
         val rulesList = buildRulesFromRulesSet(readBags)
-        assertThat(rulesList.size).isEqualTo(1457)
+        rulesList.size shouldBe 1457
     }
 
     @Test
     fun `can calculate the number of possible outer bags that shiny gold could reside in from graph`() {
         val numberOfBags = calculateDiscreteParentBagsFrom(testBags, "shiny gold")
-        assertThat(numberOfBags).isEqualTo(4)
+        numberOfBags shouldBe 4
     }
 
     @Test
     fun `can calculate the number of possible outer bags that shiny gold could reside in from huge graph`() {
         val numberOfBags = calculateDiscreteParentBagsFrom(readBags, "shiny gold")
-        assertThat(numberOfBags).isEqualTo(332)
+        numberOfBags shouldBe 332
     }
 
     @Test
     fun `can calculate the number of contained bags from a bag in a small graph`() {
         val containedBags = calculateTheTotalContainedBagsFrom(testBags, "shiny gold")
-        assertThat(containedBags).isEqualTo(32)
+        containedBags shouldBe 32
     }
 
     @Test
     fun `can calculate the number of contained bags from a bag in a small graph for dark olive`() {
         val containedBags = calculateTheTotalContainedBagsFrom(testBags, "dark olive")
-        assertThat(containedBags).isEqualTo(7)
+        containedBags shouldBe 7
     }
 
     @Test
     fun `can calculate the number of contained bags from a bag in a small graph for vibrant plum`() {
-        assertThat(calculateTheTotalContainedBagsFrom(testBags, "vibrant plum")).isEqualTo(11)
+        calculateTheTotalContainedBagsFrom(testBags, "vibrant plum") shouldBe 11
     }
 
     @Test
-    fun `can calculate from another test set of bags`(){
-        assertThat(calculateTheTotalContainedBagsFrom(otherTestBags, "shiny gold")).isEqualTo(126)
+    fun `can calculate from another test set of bags`() {
+        calculateTheTotalContainedBagsFrom(otherTestBags, "shiny gold") shouldBe 126
     }
 
     @Test
-    fun `can calculate all the contained bags in the huge set of bags`(){
-        assertThat(calculateTheTotalContainedBagsFrom(readBags, "shiny gold")).isEqualTo(10875)
+    fun `can calculate all the contained bags in the huge set of bags`() {
+        calculateTheTotalContainedBagsFrom(readBags, "shiny gold") shouldBe 10875
     }
 
     private val readBags: List<String> = File(ClassLoader.getSystemResource("day07-input.txt").file).readLines()

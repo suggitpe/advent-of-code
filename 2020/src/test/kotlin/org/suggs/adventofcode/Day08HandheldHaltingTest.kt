@@ -1,6 +1,6 @@
 package org.suggs.adventofcode
 
-import org.assertj.core.api.Assertions.assertThat
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day08HandheldHalting.Companion.findFlippableInstructionToCompleteTheRun
 import org.suggs.adventofcode.Day08HandheldHalting.Companion.instructionSetFrom
@@ -12,25 +12,25 @@ class Day08HandheldHaltingTest {
     @Test
     fun `exits an infinite loop when repeating instruction executed in small set`() {
         val instructionExecution = processInstructions(instructionSetFrom(setInstructions))
-        assertThat(instructionExecution).isEqualTo(Pair(1, 5))
+        instructionExecution shouldBe Pair(1, 5)
     }
 
     @Test
     fun `exits an infinite loop when repeating instruction executed in large set`() {
         val instructionExecution = processInstructions(instructionSetFrom(readInstructions))
-        assertThat(instructionExecution).isEqualTo(Pair(596, 1217))
+        instructionExecution shouldBe Pair(596, 1217)
     }
 
     @Test
-    fun `finds flippable instructions from a failing instruction set`(){
+    fun `finds flippable instructions from a failing instruction set`() {
         val accumulatorAfterCompletion = findFlippableInstructionToCompleteTheRun(instructionSetFrom(setInstructions))
-        assertThat(accumulatorAfterCompletion).isEqualTo(8)
+        accumulatorAfterCompletion shouldBe 8
     }
 
     @Test
-    fun `finds flippable instructions from a large failing instruction set`(){
+    fun `finds flippable instructions from a large failing instruction set`() {
         val accumulatorAfterCompletion = findFlippableInstructionToCompleteTheRun(instructionSetFrom(readInstructions))
-        assertThat(accumulatorAfterCompletion).isEqualTo(501)
+        accumulatorAfterCompletion shouldBe 501
     }
 
     private val readInstructions: List<String> = File(ClassLoader.getSystemResource("day08-input.txt").file).readLines()

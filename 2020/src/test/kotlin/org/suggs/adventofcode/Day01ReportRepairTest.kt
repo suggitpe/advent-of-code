@@ -1,6 +1,7 @@
 package org.suggs.adventofcode
 
-import org.assertj.core.api.Assertions.assertThat
+import io.kotest.matchers.ints.shouldBeGreaterThan
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import java.io.File
@@ -10,7 +11,7 @@ import java.io.File
  */
 class Day01ReportRepairTest {
 
-    companion object{
+    companion object {
         private val log = LoggerFactory.getLogger(this::class.java)
         private val reportRepair = Day01ReportRepair()
     }
@@ -19,28 +20,28 @@ class Day01ReportRepairTest {
     fun `find two numbers in a list that add to 2020 from known list and multiply them`() {
         val bigNumber = reportRepair.findTwoNumbersAndTimesThemFrom(setNumbers)
         log.info("Big number for two numbers from known list is $bigNumber")
-        assertThat(bigNumber).isEqualTo(514579)
+        bigNumber shouldBe 514579
     }
 
     @Test
     fun `find two numbers in a list that add to 2020 from file and multiply them`() {
         val bigNumber = reportRepair.findTwoNumbersAndTimesThemFrom(readNumbers)
         log.info("Big number for two numbers from file list is $bigNumber")
-        assertThat(bigNumber).isGreaterThan(1)
+        bigNumber shouldBeGreaterThan 1
     }
 
     @Test
     fun `find three numbers in a list that add to 2020 from known list and multiply them`() {
         val bigNumber = reportRepair.findThreeNumbersAndTimesThemFrom(setNumbers)
         log.info("Big number for three numbers from known list is $bigNumber")
-        assertThat(bigNumber).isEqualTo(241861950)
+        bigNumber shouldBe 241861950
     }
 
     @Test
     fun `find three numbers in a list that add to 2020 from file and multiply them`() {
         val bigNumber = reportRepair.findThreeNumbersAndTimesThemFrom(readNumbers)
         log.info("Big number for three numbers from file list is $bigNumber")
-        assertThat(bigNumber).isGreaterThan(1)
+        bigNumber shouldBeGreaterThan 1
     }
 
     private val readNumbers = File(ClassLoader.getSystemResource("day01-input.txt").file).readLines().map { it.toInt() }

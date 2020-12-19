@@ -11,10 +11,10 @@ ext {
             logback      : 'ch.qos.logback:logback-classic:1.2.3',
 
             test         : [
-                    junitApi   : 'org.junit.jupiter:junit-jupiter-api:5.7.0',
-                    junitEngine: 'org.junit.jupiter:junit-jupiter-engine:5.7.0',
-                    mockito    : 'org.mockito:mockito-core:3.6.28',
-                    assertj    : 'org.assertj:assertj-core:3.18.1',
+                    junitApi        : 'org.junit.jupiter:junit-jupiter-api:5.7.0',
+                    junitEngine     : 'org.junit.jupiter:junit-jupiter-engine:5.7.0',
+                    mockito         : 'org.mockito:mockito-core:3.6.28',
+                    kotestAssertions: 'io.kotest:kotest-assertions-core:4.3.2'
             ]
     ]
 }

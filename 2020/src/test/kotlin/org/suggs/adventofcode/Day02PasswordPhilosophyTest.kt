@@ -1,6 +1,6 @@
 package org.suggs.adventofcode
 
-import org.assertj.core.api.Assertions.assertThat
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import org.suggs.adventofcode.Day02PasswordPhilosophy.Companion.createPhilosophyFrom
@@ -19,28 +19,28 @@ class Day02PasswordPhilosophyTest {
     fun `count the number of valid passwords by range in a list`() {
         val numberOfValidPasswords = countNumberOfValidPasswordsByRangeIn(createKnownSetOfNumbers())
         log.info("Number of valid passwords by range in the known list is $numberOfValidPasswords")
-        assertThat(numberOfValidPasswords).isEqualTo(2)
+        numberOfValidPasswords shouldBe 2
     }
 
     @Test
     fun `count the number of valid passwords by range in a file`() {
         val numberOfValidPasswords = countNumberOfValidPasswordsByRangeIn(readPasswords.map { createPhilosophyFrom(it) })
         log.info("Number of valid passwords by range in the file is $numberOfValidPasswords")
-        assertThat(numberOfValidPasswords).isEqualTo(643)
+        numberOfValidPasswords shouldBe 643
     }
 
     @Test
     fun `count the number of valid passwords by placement in a list`() {
         val numberOfValidPasswords = countNumberOfValidPasswordsByPositionIn(createKnownSetOfNumbers())
         log.info("Number of valid passwords by position in the known list is $numberOfValidPasswords")
-        assertThat(numberOfValidPasswords).isEqualTo(1)
+        numberOfValidPasswords shouldBe 1
     }
 
     @Test
     fun `count the number of valid passwords by placement in a file`() {
         val numberOfValidPasswords = countNumberOfValidPasswordsByPositionIn(readPasswords.map { createPhilosophyFrom(it) })
         log.info("Number of valid passwords by position in the file is $numberOfValidPasswords")
-        assertThat(numberOfValidPasswords).isEqualTo(388)
+        numberOfValidPasswords shouldBe 388
     }
 
     private fun countNumberOfValidPasswordsByRangeIn(listOfPasswords: List<Day02PasswordPhilosophy>): Int {

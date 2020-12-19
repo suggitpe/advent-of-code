@@ -1,6 +1,6 @@
 package org.suggs.adventofcode
 
-import org.assertj.core.api.Assertions.assertThat
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import java.io.File
@@ -17,34 +17,34 @@ class Day04PassportProcessingTest {
     @Test
     fun `read passports from the fixed text`() {
         val passports = extractPassportsFromText(testPassports)
-        assertThat(passports.size).isEqualTo(4)
+        passports.size shouldBe 4
     }
 
     @Test
     fun `read passports from the input file`() {
         val passports = extractPassportsFromText(readPassports)
-        assertThat(passports.size).isEqualTo(282)
+        passports.size shouldBe 282
     }
 
     @Test
     fun `read passports from the set text and filter out all the invalid ones`() {
         val validPassports = extractPassportsFromText(testPassports)
             .filter { it.isValid() }
-        assertThat(validPassports.size).isEqualTo(2)
+        validPassports.size shouldBe 2
     }
 
     @Test
     fun `read passports from the file input and filter out all the invalid ones`() {
         val validPassports = extractPassportsFromText(readPassports)
             .filter { it.isValid() }
-        assertThat(validPassports.size).isEqualTo(250)
+        validPassports.size shouldBe 250
     }
 
     @Test
     fun `read passports from the set text and filter out all the strictly invalid ones`() {
         val validPassports = extractPassportsFromText(testPassports)
             .filter { it.isStrictlyValid() }
-        assertThat(validPassports.size).isEqualTo(2)
+        validPassports.size shouldBe 2
     }
 
     @Test
@@ -52,7 +52,7 @@ class Day04PassportProcessingTest {
         val validPassports = extractPassportsFromText(readPassports)
             .filter { it.isStrictlyValid() }
         log.info("total number of passports that are strictly valid is ${validPassports.size}")
-        assertThat(validPassports.size).isEqualTo(158)
+        validPassports.size shouldBe 158
     }
 
 
