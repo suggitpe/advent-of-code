@@ -12,8 +12,7 @@ object Day01SonarSweep {
     }
 
     private fun compareHeadForIncrement(head: List<Int>): Int {
-        return if (head[0] < head[1]) return 1
-        else 0
+        return (head[0] < head[1]).compareTo(false)
     }
 
     fun countNumberOfThreeNumberIncrementsFrom(listOfNumbers: List<Int>): Int {
@@ -26,8 +25,7 @@ object Day01SonarSweep {
     }
 
     private fun compareHeadThreeForIncrement(head: List<Int>): Int {
-        return if (head.take(3).sumOf { it } < head.drop(1).sumOf { it }) 1
-        else 0
+        return (head.take(3).sumOf { it } < head.drop(1).sumOf { it }).compareTo(false)
     }
 
 }
