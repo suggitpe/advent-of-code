@@ -2,6 +2,7 @@ package org.suggs.adventofcode
 
 import io.kotest.matchers.ints.shouldBeLessThanOrEqual
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import org.suggs.adventofcode.Day10AdapterArray.Companion.countNumberOfValidCombinationsOfJoltAdaptersIn
@@ -34,12 +35,14 @@ internal class Day10AdapterArrayTest {
         mapOfJoltDifferences.values.reduce { acc, it -> it * acc } shouldBe 2244
     }
 
+    @Disabled
     @Test
     fun `counts number of discrete jolt adapter combinations from really small set`() {
         val numberOfCombinations = countNumberOfValidCombinationsOfJoltAdaptersIn(verySmallArray)
         numberOfCombinations shouldBe 8
     }
 
+    @Disabled
     @Test
     fun `counts number of discrete jolt adapter combinations from small set`() {
         val numberOfCombinations = countNumberOfValidCombinationsOfJoltAdaptersIn(setArray)
