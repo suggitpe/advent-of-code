@@ -7,17 +7,13 @@ object Day02Dive {
     private val log = LoggerFactory.getLogger(this::class.java)
 
     fun calculatePositionFrom(dataSet: List<Pair<String, Int>>): Int {
-        fun sumOf(direction: String, dataSet: List<Pair<String, Int>>) = dataSet.filter { it.first == direction }.sumOf { it.second }
-        fun sumOfUpFrom(dataSet: List<Pair<String, Int>>) = sumOf("up", dataSet)
-        fun sumOfDownFrom(dataSet: List<Pair<String, Int>>) = sumOf("down", dataSet)
-        fun sumOfForwardFrom(dataSet: List<Pair<String, Int>>) = sumOf("forward", dataSet)
+        fun sumOf(direction: String, dataSet: List<Pair<String, Int>>) =
+            dataSet.filter { it.first == direction }.sumOf { it.second }
 
-        return (sumOfDownFrom(dataSet) - sumOfUpFrom(dataSet)) * sumOfForwardFrom(dataSet)
+        return (sumOf("down", dataSet) - sumOf("up", dataSet)) * sumOf("forward", dataSet)
     }
 
-    // Pairs are first = aim, second = horizontal
     fun calculateAimedPositionFrom(dataSet: List<Pair<String, Int>>): Int {
-
         fun calculateAimFrom(dataSet: List<Pair<String, Int>>, aim: Int, aggregate: Pair<Int, Int>): Int {
 
             return if (dataSet.isEmpty()) {

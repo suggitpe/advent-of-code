@@ -24,7 +24,7 @@ class Day02DiveTest {
     }
 
     @Test
-    fun `calculates aimed position from large data set`(){
+    fun `calculates aimed position from large data set`() {
         calculateAimedPositionFrom(readDataSet) shouldBe 1956047400
     }
 

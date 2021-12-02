@@ -1,12 +1,14 @@
 package org.suggs.adventofcode
 
+import org.slf4j.LoggerFactory
+
 object Day01SonarSweep {
 
-    fun countNumberOfIncrementsFrom(listOfNumbers: List<Int>): Int {
+    private val log = LoggerFactory.getLogger(this::class.java)
 
-        fun compareHeadForIncrement(head: List<Int>): Int {
-            return (head[0] < head[1]).compareTo(false)
-        }
+    fun countNumberOfIncrementsFrom(listOfNumbers: List<Int>): Int {
+        fun compareHeadForIncrement(head: List<Int>) =
+            (head[0] < head[1]).compareTo(false)
 
         fun countNumberOfIncrementsFrom(listOfNumbers: List<Int>, counter: Int): Int {
             return if (listOfNumbers.size < 2) counter
@@ -17,10 +19,8 @@ object Day01SonarSweep {
     }
 
     fun countNumberOfThreeNumberIncrementsFrom(listOfNumbers: List<Int>): Int {
-
-        fun compareHeadThreeForIncrement(head: List<Int>): Int {
-            return (head.take(3).sumOf { it } < head.drop(1).sumOf { it }).compareTo(false)
-        }
+        fun compareHeadThreeForIncrement(head: List<Int>) =
+            (head.take(3).sumOf { it } < head.drop(1).sumOf { it }).compareTo(false)
 
         fun countNumberOfThreeNumberIncrementsFrom(listOfNumbers: List<Int>, counter: Int): Int {
             return if (listOfNumbers.size < 4) counter

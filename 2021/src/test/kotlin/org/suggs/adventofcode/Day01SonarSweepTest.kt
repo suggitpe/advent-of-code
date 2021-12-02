@@ -9,10 +9,6 @@ import org.suggs.adventofcode.Util.createIntListFrom
 
 internal class Day01SonarSweepTest {
 
-    companion object {
-        private val log = LoggerFactory.getLogger(this::class.java)
-    }
-
     @Test
     fun `counts the number of increasing numbers in a small list`() {
         countNumberOfIncrementsFrom(verySmallArray) shouldBe 7
