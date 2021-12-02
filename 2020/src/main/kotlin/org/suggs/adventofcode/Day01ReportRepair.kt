@@ -42,10 +42,4 @@ class Day01ReportRepair {
 
         return findThreeNumbersAndTimesThemFrom(listOfInts[0], listOfInts[1], listOfInts.drop(2))
     }
-
-
-
-
-
-
 }

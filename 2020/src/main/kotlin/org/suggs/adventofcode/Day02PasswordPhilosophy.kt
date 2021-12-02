@@ -33,6 +33,4 @@ data class Day02PasswordPhilosophy(private val range: Pair<Int, Int>, private va
     override fun toString(): String {
         return "Day2PasswordPhilosophy(range=$range, testCharacter=$testCharacter, password='$password')"
     }
-
-
 }
