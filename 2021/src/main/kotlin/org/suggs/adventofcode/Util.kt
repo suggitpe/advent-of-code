@@ -4,9 +4,9 @@ import java.io.File
 
 object Util {
 
-    fun createIntListFrom(fileName: String): List<Int> {
-        return getFileLinesFrom(fileName).map { it.toInt() }
-    }
+    fun createIntListFrom(fileName: String) =
+        getFileLinesFrom(fileName).map { it.toInt() }
+
 
     fun createStringIntMapFrom(fileName: String): List<Pair<String, Int>> {
         return getFileLinesFrom(fileName).map {
@@ -15,7 +15,9 @@ object Util {
         }
     }
 
-    private fun getFileLinesFrom(fileName: String): List<String> {
-        return File(ClassLoader.getSystemResource(fileName).file).readLines()
-    }
+    fun createStringListFrom(fileName: String) = getFileLinesFrom(fileName)
+
+    private fun getFileLinesFrom(fileName: String) =
+        File(ClassLoader.getSystemResource(fileName).file).readLines()
+
 }
