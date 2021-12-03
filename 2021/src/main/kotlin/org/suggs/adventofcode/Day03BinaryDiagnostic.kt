@@ -1,6 +1,10 @@
 package org.suggs.adventofcode
 
+import org.slf4j.LoggerFactory
+
 object Day03BinaryDiagnostic {
+
+    private val log = LoggerFactory.getLogger(this::class.java)
 
     fun calculatePowerConsumptionFrom(dataSet: List<String>) =
         calculateGammaFrom(dataSet) * calculateEpsilonFrom(dataSet)
@@ -18,5 +22,42 @@ object Day03BinaryDiagnostic {
         }
         return counts
     }
+
+    fun calculateLifeSupportRatingFrom(dataSet: List<String>) =
+        calculateOxygenGeneratorRatingFrom(dataSet) * calculateCO2ScrubberRatingFrom(dataSet)
+
+    fun calculateOxygenGeneratorRatingFrom(dataSet: List<String>): Int {
+        return calculateOxygenGeneratorRatingFrom(dataSet, 0, "").toInt(2)
+    }
+
+    private fun calculateOxygenGeneratorRatingFrom(dataSet: List<String>, index: Int, filterCriteria: String): String {
+        log.info("iterating index [$index] with filter criteria [$filterCriteria] and dataset population of [${dataSet.size}] $dataSet")
+        return if (dataSet.size < 2) {
+            dataSet.first()
+        } else {
+            val filter = dataSet.map { it[index] }
+                .groupingBy { it }.eachCount()
+                .toSortedMap(compareByDescending { it })
+                .maxWithOrNull(compareBy<Map.Entry<Char, Int>> { it.value })?.key
+            calculateOxygenGeneratorRatingFrom(dataSet.filter { it.startsWith(filterCriteria + filter) }, index + 1, (filterCriteria + filter).toString())
+        }
+    }
+
+    fun calculateCO2ScrubberRatingFrom(dataSet: List<String>): Int {
+        return calculateCO2ScrubberRatingFrom(dataSet, 0, "").toInt(2)
+    }
+
+    private fun calculateCO2ScrubberRatingFrom(dataSet: List<String>, index: Int, filterCriteria: String): String {
+        return if (dataSet.size < 2) {
+            dataSet.first()
+        } else {
+            val filter = dataSet.map { it[index] }
+                .groupingBy { it }.eachCount()
+                .toSortedMap(compareBy { it })
+                .minWithOrNull(compareBy<Map.Entry<Char, Int>> { it.value })?.key
+            calculateCO2ScrubberRatingFrom(dataSet.filter { it.startsWith(filterCriteria + filter) }, index + 1, (filterCriteria + filter).toString())
+        }
+    }
+
 
 }

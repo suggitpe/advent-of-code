@@ -1,17 +1,18 @@
 package org.suggs.adventofcode
 
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.slf4j.LoggerFactory
+import org.suggs.adventofcode.Day03BinaryDiagnostic.calculateCO2ScrubberRatingFrom
 import org.suggs.adventofcode.Day03BinaryDiagnostic.calculateEpsilonFrom
 import org.suggs.adventofcode.Day03BinaryDiagnostic.calculateGammaFrom
+import org.suggs.adventofcode.Day03BinaryDiagnostic.calculateLifeSupportRatingFrom
+import org.suggs.adventofcode.Day03BinaryDiagnostic.calculateOxygenGeneratorRatingFrom
 import org.suggs.adventofcode.Day03BinaryDiagnostic.calculatePowerConsumptionFrom
 
+@DisplayName("Diagnostic test should ... ")
 class Day03BinaryDiagnosticTest {
-
-    companion object {
-        private val log = LoggerFactory.getLogger(this::class.java)
-    }
 
     @Test
     fun `calculates gamma number from very small data set`() {
@@ -31,6 +32,26 @@ class Day03BinaryDiagnosticTest {
     @Test
     fun `calculation of powerConsumption from consumption file`() {
         calculatePowerConsumptionFrom(readDataSet) shouldBe 2595824
+    }
+
+    @Test
+    fun `calculate oxygen generator from very small data set`() {
+        calculateOxygenGeneratorRatingFrom(verySmallDataSet) shouldBe 23
+    }
+
+    @Test
+    fun `calculate CO2 scrubber rating from a very small set`() {
+        calculateCO2ScrubberRatingFrom(verySmallDataSet) shouldBe 10
+    }
+
+    @Test
+    fun `calculate life support rating from a very small set`() {
+        calculateLifeSupportRatingFrom(verySmallDataSet) shouldBe 230
+    }
+
+    @Test
+    fun `calculate life support rating from consumption file`() {
+        calculateLifeSupportRatingFrom(readDataSet) shouldBe 2135254
     }
 
     private val readDataSet = Util.createStringListFrom("day03-input.txt")
