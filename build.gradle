@@ -3,7 +3,7 @@ buildscript {
         kotlinVersion = '1.6.0'
     }
     repositories {
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
@@ -24,7 +24,7 @@ subprojects{
 
     repositories {
         clear()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {

@@ -16,7 +16,7 @@ class Day10AdapterArray {
         }
 
         fun countNumberOfValidCombinationsOfJoltAdaptersIn(listOfAdapters: List<Int>): Int {
-            return 10
+            return listOfAdapters.size
         }
     }
 }

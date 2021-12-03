@@ -39,7 +39,7 @@ class Day08HandheldHalting {
         fun instructionSetFrom(listOfInstructions: List<String>): List<Instruction> {
             return listOfInstructions.map {
                 val (left, right) = it.split(" ")
-                Instruction(InstructionType.valueOf(left.toUpperCase()), right.toInt())
+                Instruction(InstructionType.valueOf(left.uppercase()), right.toInt())
             }
         }
 
