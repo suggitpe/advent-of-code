@@ -26,26 +26,23 @@ object Day03BinaryDiagnostic {
     fun calculateLifeSupportRatingFrom(dataSet: List<String>) =
         calculateOxygenGeneratorRatingFrom(dataSet) * calculateCO2ScrubberRatingFrom(dataSet)
 
-    fun calculateOxygenGeneratorRatingFrom(dataSet: List<String>): Int {
-        return calculateOxygenGeneratorRatingFrom(dataSet, 0, "").toInt(2)
-    }
+    fun calculateOxygenGeneratorRatingFrom(dataSet: List<String>) =
+        calculateOxygenGeneratorRatingFrom(dataSet, 0, "").toInt(2)
 
     private fun calculateOxygenGeneratorRatingFrom(dataSet: List<String>, index: Int, filterCriteria: String): String {
-        log.info("iterating index [$index] with filter criteria [$filterCriteria] and dataset population of [${dataSet.size}] $dataSet")
         return if (dataSet.size < 2) {
             dataSet.first()
         } else {
             val filter = dataSet.map { it[index] }
                 .groupingBy { it }.eachCount()
                 .toSortedMap(compareByDescending { it })
-                .maxWithOrNull(compareBy<Map.Entry<Char, Int>> { it.value })?.key
+                .maxByOrNull { it.value }?.key
             calculateOxygenGeneratorRatingFrom(dataSet.filter { it.startsWith(filterCriteria + filter) }, index + 1, (filterCriteria + filter).toString())
         }
     }
 
-    fun calculateCO2ScrubberRatingFrom(dataSet: List<String>): Int {
-        return calculateCO2ScrubberRatingFrom(dataSet, 0, "").toInt(2)
-    }
+    fun calculateCO2ScrubberRatingFrom(dataSet: List<String>) =
+        calculateCO2ScrubberRatingFrom(dataSet, 0, "").toInt(2)
 
     private fun calculateCO2ScrubberRatingFrom(dataSet: List<String>, index: Int, filterCriteria: String): String {
         return if (dataSet.size < 2) {
@@ -54,7 +51,7 @@ object Day03BinaryDiagnostic {
             val filter = dataSet.map { it[index] }
                 .groupingBy { it }.eachCount()
                 .toSortedMap(compareBy { it })
-                .minWithOrNull(compareBy<Map.Entry<Char, Int>> { it.value })?.key
+                .minByOrNull { it.value }?.key
             calculateCO2ScrubberRatingFrom(dataSet.filter { it.startsWith(filterCriteria + filter) }, index + 1, (filterCriteria + filter).toString())
         }
     }

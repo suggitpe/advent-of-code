@@ -3,12 +3,18 @@ package org.suggs.adventofcode
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.slf4j.LoggerFactory
+import org.slf4j.LoggerFactory.getLogger
 import org.suggs.adventofcode.Day02Dive.calculateAimedPositionFrom
 import org.suggs.adventofcode.Day02Dive.calculatePositionFrom
 import org.suggs.adventofcode.Util.createStringIntMapFrom
 
 @DisplayName("Dive should ...")
 class Day02DiveTest {
+
+    companion object {
+        private val log = getLogger(this::class.java)
+    }
 
     @Test
     fun `calculate position from small data set`() {

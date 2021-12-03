@@ -3,12 +3,18 @@ package org.suggs.adventofcode
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.slf4j.LoggerFactory
+import org.slf4j.LoggerFactory.getLogger
 import org.suggs.adventofcode.Day01SonarSweep.countNumberOfIncrementsFrom
 import org.suggs.adventofcode.Day01SonarSweep.countNumberOfThreeNumberIncrementsFrom
 import org.suggs.adventofcode.Util.createIntListFrom
 
 @DisplayName("Sonar Sweep should ...")
 class Day01SonarSweepTest {
+
+    companion object {
+        private val log = getLogger(this::class.java)
+    }
 
     @Test
     fun `count the number of increasing numbers in a small list`() =
