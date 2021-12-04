@@ -11,6 +11,7 @@ import org.suggs.adventofcode.Day03BinaryDiagnostic.calculateGammaFrom
 import org.suggs.adventofcode.Day03BinaryDiagnostic.calculateLifeSupportRatingFrom
 import org.suggs.adventofcode.Day03BinaryDiagnostic.calculateOxygenGeneratorRatingFrom
 import org.suggs.adventofcode.Day03BinaryDiagnostic.calculatePowerConsumptionFrom
+import org.suggs.adventofcode.Util.getFileLinesFrom
 
 @DisplayName("Diagnostic test should ... ")
 class Day03BinaryDiagnosticTest {
@@ -59,7 +60,7 @@ class Day03BinaryDiagnosticTest {
         calculateLifeSupportRatingFrom(readDataSet) shouldBe 2135254
     }
 
-    private val readDataSet = Util.createStringListFrom("day03-input.txt")
+    private val readDataSet = getFileLinesFrom("day03-input.txt")
 
     private val verySmallDataSet: List<String> = """00100
 11110

@@ -15,9 +15,11 @@ object Util {
         }
     }
 
-    fun createStringListFrom(fileName: String) = getFileLinesFrom(fileName)
+    fun getTextBlocksFrom(fileName: String) =
+        File(ClassLoader.getSystemResource(fileName).file).readText().split("\n\n")
 
-    private fun getFileLinesFrom(fileName: String) =
+
+    fun getFileLinesFrom(fileName: String) =
         File(ClassLoader.getSystemResource(fileName).file).readLines()
 
 }
