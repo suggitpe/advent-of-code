@@ -60,9 +60,8 @@ class Board(private val boardData: String) {
     }
 
 
-    override fun toString(): String {
-        return "Board(boardData='$boardData', rows=$rows, columns=$columns)"
-    }
+    override fun toString() =
+        "Board(boardData='$boardData', rows=$rows, columns=$columns)"
 
 
 }
