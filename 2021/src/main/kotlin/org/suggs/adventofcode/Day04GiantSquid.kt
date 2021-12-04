@@ -58,10 +58,4 @@ class Board(private val boardData: String) {
         }
         return createColumnsFromBoardData(0, emptyList())
     }
-
-
-    override fun toString() =
-        "Board(boardData='$boardData', rows=$rows, columns=$columns)"
-
-
 }
