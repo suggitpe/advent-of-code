@@ -1,10 +1,11 @@
 package org.suggs.adventofcode
 
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory.getLogger
+import org.suggs.adventofcode.Day04GiantSquid.simulateWhoWinsFirst
+import org.suggs.adventofcode.Day04GiantSquid.simulateWhoWinsLast
 import org.suggs.adventofcode.Util.getTextBlocksFrom
 
 @DisplayName("Giant Squid test should ... ")
@@ -16,21 +17,35 @@ class Day04GiantSquidTest {
 
     @Test
     fun `creates board from string`() {
-        Board(singleBoard).addUpRemainingNumbers() shouldBe 300
+        Board(singleBoard).addUpRemainingNumbersLess(emptyList()) shouldBe 300
     }
 
     @Test
     fun `adds up the winning board from a small set of data`() {
         val balls = verySmallDataSet.first().split(",").map { it.toInt() }
         val boards = verySmallDataSet.drop(1).map { Board(it) }
-        Day04GiantSquid(balls, boards).simulate() shouldBe 4512
+        simulateWhoWinsFirst(balls, boards) shouldBe 4512
     }
 
     @Test
-    fun `adds up the winning board from read data set`(){
+    fun `adds up the winning board from read data set`() {
         val balls = readDataSet.first().split(",").map { it.toInt() }
         val boards = readDataSet.drop(1).map { Board(it) }
-        Day04GiantSquid(balls, boards).simulate() shouldBe 2496
+        simulateWhoWinsFirst(balls, boards) shouldBe 2496
+    }
+
+    @Test
+    fun `adds up the last winning board from a small set of data`() {
+        val balls = verySmallDataSet.first().split(",").map { it.toInt() }
+        val boards = verySmallDataSet.drop(1).map { Board(it) }
+        simulateWhoWinsLast(balls, boards) shouldBe 1924
+    }
+
+    @Test
+    fun `adds up the last winning board from read data`() {
+        val balls = readDataSet.first().split(",").map { it.toInt() }
+        val boards = readDataSet.drop(1).map { Board(it) }
+        simulateWhoWinsLast(balls, boards) shouldBe 25925
     }
 
     private val readDataSet: List<String> = getTextBlocksFrom("day04-input.txt")

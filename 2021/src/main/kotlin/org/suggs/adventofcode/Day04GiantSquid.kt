@@ -1,34 +1,44 @@
 package org.suggs.adventofcode
 
-import org.slf4j.LoggerFactory
+object Day04GiantSquid {
 
-class Day04GiantSquid(private val numbers: List<Int>, private val boards: List<Board>) {
-
-    private val log = LoggerFactory.getLogger(this::class.java)
-
-    fun simulate(): Int {
-        log.info("We have ${numbers.size} numbers to check across ${boards.size} boards")
+    fun simulateWhoWinsFirst(numbers: List<Int>, boards: List<Board>): Int {
+        var playedNumbers = listOf<Int>()
         numbers.forEach { number ->
+            playedNumbers = playedNumbers + number
             boards.forEach { board ->
-                if (board.isCompletedWith(number)) return board.addUpRemainingNumbers() * number
+                if (board.isCompletedWith(playedNumbers)) return board.addUpRemainingNumbersLess(playedNumbers) * number
             }
         }
         throw IllegalStateException("None of the boards completed")
     }
+
+    fun simulateWhoWinsLast(numbers: List<Int>, boards: List<Board>): Int {
+        var playedNumbers = listOf<Int>()
+        var lastWinValue = 0
+        numbers.forEach { number ->
+            playedNumbers = playedNumbers + number
+            boards.filter { !it.completed }.forEach { board ->
+                if (board.isCompletedWith(playedNumbers)) {
+                    board.completed = true
+                    lastWinValue = board.addUpRemainingNumbersLess(playedNumbers) * number
+                }
+            }
+        }
+        return lastWinValue
+    }
 }
 
 class Board(private val boardData: String) {
-    private val log = LoggerFactory.getLogger(this::class.java)
-    private var playedNumbers: List<Int> = listOf()
-    private val rows: List<List<Int>> = createRowsFromBoardData()
-    private val columns: List<List<Int>> = createColumnsFromBoardData()
+    private val rows = createRowsFromBoardData()
+    private val columns = createColumnsFromBoardData()
+    var completed = false
 
-    fun isCompletedWith(number: Int): Boolean {
-        playedNumbers = playedNumbers + number
+    fun isCompletedWith(playedNumbers: List<Int>): Boolean {
         return rows.any { playedNumbers.containsAll(it) } || columns.any { playedNumbers.containsAll(it) }
     }
 
-    fun addUpRemainingNumbers(): Int {
+    fun addUpRemainingNumbersLess(playedNumbers: List<Int>): Int {
         return rows.sumOf { it.filter { !playedNumbers.contains(it) }.sum() }
     }
 
@@ -51,7 +61,7 @@ class Board(private val boardData: String) {
 
 
     override fun toString(): String {
-        return "Board(boardData='$boardData', log=$log, relevantNumbers=$playedNumbers, rows=$rows, columns=$columns)"
+        return "Board(boardData='$boardData', rows=$rows, columns=$columns)"
     }
 
 
