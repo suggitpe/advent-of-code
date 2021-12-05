@@ -15,44 +15,37 @@ import org.suggs.adventofcode.Util.getFileLinesFrom
 class Day03BinaryDiagnosticTest {
 
     @Test
-    fun `calculates gamma number from very small data set`() {
+    fun `calculates gamma number from very small data set`() =
         calculateGammaFrom(verySmallDataSet) shouldBe 22
-    }
 
     @Test
-    fun `calculates epsilon number from very small data set`() {
+    fun `calculates epsilon number from very small data set`() =
         calculateEpsilonFrom(verySmallDataSet) shouldBe 9
-    }
 
     @Test
-    fun `calculation of powerConsumption from very small data set`() {
+    fun `calculation of powerConsumption from very small data set`() =
         calculatePowerConsumptionFrom(verySmallDataSet) shouldBe 198
-    }
 
     @Test
-    fun `calculation of powerConsumption from consumption file`() {
+    fun `calculation of powerConsumption from consumption file`() =
         calculatePowerConsumptionFrom(readDataSet) shouldBe 2595824
-    }
 
     @Test
-    fun `calculate oxygen generator from very small data set`() {
+    fun `calculate oxygen generator from very small data set`() =
         calculateOxygenGeneratorRatingFrom(verySmallDataSet) shouldBe 23
-    }
 
     @Test
-    fun `calculate CO2 scrubber rating from a very small set`() {
+    fun `calculate CO2 scrubber rating from a very small set`() =
         calculateCO2ScrubberRatingFrom(verySmallDataSet) shouldBe 10
-    }
 
     @Test
-    fun `calculate life support rating from a very small set`() {
+    fun `calculate life support rating from a very small set`() =
         calculateLifeSupportRatingFrom(verySmallDataSet) shouldBe 230
-    }
 
     @Test
-    fun `calculate life support rating from consumption file`() {
+    fun `calculate life support rating from consumption file`() =
         calculateLifeSupportRatingFrom(readDataSet) shouldBe 2135254
-    }
+
 
     private val readDataSet = getFileLinesFrom("day03-input.txt")
 

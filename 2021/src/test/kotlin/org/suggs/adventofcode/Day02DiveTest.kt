@@ -11,24 +11,21 @@ import org.suggs.adventofcode.Util.createStringIntMapFrom
 class Day02DiveTest {
 
     @Test
-    fun `calculate position from small data set`() {
+    fun `calculate position from small data set`() =
         calculatePositionFrom(verySmallDataSet) shouldBe 150
-    }
 
     @Test
-    fun `calculate position from large data set`() {
+    fun `calculate position from large data set`() =
         calculatePositionFrom(readDataSet) shouldBe 1654760
-    }
 
     @Test
-    fun `calculate aimed position from small data set`() {
+    fun `calculate aimed position from small data set`() =
         calculateAimedPositionFrom(verySmallDataSet) shouldBe 900
-    }
 
     @Test
-    fun `calculate aimed position from large data set`() {
+    fun `calculate aimed position from large data set`() =
         calculateAimedPositionFrom(readDataSet) shouldBe 1956047400
-    }
+
 
     private val readDataSet = createStringIntMapFrom("day02-input.txt")
 

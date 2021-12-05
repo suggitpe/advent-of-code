@@ -12,9 +12,8 @@ import org.suggs.adventofcode.domain.BingoBoard
 class Day04GiantSquidTest {
 
     @Test
-    fun `creates board from string`() {
+    fun `creates board from string`() =
         BingoBoard(singleBoard).addUpRemainingNumbersLess(emptyList()) shouldBe 300
-    }
 
     @Test
     fun `adds up the winning board from a small set of data`() {

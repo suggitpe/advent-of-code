@@ -3,7 +3,7 @@ package org.suggs.adventofcode
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.suggs.adventofcode.Day05HydrothermalVenture.countNumberOfPointThatIntersectMoreThanOnce
+import org.suggs.adventofcode.Day05HydrothermalVenture.countNumberOfPointsThatIntersectMoreThanOnce
 import org.suggs.adventofcode.domain.VentLine
 import org.suggs.adventofcode.domain.VentLine.Companion.aVentLineFrom
 
@@ -11,24 +11,21 @@ import org.suggs.adventofcode.domain.VentLine.Companion.aVentLineFrom
 class Day05HydrothermalVentureTest {
 
     @Test
-    fun `calculate the number of positions where more than two straight lines intersect using small data set`() {
-        countNumberOfPointThatIntersectMoreThanOnce(verySmallDataSet.filter { !it.isDiagonal() }) shouldBe 5
-    }
+    fun `calculate the number of positions where more than two straight lines intersect using small data set`() =
+        countNumberOfPointsThatIntersectMoreThanOnce(verySmallDataSet.filter { !it.isDiagonal() }) shouldBe 5
 
     @Test
-    fun `calculate the number of positions where more than two lines intersect using small data set`() {
-        countNumberOfPointThatIntersectMoreThanOnce(verySmallDataSet) shouldBe 12
-    }
+    fun `calculate the number of positions where more than two lines intersect using small data set`() =
+        countNumberOfPointsThatIntersectMoreThanOnce(verySmallDataSet) shouldBe 12
 
     @Test
-    fun `calculate the number of positions where more than two straight lines intersect using large data set`() {
-        countNumberOfPointThatIntersectMoreThanOnce(readDataSet.filter { !it.isDiagonal() }) shouldBe 8111
-    }
+    fun `calculate the number of positions where more than two straight lines intersect using large data set`() =
+        countNumberOfPointsThatIntersectMoreThanOnce(readDataSet.filter { !it.isDiagonal() }) shouldBe 8111
 
     @Test
-    fun `calculate the number of positions where more than two  lines intersect using large data set`() {
-        countNumberOfPointThatIntersectMoreThanOnce(readDataSet) shouldBe 22088
-    }
+    fun `calculate the number of positions where more than two  lines intersect using large data set`() =
+        countNumberOfPointsThatIntersectMoreThanOnce(readDataSet) shouldBe 22088
+
 
     private val readDataSet: List<VentLine> = Util.getFileLinesFrom("day05-input.txt").map { aVentLineFrom(it.substringBefore(" -> "), it.substringAfter(" -> ")) }
 

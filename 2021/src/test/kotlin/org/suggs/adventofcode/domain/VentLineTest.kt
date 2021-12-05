@@ -48,46 +48,31 @@ class VentLineTest {
     }
 
     @Test
-    fun `calculates range of coordinates on a horizontal line`() {
-        horizontalVentLine.getAllCoordinatesInLine() shouldContainExactly
-                listOf(Pair(0, 0), Pair(1, 0), Pair(2, 0), Pair(3, 0))
-    }
+    fun `calculates range of coordinates on a horizontal line`() =
+        horizontalVentLine.getAllCoordinatesInLine() shouldContainExactly listOf(Pair(0, 0), Pair(1, 0), Pair(2, 0), Pair(3, 0))
 
     @Test
-    fun `calculates range of coordinates on a vertical line`() {
-        verticalVentLine.getAllCoordinatesInLine() shouldContainExactly
-                listOf(Pair(0, 0), Pair(0, 1), Pair(0, 2), Pair(0, 3))
-    }
+    fun `calculates range of coordinates on a vertical line`() =
+        verticalVentLine.getAllCoordinatesInLine() shouldContainExactly listOf(Pair(0, 0), Pair(0, 1), Pair(0, 2), Pair(0, 3))
 
     @Test
-    fun `calculates range of coordinates on a diagonal line`() {
-        diagonalVentLine.getAllCoordinatesInLine() shouldContainExactly
-                listOf(Pair(0, 0), Pair(1, 1), Pair(2, 2), Pair(3, 3))
-    }
+    fun `calculates range of coordinates on a diagonal line`() =
+        diagonalVentLine.getAllCoordinatesInLine() shouldContainExactly listOf(Pair(0, 0), Pair(1, 1), Pair(2, 2), Pair(3, 3))
 
     @Test
-    fun `calculates range of coordinates on a reverse horizontal line`() {
-        log.info("horizontal vent line $horizontalVentLine contains ${horizontalVentLine.getAllCoordinatesInLine()}")
-        reverseHorizontalLine.getAllCoordinatesInLine() shouldContainExactly
-                listOf(Pair(9, 9), Pair(8, 9), Pair(7, 9), Pair(6, 9))
-    }
+    fun `calculates range of coordinates on a reverse horizontal line`() =
+        reverseHorizontalLine.getAllCoordinatesInLine() shouldContainExactly listOf(Pair(9, 9), Pair(8, 9), Pair(7, 9), Pair(6, 9))
 
     @Test
-    fun `calculates range of coordinates on a reverse vertical line`() {
-        log.info("vertical vent line $horizontalVentLine contains ${horizontalVentLine.getAllCoordinatesInLine()}")
-        reverseVerticalLine.getAllCoordinatesInLine() shouldContainExactly
-                listOf(Pair(9, 9), Pair(9, 8), Pair(9, 7), Pair(9, 6))
-    }
+    fun `calculates range of coordinates on a reverse vertical line`() =
+        reverseVerticalLine.getAllCoordinatesInLine() shouldContainExactly listOf(Pair(9, 9), Pair(9, 8), Pair(9, 7), Pair(9, 6))
 
     @Test
-    fun `calculates range of coordinates on a reverse diagonal line`() {
-        reverseDiagonalLine.getAllCoordinatesInLine() shouldContainExactly
-                listOf(Pair(9, 9), Pair(8, 8), Pair(7, 7), Pair(6, 6))
-    }
+    fun `calculates range of coordinates on a reverse diagonal line`() =
+        reverseDiagonalLine.getAllCoordinatesInLine() shouldContainExactly listOf(Pair(9, 9), Pair(8, 8), Pair(7, 7), Pair(6, 6))
 
     @Test
-    fun `calculates range of coordinates on reverse diagonal unversed line`() {
-        reverseInverseDiagonalLine.getAllCoordinatesInLine() shouldContainExactly
-                listOf(Pair(9, 6), Pair(8, 7), Pair(7, 8), Pair(6, 9))
-    }
+    fun `calculates range of coordinates on reverse diagonal unversed line`() =
+        reverseInverseDiagonalLine.getAllCoordinatesInLine() shouldContainExactly listOf(Pair(9, 6), Pair(8, 7), Pair(7, 8), Pair(6, 9))
+
 }

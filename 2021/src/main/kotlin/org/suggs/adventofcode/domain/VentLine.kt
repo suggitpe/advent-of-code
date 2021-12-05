@@ -22,11 +22,9 @@ data class VentLine(private val startCoordinate: Pair<Int, Int>, private val end
         }
     }
 
-    private fun createRangeFrom(start: Int, end: Int): List<Int> {
-        return if (start < end) {
-            start.rangeTo(end).toList()
-        } else
-            end.rangeTo(start).toList().reversed()
-    }
-
+    private fun createRangeFrom(start: Int, end: Int) =
+        when {
+            (start < end) -> start.rangeTo(end).toList()
+            else -> end.rangeTo(start).toList().reversed()
+        }
 }

@@ -5,13 +5,12 @@ class BingoBoard(private val boardData: String) {
     private val columns = createColumnsFromBoardData()
     var completed = false
 
-    fun isCompletedWith(playedNumbers: List<Int>): Boolean {
-        return rows.any { playedNumbers.containsAll(it) } || columns.any { playedNumbers.containsAll(it) }
-    }
+    fun isCompletedWith(playedNumbers: List<Int>) =
+        rows.any { playedNumbers.containsAll(it) } || columns.any { playedNumbers.containsAll(it) }
 
-    fun addUpRemainingNumbersLess(playedNumbers: List<Int>): Int {
-        return rows.sumOf { it.filter { !playedNumbers.contains(it) }.sum() }
-    }
+    fun addUpRemainingNumbersLess(playedNumbers: List<Int>) =
+        rows.sumOf { it.filter { !playedNumbers.contains(it) }.sum() }
+
 
     private fun createRowsFromBoardData() =
         boardData.split("\n").map {
