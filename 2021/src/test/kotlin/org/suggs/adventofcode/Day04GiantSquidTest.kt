@@ -7,8 +7,9 @@ import org.slf4j.LoggerFactory.getLogger
 import org.suggs.adventofcode.Day04GiantSquid.simulateWhoWinsFirst
 import org.suggs.adventofcode.Day04GiantSquid.simulateWhoWinsLast
 import org.suggs.adventofcode.Util.getTextBlocksFrom
+import org.suggs.adventofcode.domain.BingoBoard
 
-@DisplayName("Giant Squid test should ... ")
+@DisplayName("Giant Squid should ... ")
 class Day04GiantSquidTest {
 
     companion object {
@@ -17,34 +18,34 @@ class Day04GiantSquidTest {
 
     @Test
     fun `creates board from string`() {
-        Board(singleBoard).addUpRemainingNumbersLess(emptyList()) shouldBe 300
+        BingoBoard(singleBoard).addUpRemainingNumbersLess(emptyList()) shouldBe 300
     }
 
     @Test
     fun `adds up the winning board from a small set of data`() {
         val balls = verySmallDataSet.first().split(",").map { it.toInt() }
-        val boards = verySmallDataSet.drop(1).map { Board(it) }
+        val boards = verySmallDataSet.drop(1).map { BingoBoard(it) }
         simulateWhoWinsFirst(balls, boards) shouldBe 4512
     }
 
     @Test
     fun `adds up the winning board from read data set`() {
         val balls = readDataSet.first().split(",").map { it.toInt() }
-        val boards = readDataSet.drop(1).map { Board(it) }
+        val boards = readDataSet.drop(1).map { BingoBoard(it) }
         simulateWhoWinsFirst(balls, boards) shouldBe 2496
     }
 
     @Test
     fun `adds up the last winning board from a small set of data`() {
         val balls = verySmallDataSet.first().split(",").map { it.toInt() }
-        val boards = verySmallDataSet.drop(1).map { Board(it) }
+        val boards = verySmallDataSet.drop(1).map { BingoBoard(it) }
         simulateWhoWinsLast(balls, boards) shouldBe 1924
     }
 
     @Test
     fun `adds up the last winning board from read data`() {
         val balls = readDataSet.first().split(",").map { it.toInt() }
-        val boards = readDataSet.drop(1).map { Board(it) }
+        val boards = readDataSet.drop(1).map { BingoBoard(it) }
         simulateWhoWinsLast(balls, boards) shouldBe 25925
     }
 

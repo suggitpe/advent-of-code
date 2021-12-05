@@ -13,7 +13,7 @@ import org.suggs.adventofcode.Day03BinaryDiagnostic.calculateOxygenGeneratorRati
 import org.suggs.adventofcode.Day03BinaryDiagnostic.calculatePowerConsumptionFrom
 import org.suggs.adventofcode.Util.getFileLinesFrom
 
-@DisplayName("Diagnostic test should ... ")
+@DisplayName("Diagnostic should ... ")
 class Day03BinaryDiagnosticTest {
 
     companion object {

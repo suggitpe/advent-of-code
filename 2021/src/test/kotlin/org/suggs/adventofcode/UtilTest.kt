@@ -27,7 +27,7 @@ class UtilTest {
 
     @Test
     fun `creates text blocks from a file content`(){
-        log.info("${getTextBlocksFrom("day04-input.txt")}")
+        getTextBlocksFrom("day04-input.txt").size shouldBe 101
     }
 
 }
