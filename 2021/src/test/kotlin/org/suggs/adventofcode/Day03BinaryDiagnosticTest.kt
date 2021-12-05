@@ -3,8 +3,6 @@ package org.suggs.adventofcode
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.slf4j.LoggerFactory
-import org.slf4j.LoggerFactory.getLogger
 import org.suggs.adventofcode.Day03BinaryDiagnostic.calculateCO2ScrubberRatingFrom
 import org.suggs.adventofcode.Day03BinaryDiagnostic.calculateEpsilonFrom
 import org.suggs.adventofcode.Day03BinaryDiagnostic.calculateGammaFrom
@@ -15,10 +13,6 @@ import org.suggs.adventofcode.Util.getFileLinesFrom
 
 @DisplayName("Diagnostic should ... ")
 class Day03BinaryDiagnosticTest {
-
-    companion object {
-        private val log = getLogger(this::class.java)
-    }
 
     @Test
     fun `calculates gamma number from very small data set`() {

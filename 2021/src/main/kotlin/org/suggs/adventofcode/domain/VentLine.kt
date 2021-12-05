@@ -15,18 +15,18 @@ data class VentLine(private val startCoordinate: Pair<Int, Int>, private val end
     fun isHorizontal() = !isDiagonal() && startCoordinate.second == endCoordinate.second
 
     fun getAllCoordinatesInLine(): List<Pair<Int, Int>> {
-        return if (isVertical())
-            getAllVerticalCoordinates()
-        else if (isHorizontal())
-            getAllHorizontalCoordinates()
-        else
-            throw IllegalArgumentException("We dont support diagonal ... yet")
+        return when {
+            isVertical() -> createRangeFrom(startCoordinate.second, endCoordinate.second).map { Pair(startCoordinate.first, it) }
+            isHorizontal() -> createRangeFrom(startCoordinate.first, endCoordinate.first).map { Pair(it, startCoordinate.second) }
+            else -> createRangeFrom(startCoordinate.first, endCoordinate.first) zip createRangeFrom(startCoordinate.second, endCoordinate.second)
+        }
     }
 
-    private fun getAllHorizontalCoordinates() =
-        minOf(startCoordinate.first, endCoordinate.first).rangeTo(maxOf(startCoordinate.first, endCoordinate.first)).toList().map { Pair(it, startCoordinate.second) }
-
-    private fun getAllVerticalCoordinates(): List<Pair<Int, Int>> =
-        minOf(startCoordinate.second, endCoordinate.second).rangeTo(maxOf(startCoordinate.second, endCoordinate.second)).toList().map { Pair(startCoordinate.first, it) }
+    private fun createRangeFrom(start: Int, end: Int): List<Int> {
+        return if (start < end) {
+            start.rangeTo(end).toList()
+        } else
+            end.rangeTo(start).toList().reversed()
+    }
 
 }

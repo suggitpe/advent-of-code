@@ -3,7 +3,6 @@ package org.suggs.adventofcode
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.slf4j.LoggerFactory.getLogger
 import org.suggs.adventofcode.Day04GiantSquid.simulateWhoWinsFirst
 import org.suggs.adventofcode.Day04GiantSquid.simulateWhoWinsLast
 import org.suggs.adventofcode.Util.getTextBlocksFrom
@@ -11,10 +10,6 @@ import org.suggs.adventofcode.domain.BingoBoard
 
 @DisplayName("Giant Squid should ... ")
 class Day04GiantSquidTest {
-
-    companion object {
-        private val log = getLogger(this::class.java)
-    }
 
     @Test
     fun `creates board from string`() {

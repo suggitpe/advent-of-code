@@ -4,8 +4,6 @@ import org.slf4j.LoggerFactory
 
 object Day03BinaryDiagnostic {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
-
     fun calculatePowerConsumptionFrom(dataSet: List<String>) =
         calculateGammaFrom(dataSet) * calculateEpsilonFrom(dataSet)
 

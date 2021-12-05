@@ -4,8 +4,6 @@ import org.slf4j.LoggerFactory
 
 object Day02Dive {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
-
     fun calculatePositionFrom(dataSet: List<Pair<String, Int>>): Int {
         fun sumOf(direction: String, dataSet: List<Pair<String, Int>>) =
             dataSet.filter { it.first == direction }.sumOf { it.second }
