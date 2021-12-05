@@ -26,7 +26,6 @@ class Day05HydrothermalVentureTest {
     fun `calculate the number of positions where more than two  lines intersect using large data set`() =
         countNumberOfPointsThatIntersectMoreThanOnce(readDataSet) shouldBe 22088
 
-
     private val readDataSet: List<VentLine> = Util.getFileLinesFrom("day05-input.txt").map { aVentLineFrom(it.substringBefore(" -> "), it.substringAfter(" -> ")) }
 
     private val verySmallDataSet: List<VentLine> = """0,9 -> 5,9
