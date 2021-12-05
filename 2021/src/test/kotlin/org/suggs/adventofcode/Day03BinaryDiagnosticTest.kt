@@ -1,5 +1,6 @@
 package org.suggs.adventofcode
 
+import io.kotest.matchers.ints.shouldBeInRange
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -28,7 +29,7 @@ class Day03BinaryDiagnosticTest {
 
     @Test
     fun `calculation of powerConsumption from consumption file`() =
-        calculatePowerConsumptionFrom(readDataSet) shouldBe 2595824
+        calculatePowerConsumptionFrom(readDataSet) shouldBeInRange 2500000..2600000
 
     @Test
     fun `calculate oxygen generator from very small data set`() =
@@ -44,7 +45,7 @@ class Day03BinaryDiagnosticTest {
 
     @Test
     fun `calculate life support rating from consumption file`() =
-        calculateLifeSupportRatingFrom(readDataSet) shouldBe 2135254
+        calculateLifeSupportRatingFrom(readDataSet) shouldBeInRange 2130000..2140000
 
 
     private val readDataSet = getFileLinesFrom("day03-input.txt")
