@@ -1,35 +1,37 @@
 package org.suggs.adventofcode
 
-import org.slf4j.LoggerFactory
-
 object Day06LanternFish {
     fun calculateNumberOfFishFrom(verySmallDataSet: List<Int>): FishCounter {
         return FishCounter(verySmallDataSet)
     }
 }
 
+/**
+ * Summary of the algo:
+ * 1. Don't try and calculate each fish ... there are 9 variants so pre-calc them
+ * 2. Optimise the calculation by using subtraction and count additions rather than actually creating the fish
+ * 3.
+ */
 class FishCounter(private val dataSet: List<Int>) {
 
     companion object {
-        private val log = LoggerFactory.getLogger(this::class.java)
+        private const val MAX_FISH = 8
     }
 
-    fun after(days: Int): Long {
-        return processFishEvolution(dataSet, days, 0L)
-    }
+    fun after(days: Int) =
+        processFishEvolution(dataSet, calculateVariantCountsIntoMap(days))
 
-    private tailrec fun processFishEvolution(dataSet: List<Int>, days: Int, aggregate: Long): Long {
-        return if (dataSet.isEmpty())
-            return aggregate
-        else
-            processFishEvolution(dataSet.drop(1), days, aggregate + processEvolutionOf(dataSet.first(), days))
-    }
+    private fun processFishEvolution(dataSet: List<Int>, variants: Map<Int, Long>) =
+        dataSet.map { variants[it] }.sumOf { it!! }
 
-    private fun processEvolutionOf(fish: Int, days: Int): Long {
-        return if (days - fish > 0)
-            processEvolutionOf(6, days - fish - 1) + processEvolutionOf(8, days - fish - 1)
-        else
-            1
+    private fun calculateVariantCountsIntoMap(days: Int) =
+        (0..MAX_FISH).associateWith { countFishProducedFrom(it, days) }
+
+    private fun countFishProducedFrom(fish: Int, days: Int): Long {
+        return when {
+            (days - fish > 0) -> countFishProducedFrom(6, days - fish - 1) + countFishProducedFrom(8, days - fish - 1)
+            else -> 1
+        }
     }
 
 }
