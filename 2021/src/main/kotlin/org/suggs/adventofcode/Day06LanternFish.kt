@@ -9,8 +9,7 @@ object Day06LanternFish {
 /**
  * Summary of the algo:
  * 1. Don't try and calculate each fish ... there are 9 variants so pre-calc them
- * 2. Optimise the calculation by using subtraction and count additions rather than actually creating the fish
- * 3.
+ * 2. Optimise the calculation by using subtraction and count additions rather than actually creating the fish and recursing
  */
 class FishCounter(private val dataSet: List<Int>) {
 
