@@ -1,6 +1,5 @@
 package org.suggs.adventofcode
 
-import io.kotest.matchers.ints.shouldBeGreaterThan
 import io.kotest.matchers.ints.shouldBeInRange
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
