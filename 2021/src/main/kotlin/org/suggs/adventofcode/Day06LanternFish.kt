@@ -18,9 +18,9 @@ class FishCounter(private val dataSet: List<Int>) {
     }
 
     fun after(days: Int) =
-        processFishEvolution(dataSet, calculateVariantCountsIntoMap(days))
+        countAllTheFishProduced(dataSet, calculateVariantCountsIntoMap(days))
 
-    private fun processFishEvolution(dataSet: List<Int>, variants: Map<Int, Long>) =
+    private fun countAllTheFishProduced(dataSet: List<Int>, variants: Map<Int, Long>) =
         dataSet.map { variants[it] }.sumOf { it!! }
 
     private fun calculateVariantCountsIntoMap(days: Int) =
