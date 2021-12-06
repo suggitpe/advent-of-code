@@ -14,23 +14,22 @@ class FishCounter(private val dataSet: List<Int>) {
         private val log = LoggerFactory.getLogger(this::class.java)
     }
 
-    fun after(days: Int): Int {
-        return processDailyEvolution(dataSet, days)
+    fun after(days: Int): Long {
+        return processFishEvolution(dataSet, days, 0L)
     }
 
-    private fun processDailyEvolution(dataSet: List<Int>, days: Int): Int {
-        return when (days) {
-            0 -> dataSet.size
-            else -> processDailyEvolution(dataSet.map { evolveSingleFish(it) }.flatten(), days - 1)
-        }
+    private tailrec fun processFishEvolution(dataSet: List<Int>, days: Int, aggregate: Long): Long {
+        return if (dataSet.isEmpty())
+            return aggregate
+        else
+            processFishEvolution(dataSet.drop(1), days, aggregate + processEvolutionOf(dataSet.first(), days))
     }
 
-    private fun evolveSingleFish(fish: Int): List<Int> {
-        return if (fish > 0) {
-            listOf(fish - 1)
-        } else {
-            listOf(6, 8)
-        }
+    private fun processEvolutionOf(fish: Int, days: Int): Long {
+        return if (days - fish > 0)
+            processEvolutionOf(6, days - fish - 1) + processEvolutionOf(8, days - fish - 1)
+        else
+            1
     }
 
 }
