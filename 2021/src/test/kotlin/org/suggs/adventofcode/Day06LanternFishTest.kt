@@ -3,9 +3,11 @@ package org.suggs.adventofcode
 import io.kotest.matchers.longs.shouldBeInRange
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day06LanternFish.calculateNumberOfFishFrom
 
+@DisplayName("Lantern Fish should ... ")
 class Day06LanternFishTest {
 
     @Test
