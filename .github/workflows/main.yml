@@ -1,4 +1,4 @@
-name: Gradle CI
+name: Advent of Code CI
 
 # Typical CI pipeline to build and test a gradle project
 on:
