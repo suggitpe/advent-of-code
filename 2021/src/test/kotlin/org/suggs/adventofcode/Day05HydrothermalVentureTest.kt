@@ -5,6 +5,7 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day05HydrothermalVenture.countNumberOfPointsThatIntersectMoreThanOnce
+import org.suggs.adventofcode.Util.getFileLinesFrom
 import org.suggs.adventofcode.domain.VentLine
 import org.suggs.adventofcode.domain.VentLine.Companion.aVentLineFrom
 
@@ -27,7 +28,7 @@ class Day05HydrothermalVentureTest {
     fun `calculate the number of positions where more than two  lines intersect using large data set`() =
         countNumberOfPointsThatIntersectMoreThanOnce(readDataSet) shouldBeInRange 22000..24000
 
-    private val readDataSet: List<VentLine> = Util.getFileLinesFrom("day05-input.txt").map { aVentLineFrom(it.substringBefore(" -> "), it.substringAfter(" -> ")) }
+    private val readDataSet: List<VentLine> = getFileLinesFrom("day05-input.txt").map { aVentLineFrom(it.substringBefore(" -> "), it.substringAfter(" -> ")) }
 
     private val verySmallDataSet: List<VentLine> = """0,9 -> 5,9
 8,0 -> 0,8

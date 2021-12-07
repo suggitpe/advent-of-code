@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day07TreacheryOfWhales.convergeToCommonNumberWithLeastCostUsingAdditiveCosting
 import org.suggs.adventofcode.Day07TreacheryOfWhales.convergeToCommonNumberWithLeastCostUsingSimpleCosting
+import org.suggs.adventofcode.Util.getFileLinesFrom
 
 @DisplayName("Treachery of whales should ... ")
 class Day07TreacheryOfWhalesTest {
@@ -26,7 +27,7 @@ class Day07TreacheryOfWhalesTest {
     fun `calculates the minimum additive cost to converge all numbers on a common number from a large data set`() =
         convergeToCommonNumberWithLeastCostUsingAdditiveCosting(readDataSet) shouldBeInRange 93390000..93400000
 
-    private val readDataSet: List<Int> = Util.getFileLinesFrom("day07-input.txt").first().split(",").map { it.toInt() }
+    private val readDataSet: List<Int> = getFileLinesFrom("day07-input.txt").first().split(",").map { it.toInt() }
     private val verySmallDataSet: List<Int> = """16,1,2,0,4,2,7,1,2,14""".split(",").map { it.toInt() }
 
 }

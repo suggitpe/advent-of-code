@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day06LanternFish.calculateNumberOfFishFrom
+import org.suggs.adventofcode.Util.getFileLinesFrom
 
 @DisplayName("Lantern Fish should ... ")
 class Day06LanternFishTest {
@@ -37,6 +38,6 @@ class Day06LanternFishTest {
     fun `calculates the number of fish after 256 days for a large number of fish`() =
         calculateNumberOfFishFrom(readDataSet).after(256) shouldBeInRange 1592770000000L..1592780000000L
 
-    private val readDataSet: List<Int> = Util.getFileLinesFrom("day06-input.txt").first().split(",").map { it.toInt() }
+    private val readDataSet: List<Int> = getFileLinesFrom("day06-input.txt").first().split(",").map { it.toInt() }
     private val verySmallDataSet: List<Int> = """3,4,3,1,2""".split(",").map { it.toInt() }
 }
