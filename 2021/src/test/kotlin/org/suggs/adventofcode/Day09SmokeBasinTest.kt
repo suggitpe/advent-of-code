@@ -4,6 +4,7 @@ import io.kotest.matchers.ints.shouldBeInRange
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day09SmokeBasin.countRiskLevelsInMatrixFrom
+import org.suggs.adventofcode.Util.getFileLinesFrom
 import java.lang.Character.getNumericValue
 
 class Day09SmokeBasinTest {
@@ -18,7 +19,7 @@ class Day09SmokeBasinTest {
         countRiskLevelsInMatrixFrom(readDataSet) shouldBeInRange 550..600
     }
 
-    private val readDataSet: Array<Array<Int>> = Util.getFileLinesFrom("day09-input.txt").map { it.toCharArray().map { inner -> getNumericValue(inner) }.toTypedArray() }.toTypedArray()
+    private val readDataSet: Array<Array<Int>> = getFileLinesFrom("day09-input.txt").map { it.toCharArray().map { inner -> getNumericValue(inner) }.toTypedArray() }.toTypedArray()
     private val verySmallDataSet: Array<Array<Int>> = """2199943210
 3987894921
 9856789892
