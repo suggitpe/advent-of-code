@@ -2,7 +2,6 @@ package org.suggs.adventofcode
 
 import io.kotest.matchers.ints.shouldBeInRange
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day09SmokeBasin.countRiskLevelsInMatrixFrom
 import java.lang.Character.getNumericValue
@@ -10,12 +9,12 @@ import java.lang.Character.getNumericValue
 class Day09SmokeBasinTest {
 
     @Test
-    fun`counts the number of risk levels in a small series of data`(){
+    fun `counts the number of risk levels in a small series of data`() {
         countRiskLevelsInMatrixFrom(verySmallDataSet) shouldBe 15
     }
 
     @Test
-    fun `counts the numbers of risk levels in a large series of data`(){
+    fun `counts the numbers of risk levels in a large series of data`() {
         countRiskLevelsInMatrixFrom(readDataSet) shouldBeInRange 550..600
     }
 

@@ -8,26 +8,30 @@ object Day09SmokeBasin {
 
     fun countRiskLevelsInMatrixFrom(dataSet: Array<Array<Int>>): Int {
 
-        fun at(x: Int, y: Int) = dataSet[y][x]
+        fun valueAt(coordinate: Pair<Int, Int>) = dataSet[coordinate.second][coordinate.first]
 
-        fun isValidReference(x: Int, y: Int) = x >= 0 && x < dataSet.first().size && y >= 0 && y < dataSet.size
+        fun isValidReference(coordinate: Pair<Int, Int>) =
+            coordinate.first >= 0
+                    && coordinate.first < dataSet.first().size
+                    && coordinate.second >= 0
+                    && coordinate.second < dataSet.size
 
-        fun checkLowest(x: Int, y: Int, digit: Int) = when {
-            !isValidReference(x, y) -> true
-            at(x, y) > digit -> true
+        fun checkLowest(coordinate: Pair<Int, Int>, digit: Int) = when {
+            !isValidReference(coordinate) -> true
+            valueAt(coordinate) > digit -> true
             else -> false
         }
 
-        fun isDigitLowest(digit: Int, x: Int, y: Int): Boolean =
-            checkLowest(x - 1, y, digit)
-                    && checkLowest(x, y - 1, digit)
-                    && checkLowest(x + 1, y, digit)
-                    && checkLowest(x, y + 1, digit)
+        fun isDigitLowest(coordinate: Pair<Int, Int>, digit: Int): Boolean =
+            checkLowest(Pair(coordinate.first - 1, coordinate.second), digit)
+                    && checkLowest(Pair(coordinate.first, coordinate.second - 1), digit)
+                    && checkLowest(Pair(coordinate.first + 1, coordinate.second), digit)
+                    && checkLowest(Pair(coordinate.first, coordinate.second + 1), digit)
 
         val totalCountOfRiskLevels = mutableListOf<Int>()
         dataSet.forEachIndexed { y, ints ->
             ints.forEachIndexed { x, digit ->
-                if (isDigitLowest(digit, x, y)) {
+                if (isDigitLowest(Pair(x, y), digit)) {
                     totalCountOfRiskLevels.add(digit + 1)
                 }
             }
