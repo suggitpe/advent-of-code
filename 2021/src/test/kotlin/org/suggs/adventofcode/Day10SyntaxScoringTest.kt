@@ -10,7 +10,7 @@ import org.suggs.adventofcode.Util.getFileLinesFrom
 class Day10SyntaxScoringTest {
 
     @Test
-    fun `calculates syntax score for a single line`() = calculateSyntaxScoreFrom(listOf("(((({<>}<{<{<>}{[]{[]{}", "{([(<{}[<>[]}>{[]{[(<()>")) shouldBe 0
+    fun `calculates syntax score for a single line`() = calculateSyntaxScoreFrom(listOf("(((({<>}<{<{<>}{[]{[]{}", "{([(<{}[<>[]}>{[]{[(<()>")) shouldBe 1197
 
     @Test
     fun `calculates syntax score from small data set`() = calculateSyntaxScoreFrom(sampleDataSet) shouldBe 26397
