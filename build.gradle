@@ -1,12 +1,11 @@
 buildscript {
-    ext {
-        kotlinVersion = '1.6.0'
-    }
+    apply from: "$rootDir/dependencies.gradle"
     repositories {
+        clear()
         mavenCentral()
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+        classpath gradlePlugins.kotlin
     }
 }
 
@@ -20,7 +19,7 @@ subprojects{
     apply plugin: 'kotlin'
     apply plugin: 'jacoco'
 
-    group = 'org.suggs.fsm'
+    group = 'org.suggs.aoc'
 
     repositories {
         clear()
@@ -41,8 +40,8 @@ subprojects{
     }
 
     ext {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+        sourceCompatibility = 17
+        targetCompatibility = 17
     }
 
     test {
@@ -52,13 +51,13 @@ subprojects{
     compileKotlin {
         kotlinOptions {
             freeCompilerArgs = ["-Xjsr305=strict"]
-            jvmTarget = "1.8"
+            jvmTarget = "17"
         }
     }
     compileTestKotlin {
         kotlinOptions {
             freeCompilerArgs = ["-Xjsr305=strict"]
-            jvmTarget = "1.8"
+            jvmTarget = "17"
         }
     }
 }
