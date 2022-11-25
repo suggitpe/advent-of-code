@@ -7,7 +7,7 @@ import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day03TobogganTrajectory.Companion.buildHillFrom
-import java.io.File
+import org.suggs.adventofcode.Util.getFileLinesFrom
 
 /**
  * @see https://adventofcode.com/2020/day/3
@@ -58,7 +58,7 @@ class Day03TobogganTrajectoryTest {
         cumulative shouldBe 4723283400
     }
 
-    private val hillFromInputFile = buildHillFrom(File(ClassLoader.getSystemResource("day03-input.txt").file).readLines())
+    private val hillFromInputFile = buildHillFrom(getFileLinesFrom("day03-input.txt"))
 
     private val simpleHill = buildHillFrom(
         """..##.......

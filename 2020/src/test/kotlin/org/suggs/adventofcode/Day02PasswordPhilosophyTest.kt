@@ -4,7 +4,7 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import org.suggs.adventofcode.Day02PasswordPhilosophy.Companion.createPhilosophyFrom
-import java.io.File
+import org.suggs.adventofcode.Util.getFileLinesFrom
 
 /**
  * @see https://adventofcode.com/2020/day/2
@@ -51,7 +51,7 @@ class Day02PasswordPhilosophyTest {
         return listOfPasswords.filter { it.isValidByPosition() }.size
     }
 
-    private val readPasswords = File(ClassLoader.getSystemResource("day02-input.txt").file).readLines()
+    private val readPasswords = getFileLinesFrom("day02-input.txt")
 
     private fun createKnownSetOfNumbers(): List<Day02PasswordPhilosophy> {
         return listOf(

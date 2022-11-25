@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import org.suggs.adventofcode.Day10AdapterArray.Companion.countNumberOfValidCombinationsOfJoltAdaptersIn
 import org.suggs.adventofcode.Day10AdapterArray.Companion.getMapOfJoltDifferences
+import org.suggs.adventofcode.Util.createIntListFrom
+import org.suggs.adventofcode.Util.getFileLinesFrom
 import java.io.File
 
 internal class Day10AdapterArrayTest {
@@ -49,7 +51,7 @@ internal class Day10AdapterArrayTest {
         numberOfCombinations shouldBe 19208
     }
 
-    private val readArray = File(ClassLoader.getSystemResource("day10-input.txt").file).readLines().map { it.toInt() }
+    private val readArray = createIntListFrom("day10-input.txt")
 
     private val verySmallArray = """16
 10

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day07HandyHaversacks.Companion.buildRulesFromRulesSet
 import org.suggs.adventofcode.Day07HandyHaversacks.Companion.calculateDiscreteParentBagsFrom
 import org.suggs.adventofcode.Day07HandyHaversacks.Companion.calculateTheTotalContainedBagsFrom
+import org.suggs.adventofcode.Util.getFileLinesFrom
 import java.io.File
 
 class Day07HandyHaversacksTest {
@@ -60,7 +61,7 @@ class Day07HandyHaversacksTest {
         calculateTheTotalContainedBagsFrom(readBags, "shiny gold") shouldBe 10875
     }
 
-    private val readBags: List<String> = File(ClassLoader.getSystemResource("day07-input.txt").file).readLines()
+    private val readBags: List<String> = getFileLinesFrom("day07-input.txt")
 
     private val testBags: List<String> = """light red bags contain 1 bright white bag, 2 muted yellow bags.
 dark orange bags contain 3 bright white bags, 4 muted yellow bags.

@@ -3,6 +3,7 @@ package org.suggs.adventofcode
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day05BinaryBoarding.Companion.convertBoardingPassToDecimalSeat
+import org.suggs.adventofcode.Util.getFileLinesFrom
 import java.io.File
 
 /**
@@ -32,6 +33,6 @@ class Day05BinaryBoardingTest {
         allBoardingPasses[0].rangeTo(allBoardingPasses.last()).sum() - allBoardingPasses.sum() shouldBe 642
     }
 
-    private val readPasses = File(ClassLoader.getSystemResource("day05-input.txt").file).readLines()
+    private val readPasses = getFileLinesFrom("day05-input.txt")
 
 }

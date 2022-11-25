@@ -3,6 +3,8 @@ package org.suggs.adventofcode
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
+import org.suggs.adventofcode.Util.getFileLinesFrom
+import org.suggs.adventofcode.Util.readFile
 import java.io.File
 
 /**
@@ -65,7 +67,7 @@ class Day04PassportProcessingTest {
             .map { Day04PassportProcessing.createPassportFrom(it) }
     }
 
-    private val readPassports = File(ClassLoader.getSystemResource("day04-input.txt").file).readText()
+    private val readPassports = readFile("day04-input.txt").readText()
 
     private val testPassports = """ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 byr:1937 iyr:2017 cid:147 hgt:183cm

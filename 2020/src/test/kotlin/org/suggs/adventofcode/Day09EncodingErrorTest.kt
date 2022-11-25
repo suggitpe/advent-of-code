@@ -4,6 +4,7 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day09EncodingError.Companion.findEncryptionWeaknessFor
 import org.suggs.adventofcode.Day09EncodingError.Companion.findFirstInvalidNumberAfterPreamble
+import org.suggs.adventofcode.Util.getFileLinesFrom
 import java.io.File
 
 class Day09EncodingErrorTest {
@@ -32,7 +33,7 @@ class Day09EncodingErrorTest {
         addition shouldBe 11691646L
     }
 
-    private val longXmasCodeExample: List<Long> = File(ClassLoader.getSystemResource("day09-input.txt").file).readLines().map { it.toLong() }
+    private val longXmasCodeExample: List<Long> = getFileLinesFrom("day09-input.txt").map { it.toLong() }
 
     private val shortXmasCodeExample: List<Long> = """35
 20

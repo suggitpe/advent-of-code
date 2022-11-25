@@ -4,6 +4,7 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day06CustomCustoms.Companion.countAllCommonlyAnsweredQuestionsByGroup
 import org.suggs.adventofcode.Day06CustomCustoms.Companion.countAllDiscreteQuestionsByGroup
+import org.suggs.adventofcode.Util.readFile
 import java.io.File
 
 /**
@@ -35,7 +36,7 @@ class Day06CustomCustomsTest() {
         commonlyAnsweredQuestions shouldBe 3323
     }
 
-    private val readAnswers = File(ClassLoader.getSystemResource("day06-input.txt").file).readText()
+    private val readAnswers = readFile("day06-input.txt").readText()
 
     private val testAnswers = """abc
 

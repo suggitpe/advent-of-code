@@ -4,7 +4,7 @@ import io.kotest.matchers.comparables.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
-import java.io.File
+import org.suggs.adventofcode.Util.createIntListFrom
 
 /**
  * @see https://adventofcode.com/2020/day/1
@@ -44,7 +44,7 @@ class Day01ReportRepairTest {
         bigNumber shouldBeGreaterThan 1
     }
 
-    private val readNumbers = File(ClassLoader.getSystemResource("day01-input.txt").file).readLines().map { it.toInt() }
+    private val readNumbers = createIntListFrom("day01-input.txt")
 
     private val setNumbers = listOf(2004, 23, 123, 1721, 979, 366, 299, 675, 1456)
 

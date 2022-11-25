@@ -12,14 +12,14 @@ class UtilTest {
 
     @Test
     fun `create list of ints from a file content`() =
-        createIntListFrom("day01-input.txt").size shouldBe 2000
+        createIntListFrom("listOfInts.txt").size shouldBe 20
 
     @Test
     fun `create a list of string - int from file content`() =
-        createStringIntMapFrom("day02-input.txt").size shouldBe 1000
+        createStringIntMapFrom("listIfMaps.txt").size shouldBe 25
 
     @Test
     fun `creates text blocks from a file content`() =
-        getTextBlocksFrom("day04-input.txt").size shouldBe 101
+        getTextBlocksFrom("listOfTextBlocks.txt").size shouldBe 10
 
 }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day08HandheldHalting.Companion.findFlippableInstructionToCompleteTheRun
 import org.suggs.adventofcode.Day08HandheldHalting.Companion.instructionSetFrom
 import org.suggs.adventofcode.Day08HandheldHalting.Companion.processInstructions
+import org.suggs.adventofcode.Util.getFileLinesFrom
 import java.io.File
 
 class Day08HandheldHaltingTest {
@@ -33,7 +34,7 @@ class Day08HandheldHaltingTest {
         accumulatorAfterCompletion shouldBe 501
     }
 
-    private val readInstructions: List<String> = File(ClassLoader.getSystemResource("day08-input.txt").file).readLines()
+    private val readInstructions: List<String> = getFileLinesFrom("day08-input.txt")
 
     private val setInstructions: List<String> = """nop +0
 acc +1
