@@ -11,13 +11,16 @@ import org.suggs.adventofcode.Util.getFileLinesFrom
 class Day10SyntaxScoringTest {
 
     @Test
-    fun `calculates syntax score for a single line`() = calculateSyntaxScoreFrom(listOf("(((({<>}<{<{<>}{[]{[]{}", "{([(<{}[<>[]}>{[]{[(<()>")) shouldBe 1197
+    fun `calculates syntax score for a single line`() =
+        calculateSyntaxScoreFrom(listOf("(((({<>}<{<{<>}{[]{[]{}", "{([(<{}[<>[]}>{[]{[(<()>")) shouldBe 1197
 
     @Test
-    fun `calculates syntax score from small data set`() = calculateSyntaxScoreFrom(sampleDataSet) shouldBe 26397
+    fun `calculates syntax score from small data set`() =
+        calculateSyntaxScoreFrom(sampleDataSet) shouldBe 26397
 
     @Test
-    fun `calculates syntax score from large data set`() = calculateSyntaxScoreFrom(readDataSet) shouldBeInRange 343000..344000
+    fun `calculates syntax score from large data set`() =
+        calculateSyntaxScoreFrom(readDataSet) shouldBeInRange 343000..344000
 
     @Test
     fun `calculates the core of the remainder of unfinished sequence for a single line`() =

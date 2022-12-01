@@ -15,9 +15,9 @@ object Util {
         }
     }
 
-    fun getTextBlocksFrom(fileName: String) = readFile(fileName).readText().split("\n\n")
+    fun getTextBlocksFrom(fileName: String) = readFile(fileName).bufferedReader().readText().split("\n\n")
 
-    fun getFileLinesFrom(fileName: String) = readFile(fileName).readLines()
+    fun getFileLinesFrom(fileName: String) = readFile(fileName).bufferedReader().readLines()
 
     fun readFile(fileName: String) = File(ClassLoader.getSystemResource(fileName).file)
 

@@ -1,33 +1,31 @@
 package org.suggs.adventofcode
 
-import io.kotest.core.spec.style.FeatureSpec
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day01CalorieCounting.findMaxCaloriesFrom
 import org.suggs.adventofcode.Day01CalorieCounting.findMaxCaloriesOfTopThreeFrom
 import org.suggs.adventofcode.Util.getTextBlocksFrom
 
-class Day01CalorieCountingTest : FeatureSpec({
+@DisplayName("Calculate calorie counts for a set of imaginary elves")
+class Day01CalorieCountingTest {
 
-    val smallData: List<String> = getTextBlocksFrom("day01-unit.txt")
-    val largeData: List<String> = getTextBlocksFrom("day01-input.txt")
+    @Test
+    fun `max calories for a small set of data`() =
+        findMaxCaloriesFrom(smallData) shouldBe 24000
 
-    feature("Calculate calorie counts for a set of imaginary elves") {
+    @Test
+    fun `max calories from larger list`() =
+        findMaxCaloriesFrom(largeData) shouldBe 70720
 
-        scenario("max calories for a small set of data") {
-            findMaxCaloriesFrom(smallData) shouldBe 24000
-        }
+    @Test
+    fun `calorie count of top three from small list`() =
+        findMaxCaloriesOfTopThreeFrom(smallData) shouldBe 45000
 
-        scenario("max calories from larger list") {
-            findMaxCaloriesFrom(largeData) shouldBe 70720
-        }
+    @Test
+    fun `calorie count of top three from larger list`() =
+        findMaxCaloriesOfTopThreeFrom(largeData) shouldBe 207148
 
-        scenario("calorie count of top three from small list") {
-            findMaxCaloriesOfTopThreeFrom(smallData) shouldBe 45000
-        }
-
-        scenario("calorie count of top three from larger list") {
-            findMaxCaloriesOfTopThreeFrom(largeData) shouldBe 207148
-        }
-    }
-
-})
+    private val smallData: List<String> = getTextBlocksFrom("day01-unit.txt")
+    private val largeData: List<String> = getTextBlocksFrom("day01-input.txt")
+}
