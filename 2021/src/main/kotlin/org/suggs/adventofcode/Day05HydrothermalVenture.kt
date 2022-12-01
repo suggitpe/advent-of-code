@@ -8,11 +8,11 @@ object Day05HydrothermalVenture {
         collectAllCoordinatesFrom(lineOfVents, listOf()).groupingBy { it }.eachCount().filter { it.value > 1 }.count()
 
 
-    private fun collectAllCoordinatesFrom(lineOfVents: List<VentLine>, allCordinadtes: List<Pair<Int, Int>>): List<Pair<Int, Int>> {
+    private fun collectAllCoordinatesFrom(lineOfVents: List<VentLine>, allCoordinates: List<Pair<Int, Int>>): List<Pair<Int, Int>> {
         return if (lineOfVents.isEmpty())
-            allCordinadtes
+            allCoordinates
         else
-            collectAllCoordinatesFrom(lineOfVents.drop(1), allCordinadtes + lineOfVents.first().getAllCoordinatesInLine())
+            collectAllCoordinatesFrom(lineOfVents.drop(1), allCoordinates + lineOfVents.first().getAllCoordinatesInLine())
     }
 
 
