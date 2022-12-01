@@ -2,7 +2,7 @@ package org.suggs.adventofcode
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
-import org.suggs.adventofcode.Day01CalorieCounting.findCaloriesOfTopThreeFrom
+import org.suggs.adventofcode.Day01CalorieCounting.findMaxCaloriesOfTopThreeFrom
 import org.suggs.adventofcode.Day01CalorieCounting.findMaxCaloriesFrom
 import org.suggs.adventofcode.Util.getTextBlocksFrom
 
@@ -20,12 +20,12 @@ class Day01CalorieCountingTest {
 
     @Test
     fun `find calorie count of top three from small list`() {
-        findCaloriesOfTopThreeFrom(smallData) shouldBe 45000
+        findMaxCaloriesOfTopThreeFrom(smallData) shouldBe 45000
     }
 
     @Test
     fun `find calorie count of top three from larger list`() {
-        findCaloriesOfTopThreeFrom(largeData) shouldBe 207148
+        findMaxCaloriesOfTopThreeFrom(largeData) shouldBe 207148
     }
 
     private val largeData: List<String> = getTextBlocksFrom("day01-input.txt")

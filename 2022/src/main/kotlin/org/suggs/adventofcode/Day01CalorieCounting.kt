@@ -5,7 +5,7 @@ object Day01CalorieCounting {
     fun findMaxCaloriesFrom(calorieList: List<String>) =
         countCaloriesFrom(calorieList).first()
 
-    fun findCaloriesOfTopThreeFrom(calorieList: List<String>) =
+    fun findMaxCaloriesOfTopThreeFrom(calorieList: List<String>) =
         countCaloriesFrom(calorieList).take(3).sum()
 
     private fun countCaloriesFrom(calorieList: List<String>) =
