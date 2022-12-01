@@ -32,6 +32,7 @@ subprojects{
                 libs.slf4j
 
         testImplementation libs.test.junitApi,
+                libs.test.kotest,
                 libs.test.kotestAssertions,
                 libs.test.mockito
 

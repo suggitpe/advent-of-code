@@ -9,5 +9,6 @@ object Day01CalorieCounting {
         countCaloriesFrom(calorieList).take(3).sum()
 
     private fun countCaloriesFrom(calorieList: List<String>) =
-        calorieList.map { it.split("\n").sumOf { it -> it.toInt() } }.sortedDescending()
+        calorieList.map { it.split("\n").sumOf { txt -> txt.toInt() } }.sortedDescending()
+
 }
