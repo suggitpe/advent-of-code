@@ -13,19 +13,19 @@ class Day01CalorieCountingTest : FeatureSpec({
 
     feature("Calculate calorie counts for a set of imaginary elves") {
 
-        scenario("find the maximum calories for a small set of data") {
+        scenario("max calories for a small set of data") {
             findMaxCaloriesFrom(smallData) shouldBe 24000
         }
 
-        scenario("find max calories from larger list") {
+        scenario("max calories from larger list") {
             findMaxCaloriesFrom(largeData) shouldBe 70720
         }
 
-        scenario("find calorie count of top three from small list") {
+        scenario("calorie count of top three from small list") {
             findMaxCaloriesOfTopThreeFrom(smallData) shouldBe 45000
         }
 
-        scenario("find calorie count of top three from larger list") {
+        scenario("calorie count of top three from larger list") {
             findMaxCaloriesOfTopThreeFrom(largeData) shouldBe 207148
         }
     }
