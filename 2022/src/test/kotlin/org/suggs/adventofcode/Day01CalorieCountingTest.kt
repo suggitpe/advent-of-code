@@ -10,6 +10,9 @@ import org.suggs.adventofcode.Util.getTextBlocksFrom
 @DisplayName("Calculate calorie counts for a set of imaginary elves")
 class Day01CalorieCountingTest {
 
+    private val smallData: List<String> = getTextBlocksFrom("day01-unit.txt")
+    private val largeData: List<String> = getTextBlocksFrom("day01-input.txt")
+
     @Test
     fun `max calories for a small set of data`() =
         findMaxCaloriesFrom(smallData) shouldBe 24000
@@ -25,7 +28,4 @@ class Day01CalorieCountingTest {
     @Test
     fun `calorie count of top three from larger list`() =
         findMaxCaloriesOfTopThreeFrom(largeData) shouldBe 207148
-
-    private val smallData: List<String> = getTextBlocksFrom("day01-unit.txt")
-    private val largeData: List<String> = getTextBlocksFrom("day01-input.txt")
 }
