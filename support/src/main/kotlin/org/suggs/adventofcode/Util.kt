@@ -21,4 +21,10 @@ object Util {
 
     fun readFile(fileName: String) = File(ClassLoader.getSystemResource(fileName).file)
 
+    fun applyToEachLineForTotal(filename: String, action: (String) -> Int): Int {
+        var total = 0
+        File(ClassLoader.getSystemResource(filename).file).forEachLine { total += action(it) }
+        return total
+    }
+
 }

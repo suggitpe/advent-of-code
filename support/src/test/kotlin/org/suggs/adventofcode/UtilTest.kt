@@ -3,6 +3,7 @@ package org.suggs.adventofcode
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.suggs.adventofcode.Util.applyToEachLineForTotal
 import org.suggs.adventofcode.Util.createIntListFrom
 import org.suggs.adventofcode.Util.createStringIntMapFrom
 import org.suggs.adventofcode.Util.getTextBlocksFrom
@@ -21,5 +22,10 @@ class UtilTest {
     @Test
     fun `creates text blocks from a file content`() =
         getTextBlocksFrom("listOfTextBlocks.txt").size shouldBe 10
+
+    @Test
+    fun `applies function to file lines and returns an Int`() {
+        applyToEachLineForTotal("listOfInts.txt") { it.toInt() } shouldBe 4628
+    }
 
 }

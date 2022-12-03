@@ -20,14 +20,14 @@ object Day02RockPaperScissors {
     // x == lose, y == draw, z == win
     private val other = mapOf<String, Int>(
         "A X" to 3, // 3 + 0
-        "A Y" to 4, // 1 + 3 *
+        "A Y" to 4, // 1 + 3
         "A Z" to 8, // 2 + 6
-        "B X" to 1, // 1 + 0 *
-        "B Y" to 5, // 2 + 3 *
-        "B Z" to 9, // 3 + 6 *
-        "C X" to 2, // 2 + 0 *
-        "C Y" to 6, // 3 + 3 *
-        "C Z" to 7  // 1 + 6 *
+        "B X" to 1, // 1 + 0
+        "B Y" to 5, // 2 + 3
+        "B Z" to 9, // 3 + 6
+        "C X" to 2, // 2 + 0
+        "C Y" to 6, // 3 + 3
+        "C Z" to 7  // 1 + 6
     )
 
     fun playRockPaperScissorsWith(data: List<String>) =
