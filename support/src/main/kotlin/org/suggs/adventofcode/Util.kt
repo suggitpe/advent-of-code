@@ -15,11 +15,17 @@ object Util {
         }
     }
 
-    fun getTextBlocksFrom(fileName: String) = readFile(fileName).bufferedReader().readText().split("\n\n")
+    fun getTextBlocksFrom(fileName: String) =
+        readFile(fileName).bufferedReader().readText().split("\n\n")
 
-    fun getFileLinesFrom(fileName: String) = readFile(fileName).bufferedReader().readLines()
+    fun getFileLinesFrom(fileName: String) =
+        readFile(fileName).bufferedReader().readLines()
 
-    fun readFile(fileName: String) = File(ClassLoader.getSystemResource(fileName).file)
+    fun readFile(fileName: String) =
+        File(ClassLoader.getSystemResource(fileName).file)
+
+    fun chunkFileIntoLinesOfThree(filename: String): List<List<String>> =
+        getFileLinesFrom(filename).chunked(3)
 
     fun applyToEachLineForTotal(filename: String, action: (String) -> Int): Int {
         var total = 0

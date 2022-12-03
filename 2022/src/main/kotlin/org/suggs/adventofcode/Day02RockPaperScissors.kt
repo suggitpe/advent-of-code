@@ -4,7 +4,6 @@ import org.slf4j.LoggerFactory
 
 object Day02RockPaperScissors {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
     private val scores = mapOf<String, Int>(
         "A X" to 4, // 1 + 3
         "A Y" to 8, // 2 + 6
