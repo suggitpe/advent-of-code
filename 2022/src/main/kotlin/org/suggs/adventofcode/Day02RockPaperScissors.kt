@@ -1,7 +1,5 @@
 package org.suggs.adventofcode
 
-import org.slf4j.LoggerFactory
-
 object Day02RockPaperScissors {
 
     private val scores = mapOf<String, Int>(
@@ -29,9 +27,9 @@ object Day02RockPaperScissors {
         "C Z" to 7  // 1 + 6
     )
 
-    fun playRockPaperScissorsWith(data: List<String>) =
+    fun playRockPaperScissorsWith(data: List<String>): Int =
         data.sumOf { scores[it]!! }
 
-    fun playRockPaperToWin(data: List<String>) =
+    fun playRockPaperToWin(data: List<String>): Int =
         data.sumOf { other[it]!! }
 }

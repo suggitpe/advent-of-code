@@ -2,7 +2,7 @@ package org.suggs.adventofcode
 
 object Day03RucksackReorganization {
 
-    fun findIntersectingCharacterValueFrom(data: List<String>) =
+    fun findIntersectingCharacterValueFrom(data: List<String>): Int =
         charValueOf(data.map { it.toCharArray().toSet() }.reduce { acc, it -> acc.intersect(it) }.first())
 
     private fun charValueOf(char: Char): Int {
