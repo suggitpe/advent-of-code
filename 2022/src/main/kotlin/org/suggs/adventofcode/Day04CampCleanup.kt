@@ -15,9 +15,9 @@ object Day04CampCleanup {
         rangePair.first.any { rangePair.second.contains(it) }
 
     private fun createRangesFromString(rangePair: List<String>): Pair<Set<Int>, Set<Int>> =
-        Pair(createSingleRangeFrom(rangePair.first()).toSortedSet(), createSingleRangeFrom(rangePair.last()).toSortedSet())
+        Pair(createSingleRangeFrom(rangePair.first()), createSingleRangeFrom(rangePair.last()))
 
-    private fun createSingleRangeFrom(stringRange: String): IntProgression =
-        (stringRange.split("-").first().toInt())..(stringRange.split("-").last().toInt())
+    private fun createSingleRangeFrom(stringRange: String): Set<Int> =
+        ((stringRange.split("-").first().toInt())..(stringRange.split("-").last().toInt())).toSet()
 
 }
