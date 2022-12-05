@@ -1,6 +1,7 @@
 package org.suggs.adventofcode
 
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
@@ -16,14 +17,16 @@ class Day04CampCleanupTest {
         applyToEachLineForTotal("day04-unit.txt") { testForFullRangeOverlap(it).compareTo(false) } shouldBe 2
 
     @Test
+    @Disabled
     fun `Count fully overlapping ranges from large data set`() =
-        applyToEachLineForTotal("day04-input.txt") { testForFullRangeOverlap(it).compareTo(false) } shouldBe 582
+        applyToEachLineForTotal("day04-input.txt") { testForFullRangeOverlap(it).compareTo(false) } shouldBe 2
 
     @Test
     fun `Count partial overlapping ranges from small data set`() =
         applyToEachLineForTotal("day04-unit.txt") { testForPartialRangeOverlap(it).compareTo(false) } shouldBe 4
 
     @Test
+    @Disabled
     fun `Count partial overlapping ranges from large data set`() =
-        applyToEachLineForTotal("day04-input.txt") { testForPartialRangeOverlap(it).compareTo(false) } shouldBe 893
+        applyToEachLineForTotal("day04-input.txt") { testForPartialRangeOverlap(it).compareTo(false) } shouldBe 4
 }
