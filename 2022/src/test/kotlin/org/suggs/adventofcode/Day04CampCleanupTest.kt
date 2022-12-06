@@ -13,7 +13,7 @@ class Day04CampCleanupTest {
 
     @Test
     fun `Count fully overlapping ranges from small data set`() =
-        applyToEachLineForTotal("day04-unit.txt") { testForFullRangeOverlap(it).compareTo(false) } shouldBe 2
+        unitData.sumOf { testForFullRangeOverlap(it).compareTo(false) } shouldBe 2
 
     @Test
     @Disabled
@@ -22,10 +22,17 @@ class Day04CampCleanupTest {
 
     @Test
     fun `Count partial overlapping ranges from small data set`() =
-        applyToEachLineForTotal("day04-unit.txt") { testForPartialRangeOverlap(it).compareTo(false) } shouldBe 4
+        unitData.sumOf { testForPartialRangeOverlap(it).compareTo(false) } shouldBe 4
 
     @Test
     @Disabled
     fun `Count partial overlapping ranges from large data set`() =
         applyToEachLineForTotal("day04-input.txt") { testForPartialRangeOverlap(it).compareTo(false) } shouldBe 4
+
+    private val unitData = """2-4,6-8
+2-3,4-5
+5-7,7-9
+2-8,3-7
+6-6,4-6
+2-6,4-8""".split("\n")
 }

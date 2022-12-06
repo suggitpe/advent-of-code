@@ -1,5 +1,6 @@
 package org.suggs.adventofcode
 
+import io.kotest.assertions.assertSoftly
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
@@ -12,10 +13,12 @@ class Day06TuningTroubleTest {
 
     @Test
     fun `identifies unique character markers in strings`() {
-        identifyMarkerLocationFrom("bvwbjplbgvbhsrlpgdmjqwftvncz", 4) shouldBe 5
-        identifyMarkerLocationFrom("nppdvjthqldpwncqszvftbrmjlhg", 4) shouldBe 6
-        identifyMarkerLocationFrom("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 14) shouldBe 29
-        identifyMarkerLocationFrom("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 14) shouldBe 26
+        assertSoftly {
+            identifyMarkerLocationFrom("bvwbjplbgvbhsrlpgdmjqwftvncz", 4) shouldBe 5
+            identifyMarkerLocationFrom("nppdvjthqldpwncqszvftbrmjlhg", 4) shouldBe 6
+            identifyMarkerLocationFrom("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 14) shouldBe 29
+            identifyMarkerLocationFrom("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 14) shouldBe 26
+        }
     }
 
     @Test

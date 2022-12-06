@@ -9,12 +9,11 @@ import org.suggs.adventofcode.Day05SupplyStacks.calculateStackTopsFrom
 @DisplayName("Pops things from one stack to another")
 class Day05SupplyStacksTest {
 
-    private val smallData: List<String> = Util.getTextBlocksFrom("day05-unit.txt")
-    private val largeData: List<String> = Util.getTextBlocksFrom("day05-input.txt")
+
 
     @Test
     fun `calculates the top letters from stacks after popping from small data set`() =
-        calculateStackTopsFrom(smallData, true) shouldBe "CMZ"
+        calculateStackTopsFrom(unitData, true) shouldBe "CMZ"
 
     @Test
     @Disabled
@@ -23,10 +22,21 @@ class Day05SupplyStacksTest {
 
     @Test
     fun `calculates the top letters from stacks after shifting from small data set`() =
-        calculateStackTopsFrom(smallData, false) shouldBe "MCD"
+        calculateStackTopsFrom(unitData, false) shouldBe "MCD"
 
     @Test
     @Disabled
     fun `calculates the top letters from stacks after shifting from larger data set`() =
         calculateStackTopsFrom(largeData, false) shouldBe "MCD"
+
+    private val largeData: List<String> = Util.getTextBlocksFrom("day05-input.txt")
+    private val unitData = """    [D]
+[N] [C]
+[Z] [M] [P]
+ 1   2   3
+
+move 1 from 2 to 1
+move 3 from 1 to 3
+move 2 from 2 to 1
+move 1 from 1 to 2""".split("\n\n")
 }
