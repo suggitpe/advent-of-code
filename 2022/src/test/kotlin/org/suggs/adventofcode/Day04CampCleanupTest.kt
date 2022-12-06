@@ -4,7 +4,6 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.slf4j.LoggerFactory
 import org.suggs.adventofcode.Day04CampCleanup.testForFullRangeOverlap
 import org.suggs.adventofcode.Day04CampCleanup.testForPartialRangeOverlap
 import org.suggs.adventofcode.Util.applyToEachLineForTotal

@@ -1,14 +1,11 @@
 package org.suggs.adventofcode
 
-import org.slf4j.LoggerFactory
 import java.util.*
 
 /**
  * Hate this solution ...
  */
 object Day05SupplyStacks {
-
-    private val log = LoggerFactory.getLogger(this::class.java)
 
     fun calculateStackTopsFrom(data: List<String>, treatAsStack: Boolean): String {
         val stacks = createInitialStacksFrom(data.first())
@@ -28,10 +25,10 @@ object Day05SupplyStacks {
             }
         } else {
             var tempStack = Stack<Char>()
-            repeat(amount){
-                tempStack.push(stacks[src-1].pop())
+            repeat(amount) {
+                tempStack.push(stacks[src - 1].pop())
             }
-            repeat(amount){
+            repeat(amount) {
                 stacks[dest - 1].push(tempStack.pop())
             }
         }

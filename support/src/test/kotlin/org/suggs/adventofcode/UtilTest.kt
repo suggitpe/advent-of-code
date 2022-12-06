@@ -1,9 +1,9 @@
 package org.suggs.adventofcode
 
-import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.slf4j.LoggerFactory
 import org.suggs.adventofcode.Util.applyToEachLineForTotal
 import org.suggs.adventofcode.Util.chunkFileIntoLinesOfThree
 import org.suggs.adventofcode.Util.createIntListFrom
@@ -12,6 +12,8 @@ import org.suggs.adventofcode.Util.getTextBlocksFrom
 
 @DisplayName("Util should ... ")
 class UtilTest {
+
+    private val log = LoggerFactory.getLogger(this::class.java)
 
     @Test
     fun `create list of ints from a file content`() =
@@ -30,7 +32,7 @@ class UtilTest {
         applyToEachLineForTotal("listOfInts.txt") { it.toInt() } shouldBe 4628
 
     @Test
-    fun `chunks string list into chunks`(){
+    fun `chunks string list into chunks`() {
         chunkFileIntoLinesOfThree("listOfStringsForChunking.txt").size shouldBe 5
     }
 

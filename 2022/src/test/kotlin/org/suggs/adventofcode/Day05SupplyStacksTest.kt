@@ -2,9 +2,11 @@ package org.suggs.adventofcode
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day05SupplyStacks.calculateStackTopsFrom
 
+@DisplayName("Pops things from one stack to another")
 class Day05SupplyStacksTest {
 
     private val smallData: List<String> = Util.getTextBlocksFrom("day05-unit.txt")
