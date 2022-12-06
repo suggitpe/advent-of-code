@@ -2,7 +2,7 @@ package org.suggs.adventofcode
 
 object Day06TuningTrouble {
 
-    fun identifyMarkerLocationFrom(data: String, sizeOfMarker: Int) =
+    fun identifyMarkerLocationFrom(data: String, sizeOfMarker: Int): Int =
         data.length - countOfLettersAfterMarkerFrom(data, sizeOfMarker)
 
     // love a bit of recursion
@@ -13,7 +13,7 @@ object Day06TuningTrouble {
             countOfLettersAfterMarkerFrom(data.drop(1), sizeOfMarker)
     }
 
-    private fun areCharactersUniqueFrom(data: String) =
+    private fun areCharactersUniqueFrom(data: String): Boolean =
         data.toSet().size == data.length
 
 }
