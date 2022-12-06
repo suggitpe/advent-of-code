@@ -11,9 +11,6 @@ import org.suggs.adventofcode.Util.getFileLinesFrom
 @DisplayName("Rock paper scissors playing about")
 class Day02RockPaperScissorsTest {
 
-    private val smallData: List<String> = getFileLinesFrom("day02-unit.txt")
-    private val largeData: List<String> = getFileLinesFrom("day02-input.txt")
-
     @Test
     fun `play rock paper scissors with small data`() =
         playRockPaperScissorsWith(smallData) shouldBe 15
@@ -32,5 +29,10 @@ class Day02RockPaperScissorsTest {
     @Disabled
     fun `play rock paper scissors to win with larger data`() =
         playRockPaperToWin(largeData) shouldBe 12
+
+    private val largeData: List<String> = getFileLinesFrom("day02-input.txt")
+    private val smallData: List<String> = """A Y
+B X
+C Z""".split("\n")
 
 }
