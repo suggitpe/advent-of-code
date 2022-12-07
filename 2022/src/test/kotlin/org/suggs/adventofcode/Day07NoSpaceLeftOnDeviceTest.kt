@@ -26,7 +26,7 @@ class Day07NoSpaceLeftOnDeviceTest {
     fun `find directory that frees up enough space for update from larger data`() =
         findDirectoryThatFreesUpSpaceForUpdateFrom(largeData) shouldBe 249L
 
-    private val largeData: List<String> = Util.readFile("day07-input.txt").readText().split("$ ")
+    private val largeData: List<String> = Util.readFile("day07-input.txt").readText().split("$ ").map { it.trim() }
     private val smallData: List<String> = """${'$'} cd /
 ${'$'} ls
 dir a
@@ -49,5 +49,5 @@ ${'$'} ls
 4060174 j
 8033020 d.log
 5626152 d.ext
-7214296 k""".split("$ ")
+7214296 k""".split("$ ").map { it.trim() }
 }

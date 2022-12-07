@@ -6,21 +6,16 @@ object Day07NoSpaceLeftOnDevice {
 
     private val log = LoggerFactory.getLogger(this::class.java)
 
-    fun sumDirectoriesOver100KFrom(commands: List<String>): Long {
-        val root = Dir(NullNode(), "/", listOf())
-        buildTreeFrom(commands.map { it.trim() }, root)
-        return sumValueOfTreeLessThan100k(root)
-    }
+    fun sumDirectoriesOver100KFrom(commands: List<String>): Long =
+        findAllDirectorySizes(buildTreeFrom(commands)).filter { it < 100000 }.sum()
 
     fun findDirectoryThatFreesUpSpaceForUpdateFrom(commands: List<String>): Long {
-        val root = Dir(NullNode(), "/", listOf())
-        buildTreeFrom(commands.map { it.trim() }, root)
-        val spaceNeeded = 30000000 - (70000000 - sumValueOfTree(root))
-        return findAllDirectorySizes(root).filter { it > spaceNeeded }.minOf { it }
+        val root = buildTreeFrom(commands)
+        return findAllDirectorySizes(root).filter { it > spaceNeededFrom(root) }.minOf { it }
     }
 
-    private fun sumValueOfTreeLessThan100k(tree: Dir): Long =
-        findAllDirectorySizes(tree).filter { it < 100000 }.sum()
+    private fun spaceNeededFrom(root: Dir) =
+        (30000000 - (70000000 - sumValueOfTree(root)))
 
     private fun findAllDirectorySizes(context: Dir): List<Long> =
         (listOf(sumValueOfTree(context)) + context.files.filterIsInstance<Dir>().flatMap { findAllDirectorySizes(it) })
@@ -29,14 +24,17 @@ object Day07NoSpaceLeftOnDevice {
         tree.files.filterIsInstance<File>().sumOf { (it).size } +
                 tree.files.filterIsInstance<Dir>().sumOf { sumValueOfTree(it) }
 
-    private fun buildTreeFrom(commands: List<String>, context: Dir): Dir =
-        when {
-            commands.isEmpty() -> context
-            else -> buildTreeFrom(commands.drop(1), process(commands.first(), context))
-        }
+    private fun buildTreeFrom(commands: List<String>): Dir {
+        fun buildTreeFrom(commands: List<String>, context: Dir): Dir =
+            when {
+                commands.isEmpty() -> context
+                else -> buildTreeFrom(commands.drop(1), process(commands.first(), context))
+            }
+        return buildTreeFrom(commands, Dir(NullNode(), "/", listOf())).findRoot()
+    }
 
-    private fun process(command: String, context: Dir): Dir {
-        return when {
+    private fun process(command: String, context: Dir): Dir =
+        when {
             command.isEmpty() -> context
             command.startsWith("cd /") -> context
             command.startsWith("cd ..") -> context.parent as Dir
@@ -44,25 +42,21 @@ object Day07NoSpaceLeftOnDevice {
             command.startsWith("ls") -> addNodesTo(command.split("\n").drop(1), context)
             else -> throw IllegalStateException("I dont know how to process this one [$command]")
         }
-    }
 
-    private fun addNodesTo(files: List<String>, context: Dir): Dir {
-        return when {
+    private fun addNodesTo(files: List<String>, context: Dir): Dir =
+        when {
             files.isEmpty() -> context
             else -> {
                 context.files = context.files + createNodeFrom(files.first(), context)
                 addNodesTo(files.drop(1), context)
             }
         }
-    }
 
-    private fun createNodeFrom(node: String, parent: Dir): Node {
-        return when {
+    private fun createNodeFrom(node: String, parent: Dir): Node =
+        when {
             node.startsWith("dir") -> Dir(parent, node.split(" ")[1], listOf())
             else -> File(parent, node.split(" ")[1], node.split(" ")[0].toLong())
         }
-    }
-
 }
 
 interface Node {
@@ -70,14 +64,21 @@ interface Node {
     fun name(): String
 }
 
-data class File(var parent: Node, var name: String, var size: Long) : Node {
+data class File(val parent: Node, val name: String, val size: Long) : Node {
     override fun parent() = parent
     override fun name() = name
 }
 
-data class Dir(var parent: Node, var name: String, var files: List<Node>) : Node {
+data class Dir(val parent: Node, val name: String, var files: List<Node>) : Node {
     override fun parent() = parent
     override fun name() = name
+    fun findRoot(): Dir {
+        return when {
+            parent is Dir -> parent.findRoot()
+            parent is NullNode -> this
+            else -> throw IllegalStateException("shit or bust")
+        }
+    }
 }
 
 class NullNode : Node {
