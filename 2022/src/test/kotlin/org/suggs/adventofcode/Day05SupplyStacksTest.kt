@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day05SupplyStacks.calculateStackTopsFrom
+import org.suggs.adventofcode.Util.getTextBlocksFrom
 
 @DisplayName("Pops things from one stack to another")
 class Day05SupplyStacksTest {
@@ -29,7 +30,7 @@ class Day05SupplyStacksTest {
     fun `calculates the top letters from stacks after shifting from larger data set`() =
         calculateStackTopsFrom(largeData, false) shouldBe "MCD"
 
-    private val largeData: List<String> = Util.getTextBlocksFrom("day05-input.txt")
+    private val largeData: List<String> = getTextBlocksFrom("day05-input.txt")
     private val unitData = """    [D]
 [N] [C]
 [Z] [M] [P]
