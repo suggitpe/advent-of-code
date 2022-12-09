@@ -8,7 +8,6 @@ import org.suggs.adventofcode.Day08TreetopTreeHouse.countAllVisibleTreesFrom
 class Day08TreetopTreeHouseTest {
 
     @Test
-    @Disabled
     fun `counts visible trees from small data`() {
         countAllVisibleTreesFrom(smallData) shouldBe 21
     }
@@ -16,7 +15,7 @@ class Day08TreetopTreeHouseTest {
     @Test
     @Disabled
     fun `counts visible trees from large data`() {
-        countAllVisibleTreesFrom(largeData) shouldBe 21
+        countAllVisibleTreesFrom(largeData) shouldBe 16234
     }
 
     private val largeData: List<List<Int>> = Util.getFileLinesFrom("day08-input.txt").map { it.toList().map { char -> char.code - 48 } }
