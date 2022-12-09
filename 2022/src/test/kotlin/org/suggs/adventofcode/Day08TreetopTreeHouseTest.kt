@@ -10,26 +10,22 @@ import org.suggs.adventofcode.Day08TreetopTreeHouse.countAllVisibleTreesFrom
 class Day08TreetopTreeHouseTest {
 
     @Test
-    fun `counts visible trees from small data`() {
+    fun `counts visible trees from small data`() =
         countAllVisibleTreesFrom(smallData) shouldBe 21
-    }
 
     @Test
     @Disabled
-    fun `counts visible trees from large data`() {
+    fun `counts visible trees from large data`() =
         countAllVisibleTreesFrom(largeData) shouldBe 1234
-    }
 
     @Test
-    fun `find highest scenic score from small data`() {
+    fun `find highest scenic score from small data`() =
         Day08TreetopTreeHouse.findHighestScenicScoreFrom(smallData) shouldBe 8
-    }
 
     @Test
     @Disabled
-    fun `find highest scenic score from larger data`() {
+    fun `find highest scenic score from larger data`() =
         Day08TreetopTreeHouse.findHighestScenicScoreFrom(largeData) shouldBe 1234
-    }
 
     private val largeData: List<List<Int>> = Util.getFileLinesFrom("day08-input.txt").map { it.toList().map { char -> char.code - 48 } }
     private val smallData: List<List<Int>> = """30373
