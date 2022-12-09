@@ -2,11 +2,13 @@ package org.suggs.adventofcode
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day07NoSpaceLeftOnDevice.findDirectoryThatFreesUpSpaceForUpdateFrom
 import org.suggs.adventofcode.Day07NoSpaceLeftOnDevice.sumDirectoriesOver100KFrom
 import org.suggs.adventofcode.Util.readFile
 
+@DisplayName("Calculates free space")
 class Day07NoSpaceLeftOnDeviceTest {
 
     @Test
