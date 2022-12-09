@@ -1,10 +1,6 @@
 package org.suggs.adventofcode
 
-import org.slf4j.LoggerFactory
-
 object Day07NoSpaceLeftOnDevice {
-
-    private val log = LoggerFactory.getLogger(this::class.java)
 
     fun sumDirectoriesOver100KFrom(commands: List<String>): Long =
         findAllDirectorySizes(buildTreeFrom(commands)).filter { it < 100000 }.sum()

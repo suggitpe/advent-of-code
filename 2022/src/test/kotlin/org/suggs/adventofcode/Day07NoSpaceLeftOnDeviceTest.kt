@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day07NoSpaceLeftOnDevice.findDirectoryThatFreesUpSpaceForUpdateFrom
 import org.suggs.adventofcode.Day07NoSpaceLeftOnDevice.sumDirectoriesOver100KFrom
+import org.suggs.adventofcode.Util.readFile
 
 class Day07NoSpaceLeftOnDeviceTest {
 
@@ -26,7 +27,7 @@ class Day07NoSpaceLeftOnDeviceTest {
     fun `find directory that frees up enough space for update from larger data`() =
         findDirectoryThatFreesUpSpaceForUpdateFrom(largeData) shouldBe 249L
 
-    private val largeData: List<String> = Util.readFile("day07-input.txt").readText().split("$ ").map { it.trim() }
+    private val largeData: List<String> = readFile("day07-input.txt").readText().split("$ ").map { it.trim() }
     private val smallData: List<String> = """${'$'} cd /
 ${'$'} ls
 dir a
