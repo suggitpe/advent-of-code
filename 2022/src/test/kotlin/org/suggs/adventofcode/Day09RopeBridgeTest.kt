@@ -10,13 +10,14 @@ import org.suggs.adventofcode.Util.getFileLinesFrom
 class Day09RopeBridgeTest {
 
     @Test
+    @Disabled
     fun `counts all the rop tail positions from a small set of instructions`() =
         Day09RopeBridge.countTailPositionsFrom(smallData) shouldBe 13
 
     @Test
     @Disabled
     fun `counts all the rop tail positions from a larger set of instructions`() =
-        Day09RopeBridge.countTailPositionsFrom(smallData) shouldBe 1234
+        Day09RopeBridge.countTailPositionsFrom(largeData) shouldBe 1234
 
 
     private val largeData = getFileLinesFrom("day09-input.txt")
@@ -27,5 +28,5 @@ D 1
 R 4
 D 1
 L 5
-R 2""".split(System.lineSeparator())
+R 2""".split("\n")
 }
