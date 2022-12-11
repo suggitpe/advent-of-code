@@ -11,8 +11,6 @@ import org.suggs.adventofcode.Util.getTextBlocksFrom
 @DisplayName("Monkey business with worrying of items")
 class Day11MonkeyInTheMiddleTest {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
-
     @Test
     fun `counts the number of times monkeys inspect things from a small data with a worry divisor`() =
         countMonkeyInspectionsFrom(smallData, 20) { it / 3 } shouldBe 10605

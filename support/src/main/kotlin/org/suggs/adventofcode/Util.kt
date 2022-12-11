@@ -5,7 +5,7 @@ import java.lang.System.lineSeparator
 
 object Util {
 
-    val doubleLineSeparator = listOf(lineSeparator(), lineSeparator()).joinToString("")
+    private val doubleLineSeparator = listOf(lineSeparator(), lineSeparator()).joinToString("")
 
     fun createIntListFrom(fileName: String) =
         getFileLinesFrom(fileName).map { it.toInt() }
