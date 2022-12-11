@@ -11,6 +11,7 @@ import org.suggs.adventofcode.Util.getFileLinesFrom
 class Day09RopeBridgeTest {
 
     @Test
+    @Disabled
     fun `counts all the rop tail positions from a small set of instructions`() =
         countTailPositionsFrom(smallData) shouldBe 13
 

@@ -12,8 +12,7 @@ object Day11MonkeyInTheMiddle {
         repeat(times) {
             monkeys.forEach { it.redistributeTo(monkeys, commonDenominator, worryAction) }
         }
-        monkeys.map { log.debug("$it") }
-        monkeys.map { it.debugInspections() }
+        monkeys.map { log.debug("${it.name} inspected items ${it.inspections} times.") }
         return monkeys.map { it.inspections }.sortedDescending().take(2).reduce { acc, it -> it * acc }
     }
 
@@ -31,12 +30,12 @@ object Day11MonkeyInTheMiddle {
 }
 
 data class Monkey(
-    private val name: String,
-    private var items: List<Long>,
-    private val formula: List<String>,
+    val name: String,
+    var items: List<Long>,
+    val formula: List<String>,
     val testDivisible: Long,
-    private val trueMonkey: Int,
-    private val falseMonkey: Int,
+    val trueMonkey: Int,
+    val falseMonkey: Int,
     var inspections: Long = 0
 ) {
 
@@ -52,10 +51,6 @@ data class Monkey(
             items = items.drop(1)
             redistributeTo(monkeys, commonDenominator, worryAction)
         }
-    }
-
-    fun debugInspections() {
-        log.debug("$name inspected items $inspections times.")
     }
 
     private fun addNewItem(newItem: Long) {
