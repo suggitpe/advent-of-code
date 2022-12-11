@@ -4,21 +4,20 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.suggs.adventofcode.Day09RopeBridge.countTailPositionsFrom
 import org.suggs.adventofcode.Util.getFileLinesFrom
 
 @DisplayName("Tracks location of rop tail over map")
 class Day09RopeBridgeTest {
 
     @Test
-    @Disabled
     fun `counts all the rop tail positions from a small set of instructions`() =
-        Day09RopeBridge.countTailPositionsFrom(smallData) shouldBe 13
+        countTailPositionsFrom(smallData) shouldBe 13
 
     @Test
     @Disabled
     fun `counts all the rop tail positions from a larger set of instructions`() =
-        Day09RopeBridge.countTailPositionsFrom(largeData) shouldBe 1234
-
+        countTailPositionsFrom(largeData) shouldBe 1234
 
     private val largeData = getFileLinesFrom("day09-input.txt")
     private val smallData = """R 4

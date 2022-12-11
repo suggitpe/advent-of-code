@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import org.suggs.adventofcode.Day10CathodeRayTube.countSignalStrengthFrom
 import org.suggs.adventofcode.Day10CathodeRayTube.drawCathodeRayImage
+import org.suggs.adventofcode.Util.getFileLinesFrom
 
 @DisplayName("Counting signal strength")
 class Day10CathodeRayTubeTest {
-    private val log = LoggerFactory.getLogger(this::class.java)
 
     @Test
     fun `counts signal strength from small data`() =
@@ -35,7 +35,7 @@ class Day10CathodeRayTubeTest {
     fun `draws out the cathode ray image for large data`() =
         drawCathodeRayImage(smallData) shouldBe """????"""
 
-    private val largeData = Util.getFileLinesFrom("day10-input.txt")
+    private val largeData = getFileLinesFrom("day10-input.txt")
     private val smallData = """addx 15
 addx -11
 addx 6
