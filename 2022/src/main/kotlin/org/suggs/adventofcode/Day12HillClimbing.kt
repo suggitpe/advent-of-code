@@ -9,11 +9,11 @@ object Day12HillClimbing {
     fun findShortestDepthFirstRouteToEnd(grid: List<List<Char>>): Int {
         val startEnd = findStartAndEndFrom(grid)
         log.debug("start=${startEnd.first} end=${startEnd.second}")
-        return countStepsToEndFrom(startEnd.first, grid, listOf(), 0).min()
+        return countStepsToEndFrom(startEnd.first, grid, setOf(), 0).min()
     }
 
-    private fun countStepsToEndFrom(start: CoOrdinate, grid: List<List<Char>>, visited: List<CoOrdinate>, stepCount: Int): List<Int> {
-        val neighbours = findHigherNeighboursFrom(start, grid).filterNot { visited.contains(it) }.sortedByDescending { it.x }
+    private fun countStepsToEndFrom(start: CoOrdinate, grid: List<List<Char>>, visited: Set<CoOrdinate>, stepCount: Int): List<Int> {
+        val neighbours = findHigherNeighboursFrom(start, grid, visited).sortedByDescending { it.x }
         val foo = mutableListOf<Int>()
         neighbours.forEach {
             foo.addAll(countStepsToEndFrom(it, grid, visited + start, stepCount + 1))
@@ -26,36 +26,32 @@ object Day12HillClimbing {
 
     // ======= BREADTH FIRST
     fun findShortestBreadthFirstRouteToEnd(grid: List<List<Char>>): Int {
-        val startEnd = findStartAndEndFrom(grid)
-        log.debug("start=${startEnd.first} end=${startEnd.second}")
-        return plotRoutesFor(listOf(CoOrdinateChain(listOf(startEnd.first))), grid, 0)
+        val startEnd = findStartAndEndFrom(grid).also { log.debug("start=${it.first} end=${it.second}") }
+        return plotRoutesFor(setOf(startEnd.first), setOf(), grid, 0)
     }
 
-    private fun plotRoutesFor(coOrdinateChains: List<CoOrdinateChain>, grid: List<List<Char>>, depth: Int): Int {
-        log.debug("Step $depth with ${coOrdinateChains.size} routes")
-        var nextIter = mutableListOf<CoOrdinateChain>()
-        coOrdinateChains.forEach {
-            val neighbours = findHigherNeighboursFrom(it.coords.last(), grid).filterNot { inner -> it.contains(inner) }
-            if (neighbours.contains(findInGrid('E', grid)))
-                return depth + 1
-            else {
-                neighbours.forEach { nei -> nextIter.add(CoOrdinateChain(it.coords).add(nei)) }
-            }
+    private fun plotRoutesFor(coordinates: Set<CoOrdinate>, visited: Set<CoOrdinate>, grid: List<List<Char>>, depth: Int): Int {
+        return when {
+            coordinates.isEmpty() -> throw IllegalStateException("No more routes found after step $depth")
+            coordinates.contains(findInGrid('E', grid)) -> depth
+            else ->
+                plotRoutesFor(coordinates.flatMap { findHigherNeighboursFrom(it, grid, visited) }.toSet(), visited union coordinates, grid, depth + 1)
         }
-        return plotRoutesFor(nextIter, grid, depth + 1)
     }
 
-    private fun findHigherNeighboursFrom(start: CoOrdinate, grid: List<List<Char>>): List<CoOrdinate> {
+    private fun findHigherNeighboursFrom(start: CoOrdinate, grid: List<List<Char>>, visited: Set<CoOrdinate>): Set<CoOrdinate> {
         return if (gridValue(start, grid).code == 'S'.code)
             start.allNeighbours()
         else
             start.allNeighbours()
                 .filter { it.x < grid[0].size && it.y < grid.size }
                 .filter { gridValue(it, grid) - gridValue(start, grid) in 0..1 || (gridValue(start, grid) == 'z' && gridValue(it, grid) == 'E') }
+                .filterNot { visited.contains(it) }
+                .toSet()
     }
 
-    private fun gridValue(coord: CoOrdinate, grid: List<List<Char>>) =
-        grid[coord.y][coord.x]
+    private fun gridValue(coordinate: CoOrdinate, grid: List<List<Char>>) =
+        grid[coordinate.y][coordinate.x]
 
     private fun findStartAndEndFrom(grid: List<List<Char>>): Pair<CoOrdinate, CoOrdinate> =
         findInGrid('S', grid) to findInGrid('E', grid)
@@ -65,20 +61,9 @@ object Day12HillClimbing {
         return CoOrdinate(grid[y].indexOf(char), y)
     }
 
-    data class CoOrdinateChain(var coords: List<CoOrdinate>) {
-        fun add(coord: CoOrdinate): CoOrdinateChain {
-            coords += coord
-            return this
-        }
-
-        fun contains(inner: CoOrdinate): Boolean {
-            return coords.contains(inner)
-        }
-    }
-
     data class CoOrdinate(val x: Int, val y: Int) {
-        fun allNeighbours(): List<CoOrdinate> {
-            return listOf(up(), left(), right(), down()).filterNot { it.x < 0 || it.y < 0 }
+        fun allNeighbours(): Set<CoOrdinate> {
+            return setOf(up(), left(), right(), down()).filterNot { it.x < 0 || it.y < 0 }.toSet()
         }
 
         private fun up() = CoOrdinate(x, y - 1)
