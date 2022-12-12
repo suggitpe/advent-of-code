@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day08TreetopTreeHouse.countAllVisibleTreesFrom
+import org.suggs.adventofcode.Util.getFileLinesFrom
 
 @DisplayName("Counts trees from a treetop location")
 class Day08TreetopTreeHouseTest {
@@ -27,7 +28,7 @@ class Day08TreetopTreeHouseTest {
     fun `find highest scenic score from larger data`() =
         Day08TreetopTreeHouse.findHighestScenicScoreFrom(largeData) shouldBe 1234
 
-    private val largeData: List<List<Int>> = Util.getFileLinesFrom("day08-input.txt").map { it.toList().map { char -> char.code - 48 } }
+    private val largeData: List<List<Int>> = getFileLinesFrom("day08-input.txt").map { it.toList().map { char -> char.code - 48 } }
     private val smallData: List<List<Int>> = """30373
 25512
 65332
