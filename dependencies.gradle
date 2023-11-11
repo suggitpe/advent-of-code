@@ -1,20 +1,20 @@
 ext {
 
-    kotlinVersion = '1.7.22'
-    kotestVersion = '5.5.4'
+    kotlinVersion = '1.9.20'
+    kotestVersion = '5.8.0'
 
     libs = [
 
             kotlin       : "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}",
             kotlinReflect: "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}",
 
-            slf4j        : 'org.slf4j:slf4j-api:2.0.4',
-            logback      : 'ch.qos.logback:logback-classic:1.4.5',
+            slf4j        : 'org.slf4j:slf4j-api:2.0.9',
+            logback      : 'ch.qos.logback:logback-classic:1.4.11',
 
             test         : [
-                    junitApi        : 'org.junit.jupiter:junit-jupiter-api:5.9.1',
-                    junitEngine     : 'org.junit.jupiter:junit-jupiter-engine:5.9.1',
-                    mockito         : 'org.mockito:mockito-core:4.9.0',
+                    junitApi        : 'org.junit.jupiter:junit-jupiter-api:5.10.1',
+                    junitEngine     : 'org.junit.jupiter:junit-jupiter-engine:5.10.1',
+                    mockito         : 'org.mockito:mockito-core:5.7.0',
                     kotestAssertions: "io.kotest:kotest-assertions-core:${kotestVersion}"
             ]
     ]
