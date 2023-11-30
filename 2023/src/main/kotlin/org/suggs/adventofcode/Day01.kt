@@ -1,4 +1,4 @@
 package org.suggs.adventofcode
 
-class Day01 {
+object Day01 {
 }
