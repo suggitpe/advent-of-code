@@ -7,7 +7,7 @@ object Day09RopeBridge {
     private val log = LoggerFactory.getLogger(this::class.java)
 
     fun countTailPositionsFrom(data: List<String>): Int {
-        val instructions = data.map { it.split(" ") }
+//        val instructions = data.map { it.split(" ") }
         data.forEach {
             log.debug("Processing $it yields ${newPositionAfter(it, Pair(0,0))}")
         }
