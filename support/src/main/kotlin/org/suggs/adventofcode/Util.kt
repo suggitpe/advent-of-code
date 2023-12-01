@@ -25,8 +25,11 @@ object Util {
     fun readFile(fileName: String) =
         File(ClassLoader.getSystemResource(fileName).file)
 
-    fun chunkFileIntoLinesOfThree(filename: String): List<List<String>> =
-        getFileLinesFrom(filename).chunked(3)
+    fun readFileAsString(fileName: String) =
+        readFile(fileName).bufferedReader().readText()
+
+    fun chunkFileIntoLinesOfThree(filename: String, chunkSize: Int = 3): List<List<String>> =
+        getFileLinesFrom(filename).chunked(chunkSize)
 
     fun applyToEachLineForTotal(filename: String, action: (String) -> Int): Int {
         var total = 0
