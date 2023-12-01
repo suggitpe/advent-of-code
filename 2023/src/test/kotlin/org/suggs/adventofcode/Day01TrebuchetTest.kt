@@ -22,9 +22,13 @@ class Day01TrebuchetTest {
     }
 
     @Test
-    @Disabled
     fun `calculates calibration values from digits and strings (small data)`() {
         calculateTotalCalibrationValuesFromDigitsAndStringsIn(otherSmallData) shouldBe 281
+    }
+
+    @Test
+    fun `calculates calibration values from digits and strings (large data)`() {
+        calculateTotalCalibrationValuesFromDigitsAndStringsIn(largeData) shouldBe 123
     }
 
 
