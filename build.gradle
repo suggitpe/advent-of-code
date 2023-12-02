@@ -1,7 +1,6 @@
 buildscript {
     apply from: "$rootDir/dependencies.gradle"
     repositories {
-        clear()
         mavenCentral()
     }
     dependencies {
@@ -9,11 +8,11 @@ buildscript {
     }
 }
 
-allprojects{
+allprojects {
     defaultTasks 'clean', 'build', 'jacocoTestReport'
 }
 
-subprojects{
+subprojects {
 
     apply from: "$rootDir/dependencies.gradle"
     apply plugin: 'kotlin'
@@ -22,7 +21,6 @@ subprojects{
     group = 'org.suggs.aoc'
 
     repositories {
-        clear()
         mavenCentral()
     }
 
@@ -40,24 +38,11 @@ subprojects{
     }
 
     ext {
-        sourceCompatibility = 17
-        targetCompatibility = 17
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     test {
         useJUnitPlatform()
-    }
-
-    compileKotlin {
-        kotlinOptions {
-            freeCompilerArgs = ["-Xjsr305=strict"]
-            jvmTarget = "17"
-        }
-    }
-    compileTestKotlin {
-        kotlinOptions {
-            freeCompilerArgs = ["-Xjsr305=strict"]
-            jvmTarget = "17"
-        }
     }
 }
