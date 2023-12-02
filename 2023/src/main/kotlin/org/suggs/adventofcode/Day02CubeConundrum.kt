@@ -6,15 +6,9 @@ object Day02CubeConundrum {
     private val log = LoggerFactory.getLogger(this::class.java)
 
     fun sumIdsOfValidGamesFrom(gamesData: List<String>) =
-        buildGamesFrom(gamesData, listOf())
+        gamesData.fold(listOf<Game>()) { listOfGames, gameString -> listOfGames + Game(gameString) }
             .filter { it.sets.none { set -> set.blue > 14 || set.red > 12 || set.green > 13 } }
             .sumOf { it.id }
-
-    private fun buildGamesFrom(gamesData: List<String>, games: List<Game>): List<Game> {
-        return if (gamesData.isEmpty()) games
-        else buildGamesFrom(gamesData.drop(1), games + Game(gamesData.first()))
-    }
-
 }
 
 data class Game(val id: Int, val sets: List<GameSet>) {
