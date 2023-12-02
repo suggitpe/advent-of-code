@@ -28,13 +28,6 @@ subprojects {
         implementation libs.kotlin,
                 libs.kotlinReflect,
                 libs.slf4j
-
-        testImplementation libs.test.junitApi,
-                libs.test.kotestAssertions,
-                libs.test.mockito
-
-        testRuntimeOnly libs.test.junitEngine,
-                libs.logback
     }
 
     ext {
@@ -42,7 +35,18 @@ subprojects {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    test {
-        useJUnitPlatform()
+    testing {
+        suites {
+            test {
+                useJUnitJupiter(junitVersion)
+                dependencies {
+                    implementation libs.test.junitApi
+                    implementation libs.test.mockito
+                    implementation libs.test.kotestAssertions
+                    runtimeOnly libs.test.junitEngine
+                    runtimeOnly libs.logback
+                }
+            }
+        }
     }
 }
