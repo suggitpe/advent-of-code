@@ -16,13 +16,8 @@ data class Game(val id: Int, val sets: List<GameSet>) {
         operator fun invoke(gameData: String): Game {
             return Game(
                 gameData.split(":").first().split(" ").last().toInt(),
-                createGameSetsFrom(gameData.split(":").last().split(";"), listOf())
+                gameData.split(":").last().split(";").fold(listOf<GameSet>()) { listOfSets, setString -> listOfSets + GameSet(setString) }
             )
-        }
-
-        private fun createGameSetsFrom(setData: List<String>, gameSets: List<GameSet>): List<GameSet> {
-            return if (setData.isEmpty()) gameSets
-            else createGameSetsFrom(setData.drop(1), gameSets + GameSet(setData.first()))
         }
     }
 }

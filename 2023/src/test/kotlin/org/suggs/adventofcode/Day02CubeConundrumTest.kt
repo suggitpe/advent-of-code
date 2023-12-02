@@ -2,10 +2,12 @@ package org.suggs.adventofcode
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day02CubeConundrum.sumIdsOfValidGamesFrom
 import org.suggs.adventofcode.Util.getFileLinesFrom
 
+@DisplayName("Cube Conundrum")
 class Day02CubeConundrumTest {
 
     @Test
