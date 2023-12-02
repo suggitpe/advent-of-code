@@ -4,6 +4,7 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.suggs.adventofcode.Day02CubeConundrum.addUpPowerOfAllGames
 import org.suggs.adventofcode.Day02CubeConundrum.sumIdsOfValidGamesFrom
 import org.suggs.adventofcode.Util.getFileLinesFrom
 
@@ -19,6 +20,17 @@ class Day02CubeConundrumTest {
     @Disabled
     fun `sums the game ids of valid games using a large data set`() {
         sumIdsOfValidGamesFrom(largeData) shouldBe 123
+    }
+
+    @Test
+    fun `adds power of all games from a small data set`() {
+        addUpPowerOfAllGames(smallData) shouldBe 2286
+    }
+
+    @Test
+    @Disabled
+    fun `adds power of all games from a large data set`() {
+        addUpPowerOfAllGames(largeData) shouldBe 2286
     }
 
     private val largeData = getFileLinesFrom("day02-input.txt")
