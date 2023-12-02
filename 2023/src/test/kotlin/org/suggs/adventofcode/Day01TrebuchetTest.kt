@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day01Trebuchet.calculateTotalCalibrationValuesFromDigitsAndStringsIn
 import org.suggs.adventofcode.Day01Trebuchet.calculateTotalCalibrationValuesFromDigitsIn
+import org.suggs.adventofcode.Util.getFileLinesFrom
 
 @DisplayName("Trebuchet?!")
 class Day01TrebuchetTest {
@@ -33,7 +34,7 @@ class Day01TrebuchetTest {
     }
 
 
-    private val largeData = Util.getFileLinesFrom("day01-input.txt")
+    private val largeData = getFileLinesFrom("day01-input.txt")
 
     private val smallData = """1abc2
 pqr3stu8vwx

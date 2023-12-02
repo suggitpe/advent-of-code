@@ -1,14 +1,11 @@
 package org.suggs.adventofcode
 
-import org.slf4j.LoggerFactory
-
 object Day01Trebuchet {
 
     private val TRIM_DIGIT_REGEX = "[^\\d.]".toRegex()
     private const val NUM_REGEX = "one|two|three|four|five|six|seven|eight|nine"
     private val FIND_FWD = ("[1-9]|$NUM_REGEX").toRegex()
     private val FIND_BKWD = ("[1-9]|${NUM_REGEX.reversed()}").toRegex()
-    private val log = LoggerFactory.getLogger(this::class.java)
 
     fun calculateTotalCalibrationValuesFromDigitsIn(dirtyCalibrationData: List<String>) =
         dirtyCalibrationData.map { it.replace(TRIM_DIGIT_REGEX, "") }.map { "${it.first()}${it.last()}" }.sumOf { it.toInt() }
