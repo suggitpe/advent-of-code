@@ -41,8 +41,8 @@ subprojects {
                 useJUnitJupiter(junitVersion)
                 dependencies {
                     implementation libs.test.junitApi
-                    implementation libs.test.mockito
                     implementation libs.test.kotestAssertions
+                    implementation libs.test.mockito
                     runtimeOnly libs.test.junitEngine
                     runtimeOnly libs.logback
                 }
