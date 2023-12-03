@@ -6,73 +6,118 @@ object Day03GearRatios {
     private val log = LoggerFactory.getLogger(this::class.java)
 
     fun sumAllNumbersWithAdjacentSymbolsFrom(data: String) =
-        sumNumbersWithAdjacentSymbols(createGridFromString(data), Coordinate(0, 0))
+        sumNumbersWithAdjacentSymbols(Grid(data), Coordinate(0, 0))
 
-    private fun sumNumbersWithAdjacentSymbols(grid: Array<CharArray>, coordinate: Coordinate): Int {
-        if (endOfGrid(grid, coordinate)) {
+    private fun sumNumbersWithAdjacentSymbols(grid: Grid, coordinate: Coordinate): Int {
+
+        if (grid.isEndOfGrid(coordinate)) {
             return 0
-        } else if (endOfRow(grid, coordinate)) {
+        } else if (grid.isEndOfRow(coordinate)) {
             return sumNumbersWithAdjacentSymbols(grid, Coordinate(0, coordinate.y + 1))
         }
 
-        return if (!grid[coordinate.y][coordinate.x].isDigit()) {
+        return if (grid.isNotDigit(coordinate)) {
             sumNumbersWithAdjacentSymbols(grid, coordinate.toTheRight())
         } else {
-            val numberLen = getLengthOfNumberFrom(grid, coordinate, 1)
-            sumNumbersWithAdjacentSymbols(grid, Coordinate(coordinate.x + numberLen, coordinate.y)) +
-                    calculateValidPartNumber(grid, coordinate, numberLen)
+            sumNumbersWithAdjacentSymbols(grid, Coordinate(coordinate.x + grid.getLengthOfNumberFrom(coordinate), coordinate.y)) +
+                    calculateValidPartNumber(grid, coordinate)
         }
     }
 
-    private fun calculateValidPartNumber(grid: Array<CharArray>, coordinate: Coordinate, length: Int): Int {
-        return if (symbolAdjacentTo(coordinate, grid, length))
-            createNumberFromArrayCharsAt(grid, coordinate, length).toInt()
+    private fun calculateValidPartNumber(grid: Grid, coordinate: Coordinate): Int {
+        return if (grid.isNumberAdjacentToSymbolAt(coordinate))
+            grid.getNumberAt(coordinate)
         else
             0
     }
-
-    private fun symbolAdjacentTo(coordinate: Coordinate, grid: Array<CharArray>, length: Int): Boolean {
-        return true
-    }
-
-    private fun isSymbol(coordinate: Coordinate, grid: Array<CharArray>): Boolean{
-        return !(grid[coordinate.y][coordinate.x].isDigit() || grid[coordinate.y][coordinate.x] == '.')
-    }
-
-    private fun createNumberFromArrayCharsAt(grid: Array<CharArray>, coordinate: Coordinate, numberLen: Int): String {
-        return if (numberLen == 1)
-            grid[coordinate.y][coordinate.x].toString()
-        else
-            grid[coordinate.y][coordinate.x].toString() + createNumberFromArrayCharsAt(grid, coordinate.toTheRight(), numberLen - 1)
-    }
-
-    private fun getLengthOfNumberFrom(grid: Array<CharArray>, coordinate: Coordinate, accumulator: Int): Int {
-        return if (endOfRow(grid, coordinate.toTheRight()) || !grid[coordinate.y][coordinate.x + 1].isDigit())
-            accumulator
-        else
-            getLengthOfNumberFrom(grid, coordinate.toTheRight(), accumulator + 1)
-    }
-
-    private fun endOfRow(grid: Array<CharArray>, coordinate: Coordinate) =
-        coordinate.x >= grid[coordinate.y].size
-
-    private fun endOfGrid(grid: Array<CharArray>, coordinate: Coordinate) =
-        coordinate.y >= grid.size
-
-    private fun createGridFromString(data: String) =
-        data.split("\n").map { it.toCharArray() }.toTypedArray()
-
 }
 
 data class Coordinate(val x: Int, val y: Int) {
-    fun toTheRight() = Coordinate(x + 1, y)
+
+    fun toTheLeft(by: Int = 1) = Coordinate(x - by, y)
+    fun toTheRight(by: Int = 1) = Coordinate(x + by, y)
+    fun above() = Coordinate(x, y - 1)
+    fun below() = Coordinate(x, y + 1)
+    fun buildCoordinatesAround(coordinate: Coordinate, length: Int): List<Coordinate> {
+        return listOf(coordinate.toTheLeft(), coordinate.toTheLeft().above(), coordinate.toTheLeft().below()) +
+                listOf(coordinate.toTheRight(length), coordinate.toTheRight(length).above(), coordinate.toTheRight(length).below()) +
+                buildListCoordinatesFrom(coordinate.above(), length) +
+                buildListCoordinatesFrom(coordinate.below(), length)
+    }
+
+    fun buildListCoordinatesFrom(coordinate: Coordinate, length: Int = 1): List<Coordinate> {
+        return if (length == 1)
+            listOf(coordinate)
+        else
+            listOf(coordinate) + buildListCoordinatesFrom(coordinate.toTheRight(), length -1)
+    }
+
+    override fun toString(): String {
+        return "$x/$y"
+    }
 }
 
-data class Grid(val grid: Array<CharArray>){
+data class Grid(val grid: Array<CharArray>) {
     companion object {
         operator fun invoke(gridData: String): Grid {
             return Grid(gridData.split("\n").map { it.toCharArray() }.toTypedArray())
         }
     }
+
+    fun isNumberAdjacentToSymbolAt(coordinate: Coordinate): Boolean {
+        return buildCoordinatesToTestFromNumberAt(coordinate).any { isOnGrid(it) && isSymbol(it) }
+    }
+
+    private fun buildCoordinatesToTestFromNumberAt(coordinate: Coordinate) =
+        coordinate.buildCoordinatesAround(coordinate, getLengthOfNumberFrom(coordinate))
+
+    fun getNumberAt(coordinate: Coordinate): Int {
+        fun getNumberAt(coordinate: Coordinate, length: Int): String {
+            return if (length == 1)
+                get(coordinate).toString()
+            else
+                get(coordinate).toString() + getNumberAt(coordinate.toTheRight(), length - 1)
+        }
+        return getNumberAt(coordinate, getLengthOfNumberFrom(coordinate)).toInt()
+    }
+
+    fun getLengthOfNumberFrom(coordinate: Coordinate): Int {
+        fun getLengthOfNumberFrom(coordinate: Coordinate, accumulator: Int): Int {
+            return if (isEndOfRow(coordinate.toTheRight()) || isNotDigit(coordinate.toTheRight()))
+                accumulator
+            else
+                getLengthOfNumberFrom(coordinate.toTheRight(), accumulator + 1)
+        }
+        return getLengthOfNumberFrom(coordinate, 1)
+    }
+
+    fun get(coordinate: Coordinate) =
+        grid[coordinate.y][coordinate.x]
+
+    fun isOnGrid(coordinate: Coordinate): Boolean {
+        return coordinate.x >= 0 &&
+                coordinate.y >= 0 &&
+                coordinate.x < grid[0].size &&
+                coordinate.y < grid.size
+    }
+
+    fun isEndOfGrid(coordinate: Coordinate) =
+        coordinate.y >= grid.size
+
+    fun isEndOfRow(coordinate: Coordinate) =
+        coordinate.x >= grid[coordinate.y].size
+
+    fun isDigit(coordinate: Coordinate) =
+        grid[coordinate.y][coordinate.x].isDigit()
+
+    fun isNotDigit(coordinate: Coordinate) =
+        !isDigit(coordinate)
+
+    fun isNotSymbol(coordinate: Coordinate) =
+        isDigit(coordinate) || get(coordinate) == '.'
+
+    fun isSymbol(coordinate: Coordinate) =
+        isNotDigit(coordinate) && get(coordinate) != '.'
+
 
 }
