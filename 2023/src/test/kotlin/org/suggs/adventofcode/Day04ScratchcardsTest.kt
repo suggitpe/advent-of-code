@@ -4,7 +4,8 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.suggs.adventofcode.Day04Scratchcards.sumFibonacciScoreForEachCardFrom
+import org.suggs.adventofcode.Day04Scratchcards.addTotalWinningCardsFrom
+import org.suggs.adventofcode.Day04Scratchcards.sumPowerUpScoreForEachCardFrom
 import org.suggs.adventofcode.Util.getFileLinesFrom
 
 @DisplayName("Scratchcards")
@@ -12,13 +13,24 @@ class Day04ScratchcardsTest {
 
     @Test
     fun `adds up fibonacci score for each card from small data`() {
-        sumFibonacciScoreForEachCardFrom(smallData) shouldBe 13
+        sumPowerUpScoreForEachCardFrom(smallData) shouldBe 13
     }
 
     @Test
     @Disabled
     fun `adds up fibonacci score for each card from large data`() {
-        sumFibonacciScoreForEachCardFrom(largeData) shouldBe 123
+        sumPowerUpScoreForEachCardFrom(largeData) shouldBe 123
+    }
+
+    @Test
+    fun `adds up total cards based on wins for small data`() {
+        addTotalWinningCardsFrom(smallData) shouldBe 30
+    }
+
+    @Test
+    @Disabled
+    fun `adds up total cards based on wins for large data`() {
+        addTotalWinningCardsFrom(largeData) shouldBe 123
     }
 
     private val largeData = getFileLinesFrom("day04-input.txt")
