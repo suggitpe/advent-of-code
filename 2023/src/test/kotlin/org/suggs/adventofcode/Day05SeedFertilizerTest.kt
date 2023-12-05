@@ -4,9 +4,8 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.suggs.adventofcode.Day05SeedFertilizer.RangePair
-import org.suggs.adventofcode.Day05SeedFertilizer.RangePairSet
 import org.suggs.adventofcode.Day05SeedFertilizer.calculateLowestLocationNumber
+import org.suggs.adventofcode.Day05SeedFertilizer.calculateLowestLocationNumberFromRange
 import org.suggs.adventofcode.Util.getTextBlocksFrom
 
 @DisplayName("Seed Fertilizer")
@@ -31,6 +30,17 @@ class Day05SeedFertilizerTest {
                 RangePair(50L..97L, 52L..99L)
             )
         )
+    }
+
+    @Test
+    fun `calculates lowest location from range of seeds with small data`() {
+        calculateLowestLocationNumberFromRange(smallData) shouldBe 46
+    }
+
+    @Test
+    @Disabled
+    fun `calculates lowest location from range of seeds with large data`() {
+        calculateLowestLocationNumberFromRange(largeData) shouldBe 123
     }
 
     @Test
