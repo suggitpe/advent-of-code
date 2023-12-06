@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day06WaitForIt.calculateMultipliedNumberOfWaysToWinRace
 import org.suggs.adventofcode.Day06WaitForIt.calculateWinningRacesFromJoinedUpTimeDistance
+import org.suggs.adventofcode.Util.getFileLinesFrom
 
 @DisplayName("Wait for it")
 class Day06WaitForItTest {
@@ -32,7 +33,7 @@ class Day06WaitForItTest {
         calculateWinningRacesFromJoinedUpTimeDistance(largeData) shouldBe 123
     }
 
-    private val largeData = Util.getFileLinesFrom("day06-input.txt")
+    private val largeData = getFileLinesFrom("day06-input.txt")
     private val smallData = """Time:      7  15   30
 Distance:  9  40  200""".split("\n")
 
