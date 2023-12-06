@@ -11,19 +11,22 @@ object Day06WaitForIt {
     fun calculateWinningRacesFromJoinedUpTimeDistance(data: List<String>) =
         createSingleUberRaceFrom(data).racesBeyondDistance()
 
-    private fun createBoatRacesFrom(data: List<String>) =
-        zipListsFrom(data.map { it.split(":").last() }
-            .map { it.trim() }.map {
-                it.split("\\s+".toRegex())
-                    .map { foo -> foo.toLong() }
-            }).map { BoatRace(it) }
+    private fun createBoatRacesFrom(data: List<String>): List<BoatRace> {
+        fun zipListsFrom(map: List<List<Long>>) = map.first().zip(map.last())
 
-    private fun zipListsFrom(map: List<List<Long>>) = map.first().zip(map.last())
-
-    private fun createSingleUberRaceFrom(data: List<String>): BoatRace {
-        val race = data.map { it.split(":").last() }.map { it.trim() }.map { it.filterNot { foo -> foo.isWhitespace() }.toLong() }
-        return BoatRace(race.first(), race.last())
+        return zipListsFrom(data.map { it.split(":").last() }.map { it.trim() }.map {
+            it.split("\\s+".toRegex()).map { foo -> foo.toLong() }
+        }).map { BoatRace(it) }
     }
+
+    private fun createSingleUberRaceFrom(data: List<String>) =
+        BoatRace(
+            data.asSequence()
+                .map { it.split(":").last() }
+                .map { it.trim() }
+                .map { it.filterNot { foo -> foo.isWhitespace() }.toLong() }
+                .zipWithNext().first()
+        )
 
     data class BoatRace(val time: Long, val distance: Long) {
         companion object {
