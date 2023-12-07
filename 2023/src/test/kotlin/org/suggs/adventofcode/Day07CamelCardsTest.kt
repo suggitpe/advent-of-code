@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Day07CamelCards.calculateCamelCardsValueFrom
+import org.suggs.adventofcode.Day07CamelCards.calculateCamelCardsWithJokersValueFrom
 import org.suggs.adventofcode.Util.getFileLinesFrom
 
 @DisplayName("Camel Cards")
@@ -19,6 +20,17 @@ class Day07CamelCardsTest {
     @Disabled
     fun `part 1 - camel cards calculation from large data set`() {
         calculateCamelCardsValueFrom(largeData) shouldBe 123
+    }
+
+    @Test
+    fun `part 2 - camel cards calculation with jokers from small data set`() {
+        calculateCamelCardsWithJokersValueFrom(smallData) shouldBe 5905
+    }
+
+    @Test
+    @Disabled
+    fun `part 2 - camel cards calculation with jokers from large data set`() {
+        calculateCamelCardsWithJokersValueFrom(largeData) shouldBe 123
     }
 
     private val largeData = getFileLinesFrom("day07-input.txt")
