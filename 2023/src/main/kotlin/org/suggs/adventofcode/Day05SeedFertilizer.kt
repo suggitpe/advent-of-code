@@ -4,13 +4,13 @@ import org.slf4j.LoggerFactory
 import kotlin.time.measureTime
 
 object Day05SeedFertilizer {
-
     private val log = LoggerFactory.getLogger(this::class.java)
 
     fun calculateLowestLocationNumber(data: List<String>): Long {
         val seeds = extractSeedsFrom(data)
         val ranges = extractDataRangesFrom(data)
         return seeds.minOf { calculateLocationValueFor(it, ranges) }
+            .also { log.debug("Part 1: $it") }
     }
 
     fun calculateLowestLocationNumberFromRange(data: List<String>): Long {
@@ -18,7 +18,6 @@ object Day05SeedFertilizer {
         val ranges = extractDataRangesFrom(data)
         var min = Long.MAX_VALUE
         seeds.forEachIndexed {idx, it ->
-            log.debug("Checking range $idx")
             val timeTaken = measureTime {
                 it.forEach { seedNum ->
                     min = minOf(calculateLocationValueFor(seedNum, ranges), min)
@@ -27,6 +26,7 @@ object Day05SeedFertilizer {
             log.debug("Last range took $timeTaken min value $min")
         }
         return min
+            .also { log.debug("Part 2: $it") }
     }
 
     private fun extractSeedRangesFrom(data: List<String>) =

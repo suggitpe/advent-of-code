@@ -3,14 +3,15 @@ package org.suggs.adventofcode
 import org.slf4j.LoggerFactory
 
 object Day04Scratchcards {
-
     private val log = LoggerFactory.getLogger(this::class.java)
-
-    fun sumPowerUpScoreForEachCardFrom(smallData: List<String>) =
-        smallData.fold(0) { sum, elem -> sum + addScoreForCard(elem) }
 
     fun addTotalWinningCardsFrom(smallData: List<String>) =
         calculateNumberOfWinningCardsFrom(smallData.mapIndexed { i, str -> Wins(i, intersectCountFrom(str), 1) })
+            .also { log.debug("Part 1: $it") }
+
+    fun sumPowerUpScoreForEachCardFrom(smallData: List<String>) =
+        smallData.fold(0) { sum, elem -> sum + addScoreForCard(elem) }
+            .also { log.debug("Part 2: $it") }
 
     private fun calculateNumberOfWinningCardsFrom(wins: List<Wins>): Int {
         wins.forEach { win -> incrementNextWins(wins, win.idx, win.wins, win.cardCount) }

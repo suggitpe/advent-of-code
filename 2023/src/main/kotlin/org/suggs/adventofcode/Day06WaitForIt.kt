@@ -7,9 +7,11 @@ object Day06WaitForIt {
 
     fun calculateMultipliedNumberOfWaysToWinRace(data: List<String>) =
         createBoatRacesFrom(data).map { it.racesBeyondDistance() }.reduce(Long::times)
+            .also { log.debug("Part 1: $it") }
 
     fun calculateWinningRacesFromJoinedUpTimeDistance(data: List<String>) =
         createSingleUberRaceFrom(data).racesBeyondDistance()
+            .also { log.debug("Part 2: $it") }
 
     private fun createBoatRacesFrom(data: List<String>): List<BoatRace> {
         fun zipListsFrom(map: List<List<Long>>) = map.first().zip(map.last())
@@ -36,7 +38,7 @@ object Day06WaitForIt {
         }
 
         fun racesBeyondDistance(): Long {
-            log.debug("testing for $time, $distance")
+//            log.debug("testing for $time, $distance")
             return (1L.rangeTo(time)).map { calculateDistance(it) }.count { it > distance }.toLong()
         }
 

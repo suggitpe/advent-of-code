@@ -24,9 +24,8 @@ class Day03GearRatiosTest {
 
     @Test
     fun `adds up all the gear ratios from the small data set`() {
-        Day03GearRatios.sumAllGearRatios(smallData) shouldBe 467835L
+        sumAllGearRatios(smallData) shouldBe 467835L
     }
-
 
     @Test
     @Disabled

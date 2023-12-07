@@ -3,7 +3,6 @@ package org.suggs.adventofcode
 import org.slf4j.LoggerFactory
 
 object Day07CamelCards {
-
     private val log = LoggerFactory.getLogger(this::class.java)
 
     private val typeValues = Type.entries.reversed().mapIndexed { idx, type -> Pair(type, idx) }.toMap()
@@ -14,12 +13,14 @@ object Day07CamelCards {
         data.asSequence().map { it.split(" ") }
             .map { (cards, bid) -> HandOfCards(cards, bid.toInt()) }
             .sorted().mapIndexed { idx, elem -> (idx + 1) * elem.bidAmount }.sum()
+            .also { log.debug("Part 1: $it") }
 
-    fun calculateCamelCardsWithJokersValueFrom(data: List<String>): Int {
-        return data.asSequence().map { it.split(" ") }
+    fun calculateCamelCardsWithJokersValueFrom(data: List<String>) =
+        data.asSequence().map { it.split(" ") }
             .map { (cards, bid) -> HandOfCards(cards, bid.toInt(), true) }
             .sorted().mapIndexed { idx, elem -> (idx + 1) * elem.bidAmount }.sum()
-    }
+            .also { log.debug("Part 2: $it") }
+
 
     data class HandOfCards(val cards: List<Char>, val bidAmount: Int, val handType: Type, val jokersAllowed: Boolean = false) : Comparable<HandOfCards> {
         companion object {
@@ -70,8 +71,8 @@ object Day07CamelCards {
             fun recurseCardValues(other: HandOfCards, index: Int): Int {
                 if (index == 0) return 0
                 return when {
-                    values[cards.get(cards.size - index)]!! > values[other.cards.get(cards.size - index)]!! -> 1
-                    values[cards.get(cards.size - index)]!! < values[other.cards.get(cards.size - index)]!! -> -1
+                    values[cards[cards.size - index]]!! > values[other.cards.get(cards.size - index)]!! -> 1
+                    values[cards[cards.size - index]]!! < values[other.cards.get(cards.size - index)]!! -> -1
                     else -> recurseCardValues(other, index - 1)
                 }
             }

@@ -1,15 +1,21 @@
 package org.suggs.adventofcode
 
+import org.slf4j.LoggerFactory
+
 object Day02CubeConundrum {
+    private val log = LoggerFactory.getLogger(this::class.java)
 
     fun sumIdsOfValidGamesFrom(gamesData: List<String>) =
         gamesData.fold(listOf<Game>()) { listOfGames, gameString -> listOfGames + Game(gameString) }
             .filter { it.sets.none { set -> set.blue > 14 || set.red > 12 || set.green > 13 } }
             .sumOf { it.id }
+            .also { log.debug("Part 1: $it") }
+
 
     fun addUpPowerOfAllGames(gamesData: List<String>) =
         gamesData.fold(listOf<Game>()) { listOfGames, gameString -> listOfGames + Game(gameString) }
             .sumOf { it.minCubeCount().powerRating() }
+            .also { log.debug("Part 2: $it") }
 
 }
 

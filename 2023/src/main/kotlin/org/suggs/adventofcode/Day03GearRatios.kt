@@ -7,6 +7,7 @@ object Day03GearRatios {
 
     fun sumAllNumbersWithAdjacentSymbolsFrom(data: String) =
         sumNumbersWithAdjacentSymbols(Grid(data), Coordinate(0, 0), 0)
+            .also { log.debug("Part 1: $it") }
 
     private fun sumNumbersWithAdjacentSymbols(grid: Grid, coordinate: Coordinate, accumulator: Int = 0): Int {
         return if (grid.isEndOfGrid(coordinate)) accumulator
@@ -30,6 +31,7 @@ object Day03GearRatios {
         val coordinates = findAllNumbersWithGearSymbolFrom(Grid(data), Coordinate(0, 0), listOf<GearLocation>()).filter { it.gearCoordinates.size > 0 }
         val foo = coordinates.groupBy { it.gearCoordinates }.map { it.value }.filter { it.size > 1 }
         return foo.sumOf { it.map { oth -> oth.number }.reduce { acc, i -> acc * i } }.toLong()
+            .also { log.debug("Part 2: $it") }
     }
 
     private fun findAllNumbersWithGearSymbolFrom(grid: Grid, coordinate: Coordinate, accumulator: List<GearLocation>): List<GearLocation> {
