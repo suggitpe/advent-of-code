@@ -17,7 +17,7 @@ object Day05SeedFertilizer {
         val seeds = extractSeedRangesFrom(data)
         val ranges = extractDataRangesFrom(data)
         var min = Long.MAX_VALUE
-        seeds.forEachIndexed {idx, it ->
+        seeds.forEach { it ->
             val timeTaken = measureTime {
                 it.forEach { seedNum ->
                     min = minOf(calculateLocationValueFor(seedNum, ranges), min)

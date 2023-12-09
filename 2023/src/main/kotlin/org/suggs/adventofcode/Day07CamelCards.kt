@@ -9,13 +9,13 @@ object Day07CamelCards {
     private val cardValues = "AKQJT98765432".reversed().mapIndexed { idx, card -> Pair(card, idx) }.toMap()
     private val jokerCardValues = "AKQT98765432J".reversed().mapIndexed { idx, card -> Pair(card, idx) }.toMap()
 
-    fun calculateCamelCardsValueFrom(data: List<String>) =
+    fun calculateCamelCardsValueFrom(data: List<String>): Int =
         data.asSequence().map { it.split(" ") }
             .map { (cards, bid) -> HandOfCards(cards, bid.toInt()) }
             .sorted().mapIndexed { idx, elem -> (idx + 1) * elem.bidAmount }.sum()
             .also { log.debug("Part 1: $it") }
 
-    fun calculateCamelCardsWithJokersValueFrom(data: List<String>) =
+    fun calculateCamelCardsWithJokersValueFrom(data: List<String>): Int =
         data.asSequence().map { it.split(" ") }
             .map { (cards, bid) -> HandOfCards(cards, bid.toInt(), true) }
             .sorted().mapIndexed { idx, elem -> (idx + 1) * elem.bidAmount }.sum()
@@ -33,8 +33,8 @@ object Day07CamelCards {
                 else handTypeNoJokersFor(cardCounts)
             }
 
-            private fun handTypeNoJokersFor(cardCounts: Map<Char, Int>): Type {
-                return when {
+            private fun handTypeNoJokersFor(cardCounts: Map<Char, Int>): Type =
+                when {
                     5 in cardCounts.values && cardCounts.size == 1 -> Type.FIVE
                     4 in cardCounts.values && cardCounts.size == 2 -> Type.FOUR
                     3 in cardCounts.values && cardCounts.size == 2 -> Type.FULL
@@ -44,7 +44,6 @@ object Day07CamelCards {
                     cardCounts.size == 5 -> Type.HIGH_CARD
                     else -> throw IllegalStateException("No idea what this type of card type this is: $cardCounts")
                 }
-            }
 
             private fun handTypeWithJokersFor(cardCounts: Map<Char, Int>): Type {
                 // manipulate the cards
