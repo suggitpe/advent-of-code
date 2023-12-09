@@ -18,7 +18,7 @@ class Day09MirageMadnessTest {
     @Test
     @Disabled
     fun `sum the next sequence number from large data`() {
-        sumIncrementsFrom(largeData) shouldBe 123 // 2075724809
+        sumIncrementsFrom(largeData) shouldBe 123
     }
 
     private val largeData = getFileLinesFrom("day09-input.txt")
