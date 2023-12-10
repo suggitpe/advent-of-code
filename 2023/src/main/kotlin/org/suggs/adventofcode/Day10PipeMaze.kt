@@ -12,18 +12,40 @@ object Day10PipeMaze {
     fun lengthOfMaze(gridData: String): Int {
         this.grid = Grid(gridData)
         this.start = grid.findStart()
-        log.debug("starting from {}", start)
-        return moveForwardFrom(start, listOf())
+        return mapMazeLoopFrom(start, listOf()).size
             .also { log.debug("Part 1: ${it / 2}") }
     }
 
-    private tailrec fun moveForwardFrom(point: Coordinate, pointsBeen: List<Coordinate>): Int =
-        if (point == start && pointsBeen.isNotEmpty()) pointsBeen.size
-        else moveForwardFrom(grid.nextMoveFrom(point, pointsBeen), pointsBeen + point)
+    private tailrec fun mapMazeLoopFrom(point: Coordinate, pointsBeen: List<Coordinate>): List<Coordinate> =
+        if (point == start && pointsBeen.isNotEmpty()) pointsBeen
+        else mapMazeLoopFrom(grid.nextMoveFrom(point, pointsBeen), pointsBeen + point)
+
+    /*
+     * TODO: To solve this, you can follow simple algo of
+     * 1. Clean out all points that are not part of the maze (delete the noise)
+     * 2. Update the maze to track direction of vertical nodes
+     * 3. Then you can track on a line by line basis the how deep into the maze you are
+     *  - if you find a '.' at depth zero then you know you are outside
+     *  - if you find a . at depth >0 then you know you are inner
+     */
+    fun findInnerArea(gridData: String): Int {
+        this.grid = Grid(gridData)
+        this.start = grid.findStart()
+        val mazeLoop = mapMazeLoopFrom(start, listOf())
+        log.debug("${mazeLoop.size}")
+        grid.visualise()
+        grid.removeAllNoiseFromGrid(mazeLoop)
+        grid.visualise()
+        grid.markAllInnerPoints()
+        grid.visualise()
+        return -1
+    }
 
 }
 
 data class Grid(val grid: Array<CharArray>) {
+
+    private val log = LoggerFactory.getLogger(this::class.java)
 
     companion object {
         operator fun invoke(gridData: String): Grid {
@@ -67,6 +89,41 @@ data class Grid(val grid: Array<CharArray>) {
     private fun valueOf(point: Coordinate): Char =
         if (point.x < 0 || point.y < 0 || point.y >= grid.size || point.x >= grid.first().size) '*'
         else grid[point.y][point.x]
+
+    fun visualise() {
+        grid.mapIndexed { idx, it -> log.debug("$idx: {}", it.joinToString("")) }
+    }
+
+    fun updateGrid(point: Coordinate, char: Char) {
+        grid[point.y][point.x] = char
+    }
+
+    fun removeAllNoiseFromGrid(mazeLoop: List<Coordinate>) {
+        grid.forEachIndexed { lineIdx, line ->
+            line.forEachIndexed { rowIdx, _ ->
+                val point = Coordinate(rowIdx, lineIdx)
+                if (!mazeLoop.contains(point))
+                    updateGrid(point, '.')
+            }
+        }
+    }
+
+    fun markAllInnerPoints() {
+        grid.forEachIndexed { lineIdx, line ->
+            var insideDepth = 0
+            line.forEachIndexed { rowIdx, _ ->
+                val point = Coordinate(rowIdx, lineIdx)
+                if (valueOf(point) == '.') {
+                    if (insideDepth == 0) updateGrid(point, 'O')
+                    else updateGrid(point, 'I')
+                }
+                else if(listOf('|', 'F', 'L').contains(valueOf(point)))
+                    insideDepth ++
+                else if (listOf('|', 'J', '7').contains(valueOf(point)))
+                    insideDepth--
+            }
+        }
+    }
 
 }
 
