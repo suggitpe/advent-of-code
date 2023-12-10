@@ -13,13 +13,13 @@ object Day10PipeMaze {
         this.grid = Grid(gridData)
         this.start = grid.findStart()
         log.debug("starting from {}", start)
-        return moveForwardFrom(start, listOf(), 0)
+        return moveForwardFrom(start, listOf())
             .also { log.debug("Part 1: ${it / 2}") }
     }
 
-    private tailrec fun moveForwardFrom(point: Coordinate, pointsBeen: List<Coordinate>, accum: Int): Int =
-        if (point == start && pointsBeen.isNotEmpty()) accum
-        else moveForwardFrom(grid.nextMoveFrom(point, pointsBeen), pointsBeen + point, accum + 1)
+    private tailrec fun moveForwardFrom(point: Coordinate, pointsBeen: List<Coordinate>): Int =
+        if (point == start && pointsBeen.isNotEmpty()) pointsBeen.size
+        else moveForwardFrom(grid.nextMoveFrom(point, pointsBeen), pointsBeen + point)
 
 }
 
@@ -51,36 +51,28 @@ data class Grid(val grid: Array<CharArray>) {
             else -> throw IllegalStateException("No idea what to do with [${valueOf(point)}] at $point")
         }
 
-    private fun firstMoveFrom(point: Coordinate): Coordinate {
-        return if ("[|7F]".toRegex().containsMatchIn(valueOf(point.up()).toString()))
-            point.up()
-        else if ("[-J7]".toRegex().containsMatchIn(valueOf(point.right()).toString()))
-            point.right()
-        else if ("[|JL]".toRegex().containsMatchIn(valueOf(point.down()).toString()))
-            point.down()
-        else if ("[-FL]".toRegex().containsMatchIn(valueOf(point.left()).toString()))
-            point.left()
-        else
-            throw java.lang.IllegalStateException("No idea how to start from $point")
-    }
+    private fun firstMoveFrom(point: Coordinate): Coordinate =
+        if ("[|7F]".toRegex().containsMatchIn(valueOf(point.up()).toString())) point.up()
+        else if ("[-J7]".toRegex().containsMatchIn(valueOf(point.right()).toString())) point.right()
+        else if ("[|JL]".toRegex().containsMatchIn(valueOf(point.down()).toString())) point.down()
+        else if ("[-FL]".toRegex().containsMatchIn(valueOf(point.left()).toString())) point.left()
+        else throw java.lang.IllegalStateException("No idea how to start from $point")
+
 
     fun findStart(): Coordinate {
         val y = grid.indexOfFirst { it.contains('S') }
         return Coordinate(grid[y].indexOf('S'), y)
     }
 
-    private fun valueOf(point: Coordinate): Char {
-        if (point.x < 0 || point.y < 0 || point.y >= grid.size || point.x >= grid.first().size) return '*'
-        return grid[point.y][point.x]
-    }
+    private fun valueOf(point: Coordinate): Char =
+        if (point.x < 0 || point.y < 0 || point.y >= grid.size || point.x >= grid.first().size) '*'
+        else grid[point.y][point.x]
+
 }
 
 data class Coordinate(val x: Int, val y: Int) {
 
-    override fun toString(): String {
-        return "$x/$y"
-    }
-
+    override fun toString(): String = "$x/$y"
     fun up(): Coordinate = Coordinate(x, y - 1)
     fun down(): Coordinate = Coordinate(x, y + 1)
     fun left(): Coordinate = Coordinate(x - 1, y)
