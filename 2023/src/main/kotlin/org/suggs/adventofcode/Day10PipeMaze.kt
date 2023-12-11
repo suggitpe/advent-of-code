@@ -9,8 +9,8 @@ object Day10PipeMaze {
     private lateinit var grid: Grid
     private lateinit var start: Coordinate
 
-    fun lengthOfMaze(gridData: String): Int {
-        this.grid = Grid(gridData)
+    fun lengthOfMaze(grid: Grid): Int {
+        this.grid = grid
         this.start = grid.findStart()
         return mapMazeLoopFrom(start, listOf()).size
             .also { log.debug("Part 1: ${it / 2}") }
@@ -28,8 +28,8 @@ object Day10PipeMaze {
      *  - if you find a '.' at depth zero then you know you are outside
      *  - if you find a . at depth >0 then you know you are inner
      */
-    fun findInnerArea(gridData: String): Int {
-        this.grid = Grid(gridData)
+    fun findInnerArea(grid: Grid): Int {
+        this.grid = grid
         this.start = grid.findStart()
         val mazeLoop = mapMazeLoopFrom(start, listOf())
         log.debug("${mazeLoop.size}")
