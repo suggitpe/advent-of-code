@@ -20,7 +20,7 @@ data class Grid (val grid: Array<CharArray>) {
         grid[point.y][point.x] = char
     }
 
-    private fun valueOf(point: Coordinate): Char =
+    fun valueOf(point: Coordinate): Char =
         if (point.x < 0 || point.y < 0 || point.y >= grid.size || point.x >= grid.first().size) '*'
         else grid[point.y][point.x]
 }
