@@ -28,6 +28,9 @@ object Util {
     fun readFileAsString(fileName: String) =
         readFile(fileName).bufferedReader().readText()
 
+    fun createGridFromFileContent(fileName: String) =
+        Grid(readFile(fileName).bufferedReader().readText())
+
     fun chunkFileIntoLinesOfThree(filename: String, chunkSize: Int = 3): List<List<String>> =
         getFileLinesFrom(filename).chunked(chunkSize)
 
