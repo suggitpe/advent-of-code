@@ -17,7 +17,7 @@ class Day11CosmicExpansionTest {
 
     @Test
     @Disabled
-    fun `sum shortest paths between galaxies from large grid`() {
+    fun `sum shortest paths between galaxies fro    m large grid`() {
         sumAllGalaxyDistancesIn(largeGrid) shouldBe 123
     }
 
