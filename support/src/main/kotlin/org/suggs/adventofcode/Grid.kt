@@ -10,10 +10,11 @@ data class Grid(val grid: Array<CharArray>) {
         operator fun invoke(gridData: String): Grid {
             return Grid(gridData.split("\n").map { it.toCharArray() }.toTypedArray())
         }
+
+        fun emptyGrid(): Grid = Grid(arrayOf())
     }
 
     fun visualise() = grid.mapIndexed { idx, it -> log.debug("$idx: {}", it.joinToString("")) }
-
 
     fun updateGrid(point: Coordinate, char: Char) {
         grid[point.y][point.x] = char
@@ -33,4 +34,34 @@ data class Grid(val grid: Array<CharArray>) {
                 coordinate.x < grid[0].size &&
                 coordinate.y < grid.size
     }
+
+    fun getRowAt(rowNum: Int): CharArray = grid[rowNum]
+
+    fun getColumnAt(colNum: Int): CharArray = grid.fold(listOf<Char>()) { acc, next -> acc + next[colNum] }.toCharArray()
+
+    fun appendRow(row: CharArray): Array<CharArray> = grid + row
+
+    fun rows(): List<CharArray> = grid.toList()
+
+    fun columns(): List<CharArray> {
+        val list = mutableListOf<CharArray>()
+        grid[0].forEachIndexed { idx, _ ->
+            list.add(getColumnAt(idx))
+        }
+        return list
+    }
+
+    fun findAll(char: Char): Set<Coordinate> {
+        val coordinates = mutableSetOf<Coordinate>()
+        grid.forEachIndexed { idx, row ->
+            row.forEachIndexed { inIdx, char ->
+                if (char == '#')
+                    coordinates.add(Coordinate(inIdx, idx))
+            }
+        }
+        return coordinates
+    }
+
+    override fun toString(): String = grid.map { it.joinToString("") }.joinToString("\n")
+
 }
