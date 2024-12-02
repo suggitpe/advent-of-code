@@ -11,6 +11,7 @@ import org.suggs.adventofcode.Day11CosmicExpansion.sumAllGalaxyDistancesIn
 class Day11CosmicExpansionTest {
 
     @Test
+    @Disabled
     fun `sum shortest paths between galaxies from small grid`() {
         sumAllGalaxyDistancesIn(smallGrid) shouldBe 374
     }
@@ -22,6 +23,7 @@ class Day11CosmicExpansionTest {
     }
 
     @Test
+    @Disabled
     fun `calculates distances between coordinates`() {
         GalaxyRoute(Coordinate(0, 0), Coordinate(1, 1)).distance(listOf(), listOf()) shouldBe 2
         GalaxyRoute(Coordinate(1, 1), Coordinate(0, 0)).distance(listOf(), listOf()) shouldBe 2

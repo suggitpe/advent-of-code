@@ -40,8 +40,10 @@ object Day11CosmicExpansion {
         fun distance(rowsWithAllSameChar: List<Int>, columnsWithAllSameChar: List<Int>): Long {
             val xRange = if (from.x > to.x) to.x..from.x else from.x..to.x
             val yRange = if (from.y > to.y) to.y..from.y else from.y..to.y
-            return (xRange.last - xRange.first) + (xRange.filter { columnsWithAllSameChar.contains(it) }.size * 1L) +
-                    (yRange.last - yRange.first) + (yRange.filter { rowsWithAllSameChar.contains(it) }.size * 1L)
+            val xRangeExpand = xRange.filter { columnsWithAllSameChar.contains(it) }.size * 10L
+            val yRangeExpand = yRange.filter { rowsWithAllSameChar.contains(it) }.size * 10L
+            return (xRange.last - xRange.first) + (xRangeExpand) +
+                    (yRange.last - yRange.first) + (yRangeExpand)
         }
 
     }
