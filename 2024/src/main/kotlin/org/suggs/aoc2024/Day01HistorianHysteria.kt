@@ -5,8 +5,6 @@ import kotlin.math.abs
 
 object Day01HistorianHysteria {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
-
     fun addListDistancesFor(smallData: List<String>): Int =
         addDistancesOfTwoLists(
             smallData.map { it.split("   ").first().toInt() }.sorted(),

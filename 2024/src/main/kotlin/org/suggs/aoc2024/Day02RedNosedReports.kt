@@ -20,10 +20,10 @@ object Day02RedNosedReports {
 
     private fun isDampenedSafeLine(line: List<Int>): Boolean {
         return if(isSafeLine(line)) true
-        else findSubLisThatIsSafe(line)
+        else findCombinationThatIsSafe(line)
     }
 
-    private fun findSubLisThatIsSafe(line: List<Int>): Boolean {
+    private fun findCombinationThatIsSafe(line: List<Int>): Boolean {
         for(i in line.indices) {
             val mutated = line.toMutableList()
             mutated.removeAt(i)
@@ -31,6 +31,5 @@ object Day02RedNosedReports {
         }
         return false
     }
-
 
 }
