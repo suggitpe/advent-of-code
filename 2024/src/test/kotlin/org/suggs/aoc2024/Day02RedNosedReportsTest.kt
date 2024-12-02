@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Util.getFileLinesFrom
+import org.suggs.aoc2024.Day02RedNosedReports.countNumberOfDampenedSafeReportsFrom
 import org.suggs.aoc2024.Day02RedNosedReports.countNumberOfSafeReportsFrom
 
 @DisplayName("Red-Nosed Reports")
@@ -19,6 +20,17 @@ class Day02RedNosedReportsTest {
     @Disabled
     fun `counts number of safe reports from a longer list`() {
         countNumberOfSafeReportsFrom(largeData) shouldBe 123
+    }
+
+    @Test
+    fun `counts number of dampened safe reports from a short list`() {
+        countNumberOfDampenedSafeReportsFrom(smallData) shouldBe 4
+    }
+
+    @Test
+    @Disabled
+    fun `counts number of dampened safe reports from a larger  list`() {
+        countNumberOfDampenedSafeReportsFrom(largeData) shouldBe 123
     }
 
     private val largeData = getFileLinesFrom("day02-input.txt")
