@@ -35,11 +35,8 @@ object Day01HistorianHysteria {
             return calculateAllSimilarityScores(
                 left.drop(1),
                 right,
-                accu + (left.first() * countOccurrencesOf(left.first(), right))
+                accu + (left.first() * right.count { it == left.first() })
             )
     }
-
-    private fun countOccurrencesOf(check: Int, list: List<Int>) = list.count { it == check }
-
 
 }
