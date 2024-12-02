@@ -1,6 +1,6 @@
 ext {
 
-    kotlinVersion = '2.0.21'
+    kotlinVersion = '1.9.25'
     kotestVersion = '5.9.1'
     junitVersion = '5.11.3'
 
