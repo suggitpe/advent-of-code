@@ -5,14 +5,15 @@ import kotlin.math.abs
 
 object Day02RedNosedReports {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
-
     fun countNumberOfSafeReportsFrom(data: List<String>) =
         data.count { isSafeLine(it.split(" ").map { it.toInt() }) }
 
     private fun isSafeLine(line: List<Int>) = isSafeDeltas(line.zipWithNext().map { it.second - it.first })
+
     private fun isSafeDeltas(lineDeltas: List<Int>) = allInRange(lineDeltas) && allSameDirection(lineDeltas)
+
     private fun allInRange(lineDeltas: List<Int>) = lineDeltas.all { abs(it) in 1..3 }
+
     private fun allSameDirection(lineDeltas: List<Int>) = lineDeltas.all { it > 0 } || lineDeltas.all { it < 0 }
 
     fun countNumberOfDampenedSafeReportsFrom(data: List<String>): Int =
