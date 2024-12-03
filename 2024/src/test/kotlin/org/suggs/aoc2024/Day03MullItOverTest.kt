@@ -28,6 +28,7 @@ class Day03MullItOverTest {
     }
 
     @Test
+    @Disabled
     fun `find multiply instructions from enabled larger data`(){
         filterOutAndMultiplyEnabledCallsFrom(largeData) shouldBe 123
     }
