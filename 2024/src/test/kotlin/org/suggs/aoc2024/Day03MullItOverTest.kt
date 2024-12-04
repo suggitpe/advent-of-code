@@ -8,7 +8,7 @@ import org.suggs.adventofcode.Util.readFileAsString
 import org.suggs.aoc2024.Day03MullItOver.filterOutAndAddMultiplicationCallsFrom
 import org.suggs.aoc2024.Day03MullItOver.filterOutAndMultiplyEnabledCallsFrom
 
-@DisplayName("Mull it Over")
+@DisplayName("Day 03 Mull it Over")
 class Day03MullItOverTest {
 
     @Test

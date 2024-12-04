@@ -2,12 +2,14 @@ package org.suggs.aoc2024
 
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Grid
 import org.suggs.adventofcode.Util.createGridFromFileContent
 import org.suggs.aoc2024.Day04CeresSearch.countXmasWordsInGrid
 import org.suggs.aoc2024.Day04CeresSearch.findCrossingMasInGrid
 
+@DisplayName("Day 04 Ceres Search")
 class Day04CeresSearchTest {
 
     @Test

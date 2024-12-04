@@ -1,12 +1,9 @@
 package org.suggs.aoc2024
 
-import org.slf4j.LoggerFactory
 import org.suggs.adventofcode.Coordinate
 import org.suggs.adventofcode.Grid
 
 object Day04CeresSearch {
-
-    private val log = LoggerFactory.getLogger(this::class.java)
 
     fun countXmasWordsInGrid(grid: Grid) = grid.findAll('X').sumOf { grid.countXmasWords(it) }
 
@@ -22,16 +19,7 @@ object Day04CeresSearch {
     }
 
     private fun Grid.getAllWordsFrom(coord: Coordinate) =
-        listOf(
-            wordUp(coord),
-            wordDown(coord),
-            wordLeft(coord),
-            wordRight(coord),
-            wordUpLeft(coord),
-            wordUpRight(coord),
-            wordDownLeft(coord),
-            wordDownRight(coord)
-        )
+        listOf(wordUp(coord), wordDown(coord), wordLeft(coord), wordRight(coord), wordUpLeft(coord), wordUpRight(coord), wordDownLeft(coord), wordDownRight(coord))
 
     private fun Grid.wordUp(from: Coordinate) = listOf(valueOf(from), valueOf(from.up(1)), valueOf(from.up(2)), valueOf(from.up(3))).joinToString("")
     private fun Grid.wordDown(from: Coordinate) = listOf(valueOf(from), valueOf(from.down(1)), valueOf(from.down(2)), valueOf(from.down(3))).joinToString("")

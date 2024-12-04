@@ -8,7 +8,7 @@ import org.suggs.adventofcode.Util.getFileLinesFrom
 import org.suggs.aoc2024.Day01HistorianHysteria.addListDistancesFor
 import org.suggs.aoc2024.Day01HistorianHysteria.addSimilarityScoresFor
 
-@DisplayName("Historian Hysteria")
+@DisplayName("Day 01 Historian Hysteria")
 class Day01HistorianHysteriaTest {
 
     @Test

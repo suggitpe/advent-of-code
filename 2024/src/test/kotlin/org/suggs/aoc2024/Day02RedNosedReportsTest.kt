@@ -8,7 +8,7 @@ import org.suggs.adventofcode.Util.getFileLinesFrom
 import org.suggs.aoc2024.Day02RedNosedReports.countNumberOfDampenedSafeReportsFrom
 import org.suggs.aoc2024.Day02RedNosedReports.countNumberOfSafeReportsFrom
 
-@DisplayName("Red-Nosed Reports")
+@DisplayName("Day 02 Red-Nosed Reports")
 class Day02RedNosedReportsTest {
 
     @Test
