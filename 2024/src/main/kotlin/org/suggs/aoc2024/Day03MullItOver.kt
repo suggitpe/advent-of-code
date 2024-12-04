@@ -4,7 +4,7 @@ import org.slf4j.LoggerFactory
 
 object Day03MullItOver {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
+
     private val functionRegex = "mul\\(\\d{1,3},\\d{1,3}\\)".toRegex()
     private val enabledOnlyRegex = "mul\\(\\d{1,3},\\d{1,3}\\)|don't\\(\\)|do\\(\\)".toRegex()
 

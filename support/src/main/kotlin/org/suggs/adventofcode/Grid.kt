@@ -51,11 +51,11 @@ data class Grid(val grid: Array<CharArray>) {
         return list
     }
 
-    fun findAll(char: Char): Set<Coordinate> {
+    fun findAll(toFind: Char): Set<Coordinate> {
         val coordinates = mutableSetOf<Coordinate>()
         grid.forEachIndexed { idx, row ->
             row.forEachIndexed { inIdx, char ->
-                if (char == '#')
+                if (char == toFind)
                     coordinates.add(Coordinate(inIdx, idx))
             }
         }
