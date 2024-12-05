@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.suggs.adventofcode.Util.getTextBlocksFrom
+import org.suggs.aoc2024.Day05PrintQueue.correctIncorrectlyOrderedPrintJobsThenSumMedium
 import org.suggs.aoc2024.Day05PrintQueue.extractMiddleNumberFrom
 import org.suggs.aoc2024.Day05PrintQueue.sumMiddleNumbersFromValidPrintQueues
 
@@ -23,9 +24,20 @@ class Day05PrintQueueTest {
     }
 
     @Test
-    fun `can get middle element in a set`(){
-        extractMiddleNumberFrom(setOf(0,1,2,3,4)) shouldBe 2
-        extractMiddleNumberFrom(setOf(0,1,2)) shouldBe 1
+    fun `can get middle element in a set`() {
+        extractMiddleNumberFrom(listOf(0, 1, 2, 3, 4)) shouldBe 2
+        extractMiddleNumberFrom(listOf(0, 1, 2)) shouldBe 1
+    }
+
+    @Test
+    fun `corrects incorrectly ordered print jobs from small data`() {
+        correctIncorrectlyOrderedPrintJobsThenSumMedium(smallData) shouldBe 123
+    }
+
+    @Test
+    @Disabled
+    fun `corrects incorrectly ordered print jobs from large data`() {
+        correctIncorrectlyOrderedPrintJobsThenSumMedium(largeData) shouldBe 123
     }
 
     private val largeData = getTextBlocksFrom("day05-input.txt")
