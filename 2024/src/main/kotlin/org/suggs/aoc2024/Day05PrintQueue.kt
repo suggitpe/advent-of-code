@@ -41,6 +41,7 @@ class QueueCorrector(private val jobs: List<List<Int>>) {
             if(isValidPrintJob(job, rules))
                 return job
         }
+
         return job
     }
 
