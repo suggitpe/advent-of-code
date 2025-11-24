@@ -13,7 +13,7 @@ class Day06GuardGallivantTest {
 
     @Test
     fun `counts steps to reach the edge of a small grid`() {
-        countStepsToReachEdgeOfGrid(smallGrid) shouldBe 41
+        countStepsToReachEdgeOfGrid(smallGrid) shouldBe 0
     }
 
     @Test

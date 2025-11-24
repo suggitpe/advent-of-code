@@ -3,5 +3,5 @@ dependencies{
 }
 
 jar {
-    archiveBaseName = 'aoc-2024'
+    archiveBaseName = 'aoc-sandbox'
 }

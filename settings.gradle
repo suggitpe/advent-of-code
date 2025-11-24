@@ -1,5 +1,6 @@
 rootProject.name = "Advent of Code"
 
-include 'support',
-//        '2023',
-        '2024'
+include "support",
+        "sandbox",
+        "2024",
+        "2025"

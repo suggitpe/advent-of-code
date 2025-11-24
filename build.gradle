@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 buildscript {
     apply from: "$rootDir/dependencies.gradle"
     repositories {
@@ -5,6 +7,18 @@ buildscript {
     }
     dependencies {
         classpath gradlePlugins.kotlin
+    }
+}
+
+static def buildTimeStamp() {
+    return new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date())
+}
+
+static def gitSha() {
+    try {
+        return 'git rev-parse --short HEAD'.execute().text.trim()
+    } catch (ignored) {
+        return "unknown"
     }
 }
 
@@ -24,10 +38,16 @@ subprojects {
         mavenCentral()
     }
 
+    jar {
+        archiveVersion = "${gitSha()}-${buildTimeStamp()}"
+    }
+
     dependencies {
         implementation libs.kotlin,
                 libs.kotlinReflect,
                 libs.slf4j
+
+        testImplementation "org.jetbrains.kotlin:kotlin-test:1.9.25"
     }
 
     ext {
