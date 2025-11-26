@@ -16,23 +16,23 @@ static def buildTimeStamp() {
 
 static def gitSha() {
     try {
-        return 'git rev-parse --short HEAD'.execute().text.trim()
+        return "git rev-parse --short HEAD".execute().text.trim()
     } catch (ignored) {
         return "unknown"
     }
 }
 
 allprojects {
-    defaultTasks 'clean', 'build', 'jacocoTestReport'
+    defaultTasks "clean", "build", "jacocoTestReport"
 }
 
 subprojects {
 
     apply from: "$rootDir/dependencies.gradle"
-    apply plugin: 'kotlin'
-    apply plugin: 'jacoco'
+    apply plugin: "kotlin"
+    apply plugin: "jacoco"
 
-    group = 'org.suggs.aoc'
+    group = "org.suggs.aoc"
 
     repositories {
         mavenCentral()
@@ -47,7 +47,7 @@ subprojects {
                 libs.kotlinReflect,
                 libs.slf4j
 
-        testImplementation "org.jetbrains.kotlin:kotlin-test:1.9.25"
+        testImplementation libs.test.kotlinTest
     }
 
     ext {
