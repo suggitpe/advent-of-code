@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath gradlePlugins.kotlin
+        classpath(gradlePlugins.kotlin)
     }
 }
 
@@ -43,11 +43,11 @@ subprojects {
     }
 
     dependencies {
-        implementation libs.kotlin,
+        implementation(libs.kotlin,
                 libs.kotlinReflect,
-                libs.slf4j
+                libs.slf4j)
 
-        testImplementation libs.test.kotlinTest
+        testImplementation(libs.test.kotlinTest)
     }
 
     ext {

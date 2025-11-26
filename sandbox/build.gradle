@@ -1,7 +1,7 @@
 dependencies{
-    implementation project(":support")
+    implementation(project(":support"))
 }
 
-jar {
-    archiveBaseName = "aoc-sandbox"
+tasks.jar {
+    archiveBaseName.set("aoc-sandbox")
 }

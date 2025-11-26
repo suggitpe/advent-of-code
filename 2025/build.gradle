@@ -1,7 +1,7 @@
 dependencies{
-    implementation project(":support")
+    implementation(project(":support"))
 }
 
-jar {
-    archiveBaseName = "aoc-2025"
+tasks.jar {
+    archiveBaseName.set("aoc-2025")
 }
