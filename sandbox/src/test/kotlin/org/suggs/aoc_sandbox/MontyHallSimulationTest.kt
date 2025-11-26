@@ -13,9 +13,9 @@ class MontyHallSimulationTest {
     private val log = LoggerFactory.getLogger(this::class.java)
 
     @Test
-    fun `run simulation for 1000 iterations`() {
+    fun `run simulation for 10000 iterations`() {
         val stick = runMontyHallSimulationWithDoorCount(3).withStrategy(STICK)
         val switch = runMontyHallSimulationWithDoorCount(3).withStrategy(SWITCH)
-        log.debug("Simulation for STICK yields $stick, compared to $switch for SWITCH")
+        log.debug("Simulation for STICK yields ${stick}%, compared to ${switch}% for SWITCH")
     }
 }
