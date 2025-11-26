@@ -39,7 +39,7 @@ subprojects {
     }
 
     jar {
-        archiveVersion = "${gitSha()}-${buildTimeStamp()}"
+        archiveVersion = "${buildTimeStamp()}-${gitSha()}"
     }
 
     dependencies {
