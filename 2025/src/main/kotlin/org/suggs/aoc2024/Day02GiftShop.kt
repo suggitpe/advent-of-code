@@ -22,20 +22,25 @@ object Day02GiftShop {
     }
 
     private fun dodgyId(number: Long, multiSplit: Boolean): Long {
-        return if(multiSplit) {
-            if (dodgyMultipleSplitId(number.toString())) number else 0
-        } else
-            if (dodgySingleSplitId(number.toString())) number else 0
+        return if (multiSplit) {
+            if (dodgyId(number.toString())) number else 0
+        } else {
+            val num = number.toString()
+            if (num.length % 2 != 0) return 0
+            if (dodgyIdCheckByChunk(num, num.length / 2)) number else 0
+        }
     }
 
-    private fun dodgyMultipleSplitId(num: String): Boolean {
-        return false
-    }
+    private fun dodgyId(num: String): Boolean =
+        (1..5).any { dodgyIdCheckByChunk(num, it) }
 
-    private fun dodgySingleSplitId(number: String): Boolean {
-        val mid = number.length / 2
-        return number.length >= 2 && number.length % 2 == 0 &&
-                number.take(mid) == number.substring(mid)
+    private fun dodgyIdCheckByChunk(num: String, chunkSize: Int): Boolean {
+        if (num.length < chunkSize) return false
+        val chunks = num.chunked(chunkSize)
+        if (chunks.size == 1) return false
+        if (chunks.last().length != chunkSize) return false
+        val firstChunk = chunks.first()
+        return chunks.all { it == firstChunk }
     }
 
     private fun buildRangeFrom(rangeData: String) =
