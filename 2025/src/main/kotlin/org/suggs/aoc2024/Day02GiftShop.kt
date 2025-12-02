@@ -4,8 +4,6 @@ import org.slf4j.LoggerFactory
 
 object Day02GiftShop {
 
-    private val log = LoggerFactory.getLogger(this::class.java)
-
     fun addAllInvalidIdsInRanges(smallData: List<String>, multiSplit: Boolean): Long =
         smallData.sumOf { addAllInvalidIdsFrom(buildRangeFrom(it), multiSplit) }
 
