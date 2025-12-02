@@ -9,17 +9,12 @@ object Day02GiftShop {
     fun addAllInvalidIdsInRanges(smallData: List<String>, multiSplit: Boolean): Long =
         smallData.sumOf { addAllInvalidIdsFrom(buildRangeFrom(it), multiSplit) }
 
-    fun addAllInvalidIdsFrom(range: LongRange, multiSplit: Boolean): Long {
-        return addAllInvalidIdsFrom(range.toList(), 0L, multiSplit)
-    }
+    fun addAllInvalidIdsFrom(range: LongRange, multiSplit: Boolean): Long =
+        addAllInvalidIdsFrom(range.toList(), 0L, multiSplit)
 
-    private tailrec fun addAllInvalidIdsFrom(range: List<Long>, accu: Long, multiSplit: Boolean): Long {
-        return if (range.isEmpty()) {
-            accu
-        } else {
-            addAllInvalidIdsFrom(range.drop(1), accu + dodgyId(range.first(), multiSplit), multiSplit)
-        }
-    }
+    private tailrec fun addAllInvalidIdsFrom(range: List<Long>, accu: Long, multiSplit: Boolean): Long =
+        if (range.isEmpty()) accu
+        else addAllInvalidIdsFrom(range.drop(1), accu + dodgyId(range.first(), multiSplit), multiSplit)
 
     private fun dodgyId(number: Long, multiSplit: Boolean): Long {
         return if (multiSplit) {
