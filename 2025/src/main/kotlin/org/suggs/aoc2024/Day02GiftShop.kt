@@ -2,9 +2,8 @@ package org.suggs.aoc2024
 
 import org.slf4j.LoggerFactory
 
-object Day01 {
+object Day02GiftShop {
 
     private val log = LoggerFactory.getLogger(this::class.java)
-
 
 }
