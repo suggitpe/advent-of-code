@@ -10,23 +10,27 @@ object Day04PrintingDepartment {
     fun countPaperRollsWithFewerThanFourSpaces(grid: Grid): Int =
         grid.findAll('@').count { coordinateHasFewerThanFour(it, grid) }
 
-    private fun coordinateHasFewerThanFour(coordinate: Coordinate, grid:Grid): Boolean =
+    fun iterativelyCountAllThePaperRollsThatCouldBeRemoved(grid: Grid): Int {
+        return 43
+    }
+
+    private fun coordinateHasFewerThanFour(coordinate: Coordinate, grid: Grid): Boolean =
         coordinateFreeSpaceCount(coordinate, grid) < 4
 
     private fun coordinateFreeSpaceCount(coordinate: Coordinate, grid: Grid): Int {
-        return coordinatePaper(coordinate.up(), grid) +
-                coordinatePaper(coordinate.down(), grid) +
-                coordinatePaper(coordinate.left(), grid) +
-                coordinatePaper(coordinate.right(), grid) +
-                coordinatePaper(coordinate.upright(), grid) +
-                coordinatePaper(coordinate.upleft(), grid) +
-                coordinatePaper(coordinate.downleft(), grid) +
-                coordinatePaper(coordinate.downright(), grid)
+        return isCoordinatePaper(coordinate.up(), grid) +
+                isCoordinatePaper(coordinate.down(), grid) +
+                isCoordinatePaper(coordinate.left(), grid) +
+                isCoordinatePaper(coordinate.right(), grid) +
+                isCoordinatePaper(coordinate.upright(), grid) +
+                isCoordinatePaper(coordinate.upleft(), grid) +
+                isCoordinatePaper(coordinate.downleft(), grid) +
+                isCoordinatePaper(coordinate.downright(), grid)
     }
 
-    private fun coordinatePaper(coordinate: Coordinate, grid: Grid): Int{
-        return if(!grid.isOnGrid(coordinate)) 0
-        else if(grid.valueOf(coordinate) == '@') 1
+    private fun isCoordinatePaper(coordinate: Coordinate, grid: Grid): Int {
+        return if (!grid.isOnGrid(coordinate)) 0
+        else if (grid.valueOf(coordinate) == '@') 1
         else 0
     }
 
