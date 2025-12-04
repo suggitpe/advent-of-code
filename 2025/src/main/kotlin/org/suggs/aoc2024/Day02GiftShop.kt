@@ -1,7 +1,5 @@
 package org.suggs.aoc2024
 
-import org.slf4j.LoggerFactory
-
 object Day02GiftShop {
 
     fun addAllInvalidIdsInRanges(smallData: List<String>, multiSplit: Boolean): Long =
