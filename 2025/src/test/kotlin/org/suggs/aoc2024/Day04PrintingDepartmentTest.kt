@@ -17,7 +17,7 @@ class Day04PrintingDepartmentTest {
     @Test
     @Disabled
     fun `counts the number of rolls of paper with less than four spaces surrounding - large`() {
-        countPaperRollsWithFewerThanFourSpaces(largeData) shouldBe 13
+        countPaperRollsWithFewerThanFourSpaces(largeData) shouldBe 1234
     }
 
     private val smallData = Grid(
