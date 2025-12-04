@@ -12,7 +12,6 @@ object Day04PrintingDepartment {
         countTotalPossiblePaperRollsToRemove(grid, 999999, 0)
 
     private tailrec fun countTotalPossiblePaperRollsToRemove(grid: Grid, lastRemovalCount: Int, totalRemovalCount: Int): Int =
-
         if (lastRemovalCount == 0) totalRemovalCount
         else {
             val coordinatesToRemove = grid.findAll('@').filter { coordinateHasFewerThanFour(it, grid) }
@@ -22,7 +21,7 @@ object Day04PrintingDepartment {
 
     private fun updateGrid(grid: Grid, coordinatesToRemove: List<Coordinate>): Grid {
         val newGrid = grid.copy()
-        coordinatesToRemove.forEach { grid.updateGrid(it, '.') }
+        coordinatesToRemove.forEach { newGrid.updateGrid(it, '.') }
         return newGrid
     }
 
