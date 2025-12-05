@@ -9,7 +9,6 @@ import org.suggs.aoc2024.Day05Cafeteria.countValidIngredientsFrom
 
 class Day05CafeteriaTest {
 
-
     @Test
     fun `counts the number of valid ingredients based on ranges of ingredient ids - small data`() {
         countValidIngredientsFrom(smallData) shouldBe 3
