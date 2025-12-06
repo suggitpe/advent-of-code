@@ -31,6 +31,9 @@ object Util {
     fun createGridFromFileContent(fileName: String) =
         Grid(readFile(fileName).bufferedReader().readText())
 
+    fun createStringGridFromFileContent(fileName: String) =
+        StringGrid(readFile(fileName).bufferedReader().readText())
+
     fun chunkFileIntoLinesOfThree(filename: String, chunkSize: Int = 3): List<List<String>> =
         getFileLinesFrom(filename).chunked(chunkSize)
 
