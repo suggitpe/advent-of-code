@@ -10,8 +10,6 @@ class StringGrid(val grid: List<List<String>>) {
         operator fun invoke(gridData: String): StringGrid {
             return StringGrid(gridData.split("\n").map { it.trim().split("\\s+".toRegex()) })
         }
-
-        fun emptyGrid(): Grid = Grid(arrayOf())
     }
 
     fun visualise() = grid.mapIndexed { idx, it -> log.debug("$idx: {}", it.joinToString("")) }

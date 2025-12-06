@@ -35,6 +35,10 @@ data class Grid(val grid: Array<CharArray>) {
                 coordinate.y < grid.size
     }
 
+    fun dropLast(): Grid{
+        return Grid(grid.dropLast(1).toTypedArray())
+    }
+
     fun getRowAt(rowNum: Int): CharArray = grid[rowNum]
 
     fun getColumnAt(colNum: Int): CharArray = grid.fold(listOf<Char>()) { acc, next -> acc + next[colNum] }.toCharArray()

@@ -2,6 +2,8 @@ package org.suggs.adventofcode
 
 import java.io.File
 import java.lang.System.lineSeparator
+import java.net.URI
+import java.net.URL
 
 object Util {
 
@@ -41,6 +43,11 @@ object Util {
         var total = 0
         File(ClassLoader.getSystemResource(filename).file).forEachLine { total += action(it) }
         return total
+    }
+
+    fun readTestFromURL(url: String): String {
+        val u = URI(url).toURL()
+        return u.openStream().bufferedReader().readText()
     }
 
 }
