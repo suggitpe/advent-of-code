@@ -27,4 +27,10 @@ class GridTest {
     fun `get column by column number`(){
         testGrid.getColumnAt(1) shouldBe ".....#....".toCharArray()
     }
+
+    @Test
+    fun `can drop the last row in the grid`(){
+        testGrid.rows().count() shouldBe 10
+        testGrid.dropLastRow().rows().count() shouldBe 9
+    }
 }
