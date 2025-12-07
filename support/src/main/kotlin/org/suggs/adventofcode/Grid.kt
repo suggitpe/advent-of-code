@@ -35,6 +35,8 @@ data class Grid(val grid: Array<CharArray>) {
                 coordinate.y < grid.size
     }
 
+    fun isNotOnGrid(coordinate: Coordinate): Boolean = !isOnGrid(coordinate)
+
     fun dropLastRow(): Grid = Grid(grid.dropLast(1).toTypedArray())
 
     fun getRowAt(rowNum: Int): CharArray = grid[rowNum]
