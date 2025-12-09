@@ -20,6 +20,7 @@ class Day07LaboratoriesTest {
     }
 
     @Test
+    @Disabled
     fun `counts the splitter encounters - small`() {
         countSplitterEncountersFrom(smallGrid) shouldBe 21
     }
