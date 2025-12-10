@@ -12,13 +12,11 @@ object Day09MovieTheater {
         findLargestRectangleFrom(coordinates.map { it.split(",").let { xy -> Coordinate(xy[0].toInt(), xy[1].toInt()) } }, 0)
 
     private tailrec fun findLargestRectangleFrom(coordinates: List<Coordinate>, currentMax: Long): Long =
-        if (coordinates.isEmpty())
-            currentMax
-        else
-            findLargestRectangleFrom(
-                coordinates.drop(1),
-                findMaxRectangleFrom(coordinates.first(), coordinates.drop(1), currentMax)
-            )
+        if (coordinates.isEmpty()) currentMax
+        else findLargestRectangleFrom(
+            coordinates.drop(1),
+            findMaxRectangleFrom(coordinates.first(), coordinates.drop(1), currentMax)
+        )
 
     private fun findMaxRectangleFrom(topCoord: Coordinate, coordinates: List<Coordinate>, maxValue: Long): Long {
         var max = maxValue
