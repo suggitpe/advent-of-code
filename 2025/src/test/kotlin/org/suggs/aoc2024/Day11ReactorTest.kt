@@ -10,13 +10,24 @@ class Day11ReactorTest {
 
     @Test
     fun `counts paths from you to out - small`() {
-        countRoutesFrom("you", smallData) shouldBe 5
+        countRoutesFrom("you", "out", listOf(), smallData) shouldBe 5
     }
 
     @Test
     @Disabled
     fun `counts paths from you to out - large`() {
-        countRoutesFrom("you", largeData) shouldBe 1234
+        countRoutesFrom("you", "out", listOf(), largeData) shouldBe 1234
+    }
+
+    @Test
+    fun `counts svr routes to out - small`() {
+        countRoutesFrom("svr", "out", listOf("dac", "fft"), smallSvrData) shouldBe 2
+    }
+
+    @Test
+    @Disabled
+    fun `counts svr routes to out - large`() {
+        countRoutesFrom("svr", "out", listOf("dac", "fft"), largeData) shouldBe 2
     }
 
     val largeData = getFileLinesFrom("day11-input.txt")
@@ -31,4 +42,17 @@ ggg: out
 hhh: ccc fff iii
 iii: out""".split("\n")
 
+    val smallSvrData = """svr: aaa bbb
+aaa: fft
+fft: ccc
+bbb: tty
+tty: ccc
+ccc: ddd eee
+ddd: hub
+hub: fff
+eee: dac
+dac: fff
+fff: ggg hhh
+ggg: out
+hhh: out""".split("\n")
 }

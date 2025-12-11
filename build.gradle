@@ -59,6 +59,10 @@ subprojects {
         suites {
             test {
                 useJUnitJupiter(junitVersion)
+
+//                systemProperty("junit.jupiter.execution.parallel.enabled", "true")
+//                systemProperty("junit.jupiter.execution.parallel.mode.default", "concurrent")
+
                 dependencies {
                     implementation libs.test.junitApi
                     implementation libs.test.kotestAssertions
