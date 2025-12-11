@@ -16,7 +16,7 @@ class Day11ReactorTest {
     @Test
     @Disabled
     fun `counts paths from you to out - large`() {
-        countRoutesFrom(smallData) shouldBe 1234
+        countRoutesFrom(largeData) shouldBe 1234
     }
 
     val largeData = getFileLinesFrom("day11-input.txt")
