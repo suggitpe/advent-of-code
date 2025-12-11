@@ -6,12 +6,12 @@ object Day11Reactor {
 
     private val log = LoggerFactory.getLogger(this::class.java)
 
-    fun countRoutesFrom(devices: List<String>): Int =
-        countRoutesFrom("you", buildRoutesFrom(devices))
+    fun countRoutesFrom(startingPosition: String, devices: List<String>): Int =
+        countRoutesFrom(startingPosition, buildRoutesFrom(devices), listOf(startingPosition))
 
-    private fun countRoutesFrom(position: String, devices: Map<String, List<String>>): Int =
+    private fun countRoutesFrom(position: String, devices: Map<String, List<String>>, routeTaken: List<String>): Int =
         if (position == "out") 1
-        else devices[position]?.map { countRoutesFrom(it, devices) }!!.sum()
+        else devices[position]?.map { countRoutesFrom(it, devices, routeTaken + it) }!!.sum()
 
     private fun buildRoutesFrom(devices: List<String>): Map<String, List<String>> =
         devices
