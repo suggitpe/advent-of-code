@@ -45,9 +45,11 @@ subprojects {
     dependencies {
         implementation(libs.kotlin,
                 libs.kotlinReflect,
-                libs.slf4j)
+                libs.slf4j,
+                libs.coroutines)
 
-        testImplementation(libs.test.kotlinTest)
+        testImplementation(libs.test.kotlinTest,
+                libs.test.coroutines)
     }
 
     ext {

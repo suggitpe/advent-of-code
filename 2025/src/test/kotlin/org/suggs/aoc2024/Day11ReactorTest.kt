@@ -1,32 +1,35 @@
 package org.suggs.aoc2024
 
 import io.kotest.matchers.shouldBe
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Disabled
 import org.suggs.adventofcode.Util.getFileLinesFrom
 import org.suggs.aoc2024.Day11Reactor.countRoutesFrom
 import kotlin.test.Test
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class Day11ReactorTest {
 
     @Test
-    fun `counts paths from you to out - small`() {
+    fun `counts paths from you to out - small`() = runTest {
         countRoutesFrom("you", "out", listOf(), smallData) shouldBe 5
     }
 
     @Test
     @Disabled
-    fun `counts paths from you to out - large`() {
+    fun `counts paths from you to out - large`() = runTest {
         countRoutesFrom("you", "out", listOf(), largeData) shouldBe 1234
     }
 
     @Test
-    fun `counts svr routes to out - small`() {
+    fun `counts svr routes to out - small`() = runTest {
         countRoutesFrom("svr", "out", listOf("dac", "fft"), smallSvrData) shouldBe 2
     }
 
     @Test
     @Disabled
-    fun `counts svr routes to out - large`() {
+    fun `counts svr routes to out - large`() = runTest {
         countRoutesFrom("svr", "out", listOf("dac", "fft"), largeData) shouldBe 2
     }
 
